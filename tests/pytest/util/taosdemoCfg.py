@@ -19,10 +19,12 @@ import inspect
 import psutil
 import shutil
 import json
-from log import *
+from util.log import *
 from multiprocessing import cpu_count
 
 
+##TODO: fully test the function. Handle exceptions.
+#       Handle json format not accepted by taosdemo
 class TDTaosdemoCfg:
     def __init__(self):
         self.insert_cfg = {
@@ -133,8 +135,8 @@ class TDTaosdemoCfg:
             "insert_mode": "taosc",
             "insert_rows": 100,
             "childtable_limit": 10,
-            "childtable_offset": 100,
-            "interlace_rows": 32766,
+            "childtable_offset": 0,
+            "interlace_rows": 0,
             "insert_interval": 0,
             "max_sql_len": 32766,
             "disorder_ratio": 0,
@@ -173,14 +175,16 @@ class TDTaosdemoCfg:
         }
 
     # The following functions are import functions for different dicts and lists
-    def importinsert_cfg(self, dict_in):
+    # except import_sql, all other import functions will a dict and overwrite the origional dict
+    # dict_in: the dict used to overwrite the target
+    def import_insert_cfg(self, dict_in):
         self.insert_cfg = dict_in
 
     def import_db(self, dict_in):
         self.db = dict_in
 
-    def import_stb(self, dict_in):
-        self.defaultStb = dict_in
+    def import_stbs(self, dict_in):
+        self.stbs = dict_in
 
     def import_query_cfg(self, dict_in):
         self.query_cfg = dict_in
@@ -201,23 +205,35 @@ class TDTaosdemoCfg:
         self.stable_sub = dict_in
 
     def import_sql(self, Sql_in, mode):
+        """used for importing the sql later used
+
+        Args:
+            Sql_in (dict): the imported sql dict
+            mode (str): the sql storing location within TDTaosdemoCfg
+                format: 'fileType_tableType'
+                fileType: query, sub
+                tableType: table, stable
+        """
         if mode == 'query_table':
             self.tb_query_sql = Sql_in
         elif mode == 'query_stable':
             self.stb_query_sql = Sql_in
-        elif mode == 'query_all':
-            self.stb_query_sql = Sql_in
-            self.tb_query_sql = Sql_in
         elif mode == 'sub_table':
             self.tb_sub_sql = Sql_in
         elif mode == 'sub_stable':
             self.stb_sub_sql = Sql_in
-        elif mode == 'sub_all':
-            self.tb_sub_sql = Sql_in
-            self.stb_sub_sql = Sql_in
+    #import functions end
 
     # The following functions are alter functions for different dicts
+    #   Args:
+    #       key: the key that is going to be modified
+    #       value: the value of the key that is going to be modified
+    #           if key = 'databases' | "specified_table_query" | "super_table_query"|"sqls"
+    #           value will not be used
+
+
     def alter_insert_cfg(self, key, value):
+
         if key == 'databases':
             self.insert_cfg[key] = [
                 {
@@ -270,8 +286,20 @@ class TDTaosdemoCfg:
             self.table_sub[key] = self.tb_sub_sql
         else:
             self.table_sub[key] = value
+    # alter function ends
 
-    def apped_sql_stb(self, target, value):
+    #the following functions are for handling the sql lists
+    def append_sql_stb(self, target, value):
+        """for appending sql dict into specific sql list
+
+        Args:
+            target (str): the target append list
+                format: 'fileType_tableType'
+                fileType: query, sub
+                tableType: table, stable
+                unique: 'insert_stbs'
+            value (dict): the sql dict going to be appended
+        """
         if target == 'insert_stbs':
             self.stbs.append(value)
         elif target == 'query_table':
@@ -283,8 +311,18 @@ class TDTaosdemoCfg:
         elif target == 'sub_stable':
             self.stb_sub_sql.append(value)
 
-    def del_sql_stb(self, target, index):
-        if target == 'insert':
+    def pop_sql_stb(self, target, index):
+        """for poping a sql dict from specific sql list
+
+        Args:
+            target (str): the target append list
+                format: 'fileType_tableType'
+                fileType: query, sub
+                tableType: table, stable
+                unique: 'insert_stbs'
+            index (int): the sql dict that is going to be popped
+        """
+        if target == 'insert_stbs':
             self.stbs.pop(index)
         elif target == 'query_table':
             self.tb_query_sql.pop(index)
@@ -294,12 +332,13 @@ class TDTaosdemoCfg:
             self.tb_sub_sql.pop(index)
         elif target == 'sub_stable':
             self.stb_sub_sql.pop(index)
+    #sql list modification function end
 
     # The following functions are get functions for different dicts
-    def get_db_cfg(self):
+    def get_db(self):
         return self.db
 
-    def get_stb_cfg(self):
+    def get_stb(self):
         return self.stbs
 
     def get_insert_cfg(self):
@@ -324,6 +363,15 @@ class TDTaosdemoCfg:
         return self.stable_sub
 
     def get_sql(self, target):
+        """general get function for all sql lists
+
+        Args:
+            target (str): the sql list want to get
+                format: 'fileType_tableType'
+                fileType: query, sub
+                tableType: table, stable
+                unique: 'insert_stbs'
+        """
         if target == 'query_table':
             return self.tb_query_sql
         elif target == 'query_stable':
@@ -334,6 +382,15 @@ class TDTaosdemoCfg:
             return self.stb_sub_sql
 
     def get_template(self, target):
+        """general get function for the default sql template
+
+        Args:
+            target (str): the sql list want to get
+                format: 'fileType_tableType'
+                fileType: query, sub
+                tableType: table, stable
+                unique: 'insert_stbs'
+        """
         if target == 'insert_stbs':
             return self.stb_template
         elif target == 'query_table':
@@ -347,32 +404,48 @@ class TDTaosdemoCfg:
         else:
             print(f'did not find {target}')
 
-    def insert_cfg_generation(self, fileName):
-        cfgFileName = f'temp/insert_{fileName}.json'
+    
+    #the folloing are the file generation functions
+    """defalut document:
+        generator functio for generating taosdemo json file
+        will assemble the dicts and dump the final json
+
+        Args:
+            pathName (str): the directory wanting the json file to be
+            fileName (str): the name suffix of the json file
+        Returns:
+            str: [pathName]/[filetype]_[filName].json
+    """
+    def generate_insert_cfg(self, pathName, fileName):
+        cfgFileName = f'{pathName}/insert_{fileName}.json'
         self.alter_insert_cfg('databases', None)
         with open(cfgFileName, 'w') as file:
             json.dump(self.insert_cfg, file)
+        return cfgFileName
 
-    def query_cfg_generation(self, fileName):
-        cfgFileName = f'temp/query_{fileName}.json'
+    def generate_query_cfg(self,pathName, fileName):
+        cfgFileName = f'{pathName}/query_{fileName}.json'
         self.alter_query_tb('sqls', None)
         self.alter_query_stb('sqls', None)
         self.alter_query_cfg('specified_table_query', None)
         self.alter_query_cfg('super_table_query', None)
         with open(cfgFileName, 'w') as file:
             json.dump(self.query_cfg, file)
+        return cfgFileName
 
-    def sub_cfg_generation(self, fileName):
-        cfgFileName = f'temp/subscribe_{fileName}.json'
+    def generate_subscribe_cfg(self,pathName, fileName):
+        cfgFileName = f'{pathName}/subscribe_{fileName}.json'
         self.alter_sub_tb('sqls', None)
         self.alter_sub_stb('sqls', None)
         self.alter_sub_cfg('specified_table_query', None)
         self.alter_sub_cfg('super_table_query', None)
         with open(cfgFileName, 'w') as file:
             json.dump(self.sub_cfg, file)
+        return cfgFileName
+    #file generation functions ends
 
     def drop_cfg_file(self, fileName):
-        os.remove(f'temp/{fileName}')
+        os.remove(f'{fileName}')
 
 
-tdTaosCfg = TDTaosdemoCfg()
+taosdemoCfg = TDTaosdemoCfg()

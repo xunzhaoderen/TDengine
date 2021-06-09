@@ -1,0 +1,37 @@
+{
+    "filetype": "insert",
+    "cfgdir": "/etc/taos",
+    "host": "127.0.0.1",
+    "port": 6030,
+    "user": "root",
+    "password": "taosdata",
+    "thread_count": 128,                   
+    "thread_count_create_tbl": 128,        
+    "result_file": "./insert_res.txt",   
+    "confirm_parameter_prompt": "no",    
+    "insert_interval": 1000,         
+    "interlace_rows": 100,        
+    "num_of_records_per_req": 32766,
+    "databases": [{
+        "dbinfo": {
+            "name": "db",
+            "drop": "yes",                
+            "replica": 1,
+            "days": 10,
+            "cache": 16,
+            "blocks": 8,
+            "precision": "ms",
+            "keep": 3650,
+            "minRows": 100,
+            "maxRows": 4096,
+            "comp":2,
+            "walLevel":1,
+            "cachelast":0,
+            "quorum":1,
+            "fsync":3000,
+            "update": 0
+        },
+        "super_tables": []
+    }]
+
+}

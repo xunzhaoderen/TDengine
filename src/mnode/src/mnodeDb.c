@@ -1060,6 +1060,13 @@ static SDbCfg mnodeGetAlterDbOption(SDbObj *pDb, SAlterDbMsg *pAlter) {
     newCfg.partitions = partitions;
   }
 
+// community version can only change daysToKeep
+// but enterprise version can change all daysToKeep options
+#ifndef _STORAGE
+  newCfg.daysToKeep1 = newCfg.daysToKeep;
+  newCfg.daysToKeep2 = newCfg.daysToKeep;
+#endif
+
   return newCfg;
 }
 
@@ -1270,4 +1277,31 @@ void  mnodeDropAllDbs(SAcctObj *pAcct)  {
   }
 
   mInfo("acct:%s, all dbs:%d is dropped from sdb", pAcct->user, numOfDbs);
+}
+
+int32_t mnodeCompactDbs() {
+  void *pIter = NULL;
+  SDbObj *pDb = NULL;
+
+  mInfo("start to compact dbs table...");
+
+  while (1) {
+    pIter = mnodeGetNextDb(pIter, &pDb);
+    if (pDb == NULL) break;
+
+    SSdbRow row = {
+      .type     = SDB_OPER_GLOBAL,
+      .pTable   = tsDbSdb,
+      .pObj     = pDb,
+      .rowSize  = sizeof(SDbObj),
+    };
+
+    mInfo("compact dbs %s", pDb->name);
+    
+    sdbInsertCompactRow(&row);
+  }
+
+  mInfo("end to compact dbs table...");
+
+  return 0; 
 }

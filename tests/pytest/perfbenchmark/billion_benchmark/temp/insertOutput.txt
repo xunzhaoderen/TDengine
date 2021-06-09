@@ -1,0 +1,2 @@
+# of node 		 time for insertion
+10000 		 16.0610

@@ -1,0 +1,1370 @@
+[1m[40;32m================ wal/insertDataDb1Replica2.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  1000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db1
+  drop:                  yes
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1000
+      childTblPrefix:    stb00_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1000
+      childTblPrefix:    stb01_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        200
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb1Replica2.json parse result END================[0m
+[1m[40;32m================ wal/insertDataDb2Replica2.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  3000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db2
+  drop:                  yes
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000
+      childTblPrefix:    stb0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        2000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2
+      childTblPrefix:    stb1_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        5
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb2Replica2.json parse result END================[0m
+[1m[40;32m================ wal/insertDataDb1Replica2.json parse result START ================[0m
+host:                       dn1.taosdata.com:16030
+user:                       root
+configDir:                  /home/codedump/var/log/dnode1/cfg
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  1000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db1
+  drop:                  yes
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1000
+      childTblPrefix:    stb00_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1000
+      childTblPrefix:    stb01_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        200
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb1Replica2.json parse result END================[0m
+Spent 2.1130 seconds to create 2000 tables with 4 thread(s)
+
+Spent 0.89 seconds to insert rows: 100000, affected rows: 100000 with 4 thread(s) into db1.stb0. 112612.61 records/second
+
+insert delay, avg:     29.60ms, max: 120ms, min: 11ms
+
+Spent 1.60 seconds to insert rows: 200000, affected rows: 200000 with 4 thread(s) into db1.stb1. 125234.82 records/second
+
+insert delay, avg:     26.46ms, max: 116ms, min: 7ms
+
+[1m[40;32m================ wal/insertDataDb2Replica2.json parse result START ================[0m
+host:                       dn1.taosdata.com:16030
+user:                       root
+configDir:                  /home/codedump/var/log/dnode1/cfg
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  3000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db2
+  drop:                  yes
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000
+      childTblPrefix:    stb0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        2000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2
+      childTblPrefix:    stb1_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        5
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb2Replica2.json parse result END================[0m
+Spent 1.8420 seconds to create 2002 tables with 4 thread(s)
+
+Spent 27.06 seconds to insert rows: 4000000, affected rows: 4000000 with 4 thread(s) into db2.stb0. 147819.66 records/second
+
+insert delay, avg:     42.44ms, max: 618ms, min: 12ms
+
+Spent 0.01 seconds to insert rows: 10, affected rows: 10 with 2 thread(s) into db2.stb1. 2000.00 records/second
+
+insert delay, avg:      1.00ms, max: 1ms, min: 1ms
+
+[1m[40;32m================ wal/insertDataDb2NewstabReplica2.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  3000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db2
+  drop:                  no
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     1
+      childTblPrefix:    stb01_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        10
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-11-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       3
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb2NewstabReplica2.json parse result END================[0m
+[1m[40;32m================ wal/insertDataDb1Replica2.json parse result START ================[0m
+host:                       dn1.taosdata.com:16030
+user:                       root
+configDir:                  /home/codedump/var/log/dnode1/cfg
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  1000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db1
+  drop:                  yes
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1000
+      childTblPrefix:    stb00_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1000
+      childTblPrefix:    stb01_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        200
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb1Replica2.json parse result END================[0m
+Spent 2.1500 seconds to create 2000 tables with 4 thread(s)
+
+Spent 0.98 seconds to insert rows: 100000, affected rows: 100000 with 4 thread(s) into db1.stb0. 101522.84 records/second
+
+insert delay, avg:     32.22ms, max: 148ms, min: 8ms
+
+Spent 1.51 seconds to insert rows: 200000, affected rows: 200000 with 4 thread(s) into db1.stb1. 132625.99 records/second
+
+insert delay, avg:     24.68ms, max: 108ms, min: 10ms
+
+[1m[40;32m================ wal/insertDataDb2Replica2.json parse result START ================[0m
+host:                       dn1.taosdata.com:16030
+user:                       root
+configDir:                  /home/codedump/var/log/dnode1/cfg
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  3000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db2
+  drop:                  yes
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000
+      childTblPrefix:    stb0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        2000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2
+      childTblPrefix:    stb1_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        5
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb2Replica2.json parse result END================[0m
+Spent 1.7970 seconds to create 2002 tables with 4 thread(s)
+
+Spent 26.54 seconds to insert rows: 4000000, affected rows: 4000000 with 4 thread(s) into db2.stb0. 150727.26 records/second
+
+insert delay, avg:     41.17ms, max: 170ms, min: 12ms
+
+Spent 0.01 seconds to insert rows: 10, affected rows: 10 with 2 thread(s) into db2.stb1. 2000.00 records/second
+
+insert delay, avg:      1.00ms, max: 1ms, min: 1ms
+
+[1m[40;32m================ wal/insertDataDb2NewstabReplica2.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  3000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db2
+  drop:                  no
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     1
+      childTblPrefix:    stb01_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        10
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-11-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       3
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb2NewstabReplica2.json parse result END================[0m
+[1m[40;32m================ wal/insertDataDb1Replica2.json parse result START ================[0m
+host:                       dn1.taosdata.com:16030
+user:                       root
+configDir:                  /home/codedump/var/log/dnode1/cfg
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  1000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db1
+  drop:                  yes
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1000
+      childTblPrefix:    stb00_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1000
+      childTblPrefix:    stb01_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        200
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb1Replica2.json parse result END================[0m
+Spent 2.1210 seconds to create 2000 tables with 4 thread(s)
+
+Spent 0.97 seconds to insert rows: 100000, affected rows: 100000 with 4 thread(s) into db1.stb0. 102669.40 records/second
+
+insert delay, avg:     31.42ms, max: 154ms, min: 6ms
+
+Spent 1.55 seconds to insert rows: 200000, affected rows: 200000 with 4 thread(s) into db1.stb1. 129366.11 records/second
+
+insert delay, avg:     25.30ms, max: 122ms, min: 7ms
+
+[1m[40;32m================ wal/insertDataDb2Replica2.json parse result START ================[0m
+host:                       dn1.taosdata.com:16030
+user:                       root
+configDir:                  /home/codedump/var/log/dnode1/cfg
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  3000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db2
+  drop:                  yes
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000
+      childTblPrefix:    stb0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        2000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2
+      childTblPrefix:    stb1_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        5
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb2Replica2.json parse result END================[0m
+Spent 1.7740 seconds to create 2002 tables with 4 thread(s)
+
+Spent 26.34 seconds to insert rows: 4000000, affected rows: 4000000 with 4 thread(s) into db2.stb0. 151877.59 records/second
+
+insert delay, avg:     40.31ms, max: 607ms, min: 11ms
+
+Spent 0.00 seconds to insert rows: 10, affected rows: 10 with 2 thread(s) into db2.stb1. 2500.00 records/second
+
+insert delay, avg:      0.50ms, max: 1ms, min: 0ms
+
+[1m[40;32m================ wal/insertDataDb2NewstabReplica2.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  3000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db2
+  drop:                  no
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     1
+      childTblPrefix:    stb01_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        10
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-11-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       3
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb2NewstabReplica2.json parse result END================[0m
+[1m[40;32m================ wal/insertDataDb1Replica2.json parse result START ================[0m
+host:                       dn1.taosdata.com:16030
+user:                       root
+configDir:                  /home/codedump/var/log/dnode1/cfg
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  1000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db1
+  drop:                  yes
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1000
+      childTblPrefix:    stb00_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1000
+      childTblPrefix:    stb01_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        200
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb1Replica2.json parse result END================[0m
+Spent 2.1140 seconds to create 2000 tables with 4 thread(s)
+
+Spent 0.98 seconds to insert rows: 100000, affected rows: 100000 with 4 thread(s) into db1.stb0. 102249.49 records/second
+
+insert delay, avg:     31.81ms, max: 146ms, min: 10ms
+
+Spent 1.55 seconds to insert rows: 200000, affected rows: 200000 with 4 thread(s) into db1.stb1. 128783.00 records/second
+
+insert delay, avg:     25.77ms, max: 115ms, min: 10ms
+
+[1m[40;32m================ wal/insertDataDb2Replica2.json parse result START ================[0m
+host:                       dn1.taosdata.com:16030
+user:                       root
+configDir:                  /home/codedump/var/log/dnode1/cfg
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  3000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db2
+  drop:                  yes
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000
+      childTblPrefix:    stb0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        2000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2
+      childTblPrefix:    stb1_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        5
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb2Replica2.json parse result END================[0m
+Spent 1.7400 seconds to create 2002 tables with 4 thread(s)
+
+Spent 26.17 seconds to insert rows: 4000000, affected rows: 4000000 with 4 thread(s) into db2.stb0. 152858.45 records/second
+
+insert delay, avg:     40.60ms, max: 137ms, min: 12ms
+
+Spent 0.00 seconds to insert rows: 10, affected rows: 10 with 2 thread(s) into db2.stb1. 2500.00 records/second
+
+insert delay, avg:      1.00ms, max: 1ms, min: 1ms
+
+[1m[40;32m================ wal/insertDataDb2NewstabReplica2.json parse result START ================[0m
+host:                       dn1.taosdata.com:16030
+user:                       root
+configDir:                  /home/codedump/var/log/dnode1/cfg
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  3000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db2
+  drop:                  no
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     1
+      childTblPrefix:    stb01_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        10
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-11-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       3
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb2NewstabReplica2.json parse result END================[0m
+Spent 0.1490 seconds to create 1 tables with 4 thread(s)
+
+Spent 0.01 seconds to insert rows: 10, affected rows: 10 with 1 thread(s) into db2.stb1. 909.09 records/second
+
+insert delay, avg:      2.00ms, max: 2ms, min: 2ms
+
+[1m[40;32m================ wal/insertDataDb1Replica2.json parse result START ================[0m
+host:                       dn1.taosdata.com:16030
+user:                       root
+configDir:                  /home/codedump/var/log/dnode1/cfg
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  1000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db1
+  drop:                  yes
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1000
+      childTblPrefix:    stb00_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1000
+      childTblPrefix:    stb01_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        200
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb1Replica2.json parse result END================[0m
+Spent 1.8890 seconds to create 2000 tables with 4 thread(s)
+
+Spent 0.96 seconds to insert rows: 100000, affected rows: 100000 with 4 thread(s) into db1.stb0. 104493.21 records/second
+
+insert delay, avg:     32.46ms, max: 135ms, min: 9ms
+
+Spent 1.63 seconds to insert rows: 200000, affected rows: 200000 with 4 thread(s) into db1.stb1. 122549.02 records/second
+
+insert delay, avg:     27.06ms, max: 128ms, min: 11ms
+
+[1m[40;32m================ wal/insertDataDb2Replica2.json parse result START ================[0m
+host:                       dn1.taosdata.com:16030
+user:                       root
+configDir:                  /home/codedump/var/log/dnode1/cfg
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  3000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db2
+  drop:                  yes
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000
+      childTblPrefix:    stb0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        2000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2
+      childTblPrefix:    stb1_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        5
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb2Replica2.json parse result END================[0m
+Spent 1.6820 seconds to create 2002 tables with 4 thread(s)
+
+Spent 25.92 seconds to insert rows: 4000000, affected rows: 4000000 with 4 thread(s) into db2.stb0. 154326.94 records/second
+
+insert delay, avg:     40.33ms, max: 120ms, min: 13ms
+
+Spent 0.00 seconds to insert rows: 10, affected rows: 10 with 2 thread(s) into db2.stb1. 2500.00 records/second
+
+insert delay, avg:      0.50ms, max: 1ms, min: 0ms
+
+[1m[40;32m================ wal/insertDataDb2NewstabReplica2.json parse result START ================[0m
+host:                       dn1.taosdata.com:16030
+user:                       root
+configDir:                  /home/codedump/var/log/dnode1/cfg
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  3000
+max sql length:             1024000
+database count:          1
+database[0]:
+  database[0] name:       db2
+  drop:                  no
+  blocks:                8
+  cache:                 50
+  days:                  10
+  keep:                  365
+  replica:               2
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb0
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) column[3]:BINARY(32) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+  super table[1]:
+      stbName:           stb1
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     1
+      childTblPrefix:    stb01_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        10
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-11-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       3
+        column[0]:INT column[1]:DOUBLE column[2]:BINARY(16) 
+      tagCount:            3
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) 
+
+[1m[40;32m================ wal/insertDataDb2NewstabReplica2.json parse result END================[0m
+Spent 0.5470 seconds to create 1 tables with 4 thread(s)
+
+Spent 0.01 seconds to insert rows: 10, affected rows: 10 with 1 thread(s) into db2.stb1. 909.09 records/second
+
+insert delay, avg:      3.00ms, max: 3ms, min: 3ms
+

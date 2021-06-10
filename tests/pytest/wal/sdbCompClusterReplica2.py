@@ -20,14 +20,14 @@ from util.dnodes import *
 import taos
 import threading
 
- 
+
 class TwoClients:
     def initConnection(self):
-        self.host = "chenhaoran02"
-        self.user = "root"
-        self.password = "taosdata"
-        self.config = "/etc/taos/"     
-        self.port =6030 
+        self.host = "dn1.taosdata.com"
+        self.user = ""
+        self.password = ""
+        self.config = "/home/codedump/var/log/dnode1/cfg"     
+        self.port =16030 
         self.rowNum = 10
         self.ts = 1537146000000  
 
@@ -49,6 +49,7 @@ class TwoClients:
 
     def run(self):
         buildPath = self.getBuildPath()
+        print("buildPath:" + buildPath)
         if (buildPath == ""):
             tdLog.exit("taosd not found!")
         else:
@@ -57,7 +58,7 @@ class TwoClients:
         walFilePath = "/var/lib/taos/mnode_bak/wal/"
         
         # new taos client
-        conn1 = taos.connect(host=self.host, user=self.user, password=self.password, config=self.config )
+        conn1 = taos.connect(host=self.host, config=self.config )
         print(conn1)
         cur1 = conn1.cursor()
         tdSql.init(cur1, True)
@@ -71,8 +72,8 @@ class TwoClients:
         os.system("%staosdemo -f wal/insertDataDb2Replica2.json -y " % binPath)
         tdSql.execute("drop table if exists db2.stb0") 
         os.system("%staosdemo -f wal/insertDataDb2NewstabReplica2.json -y " % binPath)
-        query_pid1 = int(subprocess.getstatusoutput('ps aux|grep taosd |grep -v "grep"|awk \'{print $2}\'')[1])
-        print(query_pid1)
+        #query_pid1 = int(subprocess.getstatusoutput('ps aux|grep taosd |grep -v "grep"|awk \'{print $2}\'')[1])
+        #print(query_pid1)
         tdSql.execute("use db2")
         tdSql.execute("drop table if exists stb1_0")
         tdSql.execute("drop table if exists stb1_1")
@@ -87,17 +88,18 @@ class TwoClients:
         tdSql.execute("alter table stb2_0 drop column col1")
         tdSql.execute("insert into stb2_0 values(1614218422000,8638,'R')")
         
-
+        os.exit()
+        
         # stop taosd and compact wal file
         os.system("ps -ef |grep taosd |grep -v 'grep' |awk '{print $2}'|xargs kill -2")
         sleep(10)
         os.system("nohup taosd  --compact-mnode-wal  -c /etc/taos & ")
         sleep(10)
-        os.system("nohup /usr/bin/taosd > /dev/null 2>&1 &")
+        os.system("nohup taosd -c /home/codedump/var/log/dnode1/cfg > /dev/null 2>&1 &")
         sleep(4)
         tdSql.execute("reset query cache")
-        query_pid2 = int(subprocess.getstatusoutput('ps aux|grep taosd |grep -v "grep"|awk \'{print $2}\'')[1])
-        print(query_pid2)
+        #query_pid2 = int(subprocess.getstatusoutput('ps aux|grep taosd |grep -v "grep"|awk \'{print $2}\'')[1])
+        #print(query_pid2)
         assert os.path.exists(walFilePath) , "%s is not generated " % walFilePath    
 
         # new taos connecting to server

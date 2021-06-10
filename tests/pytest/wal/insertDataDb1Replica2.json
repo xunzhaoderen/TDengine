@@ -1,10 +1,8 @@
 {
     "filetype": "insert",
-    "cfgdir": "/etc/taos",
-    "host": "127.0.0.1",
-    "port": 6030,
-    "user": "root",
-    "password": "taosdata",
+    "cfgdir": "/home/codedump/var/log/dnode1/cfg",
+    "host": "dn1.taosdata.com",
+    "port": 16030,
     "thread_count": 4,
     "thread_count_create_tbl": 4,
     "result_file": "./insert_res.txt",

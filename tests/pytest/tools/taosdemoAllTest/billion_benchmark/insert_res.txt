@@ -184,3 +184,54 @@ database[0]:
   super table count:     0
 
 [1m[40;32m================ tableCreation.json parse result END================[0m
+[1m[40;32m================ tableCreation.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  128
+thread num of create table: 128
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                8
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     32766
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     10
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       20
+        column[0]:INT column[1]:DOUBLE column[2]:DOUBLE column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:DOUBLE column[7]:DOUBLE column[8]:DOUBLE column[9]:DOUBLE column[10]:DOUBLE column[11]:BINARY(16) column[12]:BINARY(16) column[13]:BINARY(16) column[14]:BINARY(32) column[15]:BINARY(32) column[16]:BINARY(32) column[17]:BINARY(32) column[18]:BINARY(32) column[19]:BINARY(32) 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+
+[1m[40;32m================ tableCreation.json parse result END================[0m

@@ -1,0 +1,2575 @@
+[1m[40;32m================ manual_date_change_1_1.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        10000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[1]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        10000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-12 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+
+[1m[40;32m================ manual_date_change_1_1.json parse result END================[0m
+Spent 0.0160 seconds to create 1 tables with 4 thread(s)
+
+Spent 0.19 seconds to insert rows: 10000, affected rows: 10000 with 1 thread(s) into db.stb. 52631.58 records/second
+
+insert delay, avg:      1.64ms, max: 7ms, min: 0ms
+
+Spent 0.19 seconds to insert rows: 10000, affected rows: 10000 with 1 thread(s) into db.stb. 52631.58 records/second
+
+insert delay, avg:      1.67ms, max: 5ms, min: 0ms
+
+[1m[40;32m================ manual_date_change_1_1.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  10
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     15
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[1]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-12 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[2]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-13 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[3]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-14 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[4]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-15 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[5]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-16 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[6]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-17 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[7]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-18 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[8]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-19 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[9]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-20 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[10]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-21 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[11]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-22 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[12]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-23 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[13]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-24 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[14]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-25 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+
+[1m[40;32m================ manual_date_change_1_1.json parse result END================[0m
+Spent 0.0230 seconds to create 1 tables with 4 thread(s)
+
+Spent 1.74 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 57603.69 records/second
+
+insert delay, avg:      1.48ms, max: 12ms, min: 0ms
+
+Spent 1.38 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 72306.58 records/second
+
+insert delay, avg:      1.12ms, max: 12ms, min: 0ms
+
+Spent 1.67 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 59808.61 records/second
+
+insert delay, avg:      1.40ms, max: 18ms, min: 0ms
+
+Spent 1.62 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 61538.46 records/second
+
+insert delay, avg:      1.33ms, max: 10ms, min: 0ms
+
+Spent 1.43 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 69735.01 records/second
+
+insert delay, avg:      1.17ms, max: 11ms, min: 0ms
+
+Spent 1.26 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 79113.92 records/second
+
+insert delay, avg:      1.01ms, max: 9ms, min: 0ms
+
+Spent 1.44 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 69541.03 records/second
+
+insert delay, avg:      1.17ms, max: 14ms, min: 0ms
+
+Spent 1.54 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 64808.81 records/second
+
+insert delay, avg:      1.28ms, max: 10ms, min: 0ms
+
+Spent 1.18 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 84889.64 records/second
+
+insert delay, avg:      0.92ms, max: 11ms, min: 0ms
+
+Spent 1.39 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 71890.73 records/second
+
+insert delay, avg:      1.11ms, max: 11ms, min: 0ms
+
+Spent 1.22 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 81699.35 records/second
+
+insert delay, avg:      0.98ms, max: 11ms, min: 0ms
+
+Spent 1.32 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 75930.14 records/second
+
+insert delay, avg:      1.05ms, max: 12ms, min: 0ms
+
+Spent 1.17 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 85616.44 records/second
+
+insert delay, avg:      0.92ms, max: 10ms, min: 0ms
+
+Spent 1.24 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 80840.74 records/second
+
+insert delay, avg:      0.96ms, max: 10ms, min: 0ms
+
+Spent 1.22 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 82034.45 records/second
+
+insert delay, avg:      0.96ms, max: 10ms, min: 0ms
+
+[1m[40;32m================ manual_change_time_1_1.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[1]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-12 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+
+[1m[40;32m================ manual_change_time_1_1.json parse result END================[0m
+Spent 0.0170 seconds to create 1 tables with 4 thread(s)
+
+Spent 1.80 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 55432.37 records/second
+
+insert delay, avg:      1.50ms, max: 17ms, min: 0ms
+
+Spent 1.16 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 86206.90 records/second
+
+insert delay, avg:      0.92ms, max: 12ms, min: 0ms
+
+[1m[40;32m================ manual_change_time_1_1.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     2
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[1]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-12 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+
+[1m[40;32m================ manual_change_time_1_1.json parse result END================[0m
+Spent 0.0120 seconds to create 1 tables with 4 thread(s)
+
+Spent 0.95 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 105374.08 records/second
+
+insert delay, avg:      0.71ms, max: 7ms, min: 0ms
+
+Spent 1.00 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 99601.59 records/second
+
+insert delay, avg:      0.76ms, max: 7ms, min: 0ms
+
+[1m[40;32m================ manual_change_time_1_1.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  10
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     15
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[1]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-12 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[2]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-13 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[3]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-14 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[4]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-15 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[5]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-16 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[6]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-17 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[7]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-18 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[8]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-19 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[9]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-20 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[10]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-21 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[11]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-22 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[12]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-23 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[13]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-24 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[14]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-25 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+
+[1m[40;32m================ manual_change_time_1_1.json parse result END================[0m
+Spent 0.0160 seconds to create 1 tables with 4 thread(s)
+
+Spent 1.77 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 56561.09 records/second
+
+insert delay, avg:      1.45ms, max: 11ms, min: 0ms
+
+Spent 1.11 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 89686.10 records/second
+
+insert delay, avg:      0.84ms, max: 7ms, min: 0ms
+
+Spent 1.03 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 97087.38 records/second
+
+insert delay, avg:      0.76ms, max: 8ms, min: 0ms
+
+Spent 1.07 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 93109.87 records/second
+
+insert delay, avg:      0.81ms, max: 8ms, min: 0ms
+
+Spent 1.07 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 93196.64 records/second
+
+insert delay, avg:      0.80ms, max: 6ms, min: 0ms
+
+Spent 1.07 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 93457.94 records/second
+
+insert delay, avg:      0.79ms, max: 8ms, min: 0ms
+
+Spent 1.08 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 92850.51 records/second
+
+insert delay, avg:      0.81ms, max: 7ms, min: 0ms
+
+Spent 1.08 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 92421.44 records/second
+
+insert delay, avg:      0.82ms, max: 12ms, min: 0ms
+
+Spent 1.10 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 90744.10 records/second
+
+insert delay, avg:      0.83ms, max: 7ms, min: 0ms
+
+Spent 1.06 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 94073.38 records/second
+
+insert delay, avg:      0.81ms, max: 7ms, min: 0ms
+
+Spent 1.26 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 79491.26 records/second
+
+insert delay, avg:      0.99ms, max: 10ms, min: 0ms
+
+Spent 1.10 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 90579.71 records/second
+
+insert delay, avg:      0.84ms, max: 10ms, min: 0ms
+
+Spent 1.08 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 92936.80 records/second
+
+insert delay, avg:      0.80ms, max: 8ms, min: 0ms
+
+Spent 1.05 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 94786.73 records/second
+
+insert delay, avg:      0.79ms, max: 8ms, min: 0ms
+
+Spent 1.17 seconds to insert rows: 100000, affected rows: 100000 with 1 thread(s) into db.stb. 85836.91 records/second
+
+insert delay, avg:      0.91ms, max: 6ms, min: 0ms
+
+[1m[40;32m================ manual_change_time_1_1.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  10
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     15
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[1]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-12 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[2]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-13 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[3]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-14 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[4]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-15 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[5]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-16 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[6]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-17 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[7]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-18 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[8]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-19 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[9]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-20 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[10]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-21 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[11]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-22 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[12]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-23 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[13]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-24 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+  super table[14]:
+      stbName:           stb
+      autoCreateTable:   yes
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        1000000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1
+      startTimestamp:    2020-10-25 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       9
+        column[0]:INT column[1]:INT column[2]:INT column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:BINARY(16) column[7]:BINARY(32) column[8]:BOOL 
+      tagCount:            7
+        tag[0]:TINYINT tag[1]:TINYINT tag[2]:BINARY(16) tag[3]:BINARY(16) tag[4]:BINARY(16) tag[5]:BINARY(16) tag[6]:BINARY(16) 
+
+[1m[40;32m================ manual_change_time_1_1.json parse result END================[0m
+Spent 0.0140 seconds to create 1 tables with 4 thread(s)
+
+Spent 11.11 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 90017.10 records/second
+
+insert delay, avg:      0.85ms, max: 22ms, min: 0ms
+
+Spent 10.21 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 97981.58 records/second
+
+insert delay, avg:      0.76ms, max: 19ms, min: 0ms
+
+Spent 9.97 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 100250.63 records/second
+
+insert delay, avg:      0.74ms, max: 10ms, min: 0ms
+
+Spent 10.35 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 96581.03 records/second
+
+insert delay, avg:      0.76ms, max: 12ms, min: 0ms
+
+Spent 11.94 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 83731.06 records/second
+
+insert delay, avg:      0.91ms, max: 13ms, min: 0ms
+
+Spent 12.89 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 77597.58 records/second
+
+insert delay, avg:      1.01ms, max: 13ms, min: 0ms
+
+Spent 12.19 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 82027.73 records/second
+
+insert delay, avg:      0.95ms, max: 16ms, min: 0ms
+
+Spent 11.39 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 87788.61 records/second
+
+insert delay, avg:      0.86ms, max: 14ms, min: 0ms
+
+Spent 15.93 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 62790.41 records/second
+
+insert delay, avg:      1.31ms, max: 61ms, min: 0ms
+
+Spent 13.34 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 74962.52 records/second
+
+insert delay, avg:      1.06ms, max: 30ms, min: 0ms
+
+Spent 11.75 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 85099.14 records/second
+
+insert delay, avg:      0.92ms, max: 11ms, min: 0ms
+
+Spent 13.91 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 71895.89 records/second
+
+insert delay, avg:      1.12ms, max: 12ms, min: 0ms
+
+Spent 14.49 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 68998.83 records/second
+
+insert delay, avg:      1.18ms, max: 13ms, min: 0ms
+
+Spent 14.55 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 68714.35 records/second
+
+insert delay, avg:      1.18ms, max: 15ms, min: 0ms
+
+Spent 15.20 seconds to insert rows: 1000000, affected rows: 1000000 with 1 thread(s) into db.stb. 65780.82 records/second
+
+insert delay, avg:      1.24ms, max: 16ms, min: 0ms
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        864000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(16360) 
+      tagCount:            2
+        tag[0]:TINYINT tag[1]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result END================[0m
+Spent 0.0140 seconds to create 1 tables with 4 thread(s)
+
+Spent 0.02 seconds to insert rows: 0, affected rows: 0 with 1 thread(s) into db.stb. 0.00 records/second
+
+insert delay, avg:      0.00ms, max: 0ms, min: 18446744073709551615ms
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        864000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(16360) 
+      tagCount:            2
+        tag[0]:TINYINT tag[1]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result END================[0m
+Spent 0.0150 seconds to create 1 tables with 4 thread(s)
+
+Spent 0.02 seconds to insert rows: 0, affected rows: 0 with 1 thread(s) into db.stb. 0.00 records/second
+
+insert delay, avg:      0.00ms, max: 0ms, min: 18446744073709551615ms
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        864000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(16360) 
+      tagCount:            2
+        tag[0]:TINYINT tag[1]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result END================[0m
+Spent 0.0130 seconds to create 1 tables with 4 thread(s)
+
+Spent 0.02 seconds to insert rows: 0, affected rows: 0 with 1 thread(s) into db.stb. 0.00 records/second
+
+insert delay, avg:      0.00ms, max: 0ms, min: 18446744073709551615ms
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        864000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(16360) 
+      tagCount:            2
+        tag[0]:TINYINT tag[1]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result END================[0m
+Spent 0.0200 seconds to create 1 tables with 4 thread(s)
+
+Spent 0.01 seconds to insert rows: 0, affected rows: 0 with 1 thread(s) into db.stb. 0.00 records/second
+
+insert delay, avg:      0.00ms, max: 0ms, min: 18446744073709551615ms
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        864000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(16360) 
+      tagCount:            2
+        tag[0]:TINYINT tag[1]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result END================[0m
+Spent 0.0150 seconds to create 1 tables with 4 thread(s)
+
+Spent 0.02 seconds to insert rows: 0, affected rows: 0 with 1 thread(s) into db.stb. 0.00 records/second
+
+insert delay, avg:      0.00ms, max: 0ms, min: 18446744073709551615ms
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        864000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(5120) 
+      tagCount:            2
+        tag[0]:TINYINT tag[1]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result END================[0m
+Spent 0.0140 seconds to create 1 tables with 4 thread(s)
+
+Spent 121.29 seconds to insert rows: 864000, affected rows: 864000 with 1 thread(s) into db.stb. 7123.48 records/second
+
+insert delay, avg:      8.76ms, max: 57ms, min: 4ms
+
+[1m[40;32m================ manual_change_time_1_1_B.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        432000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-16 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(24) 
+      tagCount:            1
+        tag[0]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_B.json parse result END================[0m
+Spent 56.69 seconds to insert rows: 432000, affected rows: 432000 with 1 thread(s) into db.stb. 7620.39 records/second
+
+insert delay, avg:      8.08ms, max: 36ms, min: 5ms
+
+[1m[40;32m================ manual_change_time_1_1_B.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        86400
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-17 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(5120) 
+      tagCount:            1
+        tag[0]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_B.json parse result END================[0m
+Spent 11.82 seconds to insert rows: 86400, affected rows: 86400 with 1 thread(s) into db.stb. 7309.64 records/second
+
+insert delay, avg:      8.60ms, max: 30ms, min: 6ms
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        864000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(5120) 
+      tagCount:            2
+        tag[0]:TINYINT tag[1]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result END================[0m
+Spent 0.0110 seconds to create 1 tables with 4 thread(s)
+
+Spent 1.32 seconds to insert rows: 100, affected rows: 0 with 1 thread(s) into db.stb. 75.82 records/second
+
+insert delay, avg:    590.00ms, max: 590ms, min: 590ms
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        864000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(5120) 
+      tagCount:            2
+        tag[0]:TINYINT tag[1]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result END================[0m
+Spent 0.0120 seconds to create 1 tables with 4 thread(s)
+
+Spent 19761782.64 seconds to insert rows: 1900, affected rows: 1800 with 1 thread(s) into db.stb. 0.00 records/second
+
+insert delay, avg:1040093783.58ms, max: 19761781689ms, min: 6ms
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        864000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(5120) 
+      tagCount:            2
+        tag[0]:TINYINT tag[1]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result END================[0m
+Spent 0.0130 seconds to create 1 tables with 4 thread(s)
+
+Spent 19761803.70 seconds to insert rows: 1900, affected rows: 1800 with 1 thread(s) into db.stb. 0.00 records/second
+
+insert delay, avg:1040094890.84ms, max: 19761802777ms, min: 6ms
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        864000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(5120) 
+      tagCount:            2
+        tag[0]:TINYINT tag[1]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result END================[0m
+Spent 0.0130 seconds to create 1 tables with 4 thread(s)
+
+Spent 111.48 seconds to insert rows: 864000, affected rows: 864000 with 1 thread(s) into db.stb. 7750.13 records/second
+
+insert delay, avg:      7.92ms, max: 54ms, min: 4ms
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        864000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(1) 
+      tagCount:            2
+        tag[0]:TINYINT tag[1]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result END================[0m
+Spent 0.0150 seconds to create 1 tables with 4 thread(s)
+
+Spent 0.00 seconds to insert rows: 100, affected rows: 0 with 1 thread(s) into db.stb. 50000.00 records/second
+
+insert delay, avg:      1.00ms, max: 1ms, min: 1ms
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        864000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(1) 
+      tagCount:            2
+        tag[0]:TINYINT tag[1]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result END================[0m
+Spent 0.0140 seconds to create 1 tables with 4 thread(s)
+
+Spent 2.26 seconds to insert rows: 864000, affected rows: 864000 with 1 thread(s) into db.stb. 381962.86 records/second
+
+insert delay, avg:      0.20ms, max: 6ms, min: 0ms
+
+[1m[40;32m================ manual_change_time_1_1_B.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        432000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-16 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(5120) 
+      tagCount:            1
+        tag[0]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_B.json parse result END================[0m
+Spent 54.03 seconds to insert rows: 432000, affected rows: 432000 with 1 thread(s) into db.stb. 7996.15 records/second
+
+insert delay, avg:      7.60ms, max: 44ms, min: 6ms
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        864000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(5120) 
+      tagCount:            2
+        tag[0]:TINYINT tag[1]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result END================[0m
+Spent 0.0140 seconds to create 1 tables with 4 thread(s)
+
+Spent 1.09 seconds to insert rows: 100, affected rows: 0 with 1 thread(s) into db.stb. 91.91 records/second
+
+insert delay, avg:    454.00ms, max: 454ms, min: 454ms
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  yes
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        864000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-11 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(5120) 
+      tagCount:            2
+        tag[0]:TINYINT tag[1]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_A.json parse result END================[0m
+Spent 0.0410 seconds to create 1 tables with 4 thread(s)
+
+Spent 143.45 seconds to insert rows: 864000, affected rows: 864000 with 1 thread(s) into db.stb. 6023.00 records/second
+
+insert delay, avg:     10.19ms, max: 117ms, min: 6ms
+
+[1m[40;32m================ manual_change_time_1_1_B.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  4
+thread num of create table: 4
+number of records per req:  32766
+max sql length:             1048576
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                3
+  cache:                 4
+  days:                  1
+  keep:                  10
+  replica:               1
+  minRows:               1000
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     1
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        432000
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-16 00:00:00.500
+      sampleFormat:      csv
+      sampleFile:        ./tools/taosdemoAllTest/sample.csv
+      tagsFile:          
+      columnCount:       1
+        column[0]:BINARY(5120) 
+      tagCount:            1
+        tag[0]:TINYINT 
+
+[1m[40;32m================ manual_change_time_1_1_B.json parse result END================[0m
+Spent 66.94 seconds to insert rows: 432000, affected rows: 432000 with 1 thread(s) into db.stb. 6453.93 records/second
+
+insert delay, avg:      9.45ms, max: 84ms, min: 5ms
+

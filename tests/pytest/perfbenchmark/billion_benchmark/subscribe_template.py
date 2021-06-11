@@ -29,8 +29,8 @@ class TDTestCase:
 
     def run(self):
         tdSql.prepare()
-        file_out = open('perfbenchmark/billion_benchmark/temp/queryOutput.csv', "w")
-        file_out.write('# of node, runtime, table creation speed,# of rows,write speed/s\n')
+        # file_out = open('perfbenchmark/billion_benchmark/temp/queryOutput.csv', "w")
+        # file_out.write('# of node, runtime, table creation speed,# of rows,write speed/s\n')
         binPath = tdFindPath.getTaosdemoPath()
 
         insertTemplate = taosdemoCfg.get_template('insert_stbs')
@@ -44,20 +44,14 @@ class TDTestCase:
         p.communicate()
 
         ##template for table creation speed test
-        queryTemplate = taosdemoCfg.get_template('query_table')
-        queryTemplate["result"] = "perfbenchmark/billion_benchmark/temp/query_res0.txt"
-        taosdemoCfg.append_sql_stb('query_table', queryTemplate)
-        taosdemoCfg.alter_query_cfg('query_times', 1)
-        taosdemoCfg.alter_query_tb("concurrent",1)
-        print(taosdemoCfg.get_tb_query())
-        # queryTemplate = taosdemoCfg.get_template('query_stable')
-        # queryTemplate["result"] = "perfbenchmark/billion_benchmark/temp/query_res2.txt"
-        # taosdemoCfg.append_sql_stb('query_stable', queryTemplate)
-        cfgFileName = taosdemoCfg.generate_query_cfg('perfbenchmark/billion_benchmark/temp','test')
+        subTemplate = taosdemoCfg.get_template('sub_table')
+        subTemplate["result"] = "perfbenchmark/billion_benchmark/temp/sub_res0.txt"
+        taosdemoCfg.append_sql_stb('sub_table', subTemplate)
+        cfgFileName = taosdemoCfg.generate_subscribe_cfg('perfbenchmark/billion_benchmark/temp','test')
         print(cfgFileName)
-        p = subprocess.Popen([f"{binPath}taosdemo", "-f", f"{cfgFileName}"], stderr = subprocess.DEVNULL) 
+        p = subprocess.Popen([f"{binPath}taosdemo", "-f", f"{cfgFileName}"]) 
         stderr = p.communicate()
-        file_out.close()
+        # file_out.close()
 
 
     def stop(self):

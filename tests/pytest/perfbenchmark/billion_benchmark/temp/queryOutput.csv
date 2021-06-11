@@ -1,1 +1,23 @@
 # of node, runtime, table creation speed,# of rows,write speed/s
+,2m================ perfbenchmark/billion_benchmark/temp/query_test.json parse result START ================[0m
+host:                    [33m127.0.0.1:6030[0m
+user:                    [33mroot[0m
+database name:           [33mdb[0m
+
+specified table query info:                   
+sqlCount:       [33m1[0m
+specified tbl query times:
+                [33m1[0m
+query interval: [33m1 ms[0m
+top query times:[33m2[0m
+concurrent:     [33m1[0m
+mod:            [33msync[0m
+interval:       [33m10000[0m
+restart:        [33m1[0m
+keepProgress:   [33m0[0m
+  sql[0]: [33mselect last_row(*) from stb_0 [0m
+
+super table query info:
+sqlCount:       [33m0[0m
+[1m[40;32m================ perfbenchmark/billion_benchmark/temp/query_test.json
+,0.003

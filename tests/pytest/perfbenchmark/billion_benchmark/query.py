@@ -36,7 +36,7 @@ class TDTestCase:
 
         ##template for table creation speed test
         insertTemplate = taosdemoCfg.get_template('insert_stbs')
-        insertTemplate['childtable_count'] = 32765
+        insertTemplate['childtable_count'] = 100000000
         insertTemplate['insert_rows'] = 0
         insertTemplate['columns'] = [{'type':'DOUBLE', 'count':2}, {'type':'int', 'count':2}]
         insertTemplate['tags'] = [{'type':'bigint', 'count':1}, {"type": "BINARY", "len": 32, "count":1}]
@@ -56,7 +56,7 @@ class TDTestCase:
         insertTemplate = taosdemoCfg.get_template('insert_stbs')
         insertTemplate['childtable_count'] = 32765
         insertTemplate['child_table_exists'] = 'yes'
-        insertTemplate['insert_rows'] = 10
+        insertTemplate['insert_rows'] = 10000
         insertTemplate['childtable_limit'] = 32765
         insertTemplate['interlace_rows'] = 1
         insertTemplate['insert_interval'] = 1000
@@ -66,7 +66,6 @@ class TDTestCase:
 
         taosdemoCfg.import_stbs([insertTemplate])
         taosdemoCfg.alter_db('drop', 'no')
-        taosdemoCfg.alter_db('keep', 90)
         cfgFileName = taosdemoCfg.generate_insert_cfg('perfbenchmark/billion_benchmark/temp','test_insert')
         p = subprocess.Popen([f"{binPath}taosdemo", "-f", f"{cfgFileName}"], stdout = subprocess.DEVNULL, stderr=subprocess.PIPE) 
         stderr = p.communicate()

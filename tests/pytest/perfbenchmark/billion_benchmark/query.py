@@ -36,7 +36,7 @@ class TDTestCase:
 
         ##template for table creation speed test
         insertTemplate = taosdemoCfg.get_template('insert_stbs')
-        insertTemplate['childtable_count'] = 70000000
+        insertTemplate['childtable_count'] = 32765
         insertTemplate['insert_rows'] = 0
         insertTemplate['columns'] = [{'type':'DOUBLE', 'count':2}, {'type':'int', 'count':2}]
         insertTemplate['tags'] = [{'type':'bigint', 'count':1}, {"type": "BINARY", "len": 32, "count":1}]
@@ -120,7 +120,7 @@ class TDTestCase:
         taosdemoCfg.append_sql_stb('query_table', queryTemplate)
 
         queryTemplate = {
-            "sql": "select count(*) from stb where ts t1 = 'beijing'",
+            "sql": "select count(*) from stb where t1 = 'beijing'",
             "result": "perfbenchmark/billion_benchmark/temp/query_7.txt"
         }
         taosdemoCfg.append_sql_stb('query_table', queryTemplate)

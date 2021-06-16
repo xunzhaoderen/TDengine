@@ -36,19 +36,20 @@ class TDTestCase:
 
         ##template for table creation speed test
         insertTemplate = taosdemoCfg.get_template('insert_stbs')
-        insertTemplate['childtable_count'] = 100000000
+        insertTemplate['childtable_count'] = 70000000
         insertTemplate['insert_rows'] = 0
         insertTemplate['columns'] = [{'type':'DOUBLE', 'count':2}, {'type':'int', 'count':2}]
         insertTemplate['tags'] = [{'type':'bigint', 'count':1}, {"type": "BINARY", "len": 32, "count":1}]
+        insertTemplate['batch_create_tbl_num'] = 10
         taosdemoCfg.alter_db('keep', 3650)
         taosdemoCfg.append_sql_stb('insert_stbs', insertTemplate)
 
-        cfgFileName = taosdemoCfg.generate_insert_cfg('perfbenchmark/billion_benchmark/temp','test_create')
-        p = subprocess.Popen([f"{binPath}taosdemo", "-f", f"{cfgFileName}"], stdout = subprocess.DEVNULL, stderr=subprocess.PIPE) 
-        stderr = p.communicate()
-        print(stderr)
-        runtime = stderr[1].decode('utf-8').split(' ')[1]
-        file_out.write(f'10000,, {10000/float(runtime)}\n')
+        cfgFileName = taosdemoCfg.generate_insert_cfg('perfbenchmark/billion_benchmark/temp','test_create_billion')
+        # p = subprocess.Popen([f"{binPath}taosdemo", "-f", f"{cfgFileName}"], stdout = subprocess.DEVNULL, stderr=subprocess.PIPE) 
+        # stderr = p.communicate()
+        # print(stderr)
+        # runtime = stderr[1].decode('utf-8').split(' ')[1]
+        # file_out.write(f'10000,, {10000/float(runtime)}\n')
 
         input('check create run time, then press enter')
 
@@ -66,14 +67,14 @@ class TDTestCase:
 
         taosdemoCfg.import_stbs([insertTemplate])
         taosdemoCfg.alter_db('drop', 'no')
-        cfgFileName = taosdemoCfg.generate_insert_cfg('perfbenchmark/billion_benchmark/temp','test_insert')
+        cfgFileName = taosdemoCfg.generate_insert_cfg('perfbenchmark/billion_benchmark/temp','test_insert_billion')
         p = subprocess.Popen([f"{binPath}taosdemo", "-f", f"{cfgFileName}"], stdout = subprocess.DEVNULL, stderr=subprocess.PIPE) 
-        stderr = p.communicate()
-        print(stderr)
-        stderr = stderr[1].decode('utf-8')
-        timeIndex = [stderr.find('Spent') + 6, stderr.find('seconds') - 1]
-        timeUsed = float(stderr[timeIndex[0]:timeIndex[1]])
-        file_out.write(f'10000,{timeUsed},,{10000*10},{10000*10/timeUsed}\n')
+        # stderr = p.communicate()
+        # print(stderr)
+        # stderr = stderr[1].decode('utf-8')
+        # timeIndex = [stderr.find('Spent') + 6, stderr.find('seconds') - 1]
+        # timeUsed = float(stderr[timeIndex[0]:timeIndex[1]])
+        # file_out.write(f'10000,{timeUsed},,{10000*10},{10000*10/timeUsed}\n')
 
         file_out.close()
 
@@ -132,12 +133,12 @@ class TDTestCase:
         # queryTemplate["result"] = "perfbenchmark/billion_benchmark/temp/query_res2.txt"
         # taosdemoCfg.append_sql_stb('query_stable', queryTemplate)
         cfgFileName = taosdemoCfg.generate_query_cfg(
-            'perfbenchmark/billion_benchmark/temp', 'test')
-        print(cfgFileName)
-        p = subprocess.Popen(
-            [f"{binPath}taosdemo", "-f", f"{cfgFileName}"], stderr=subprocess.DEVNULL)
-        stderr = p.communicate()
-        file_out.close()
+            'perfbenchmark/billion_benchmark/temp', 'billion_query')
+        # print(cfgFileName)
+        # p = subprocess.Popen(
+        #     [f"{binPath}taosdemo", "-f", f"{cfgFileName}"], stderr=subprocess.DEVNULL)
+        # stderr = p.communicate()
+        # file_out.close()
 
     def stop(self):
         tdSql.close()

@@ -51,8 +51,6 @@ class TDTestCase:
         # runtime = stderr[1].decode('utf-8').split(' ')[1]
         # file_out.write(f'10000,, {10000/float(runtime)}\n')
 
-        input('check create run time, then press enter')
-
         ##template for table insertion speed test
         insertTemplate = taosdemoCfg.get_template('insert_stbs')
         insertTemplate['childtable_count'] = 32765
@@ -68,7 +66,39 @@ class TDTestCase:
         taosdemoCfg.import_stbs([insertTemplate])
         taosdemoCfg.alter_db('drop', 'no')
         cfgFileName = taosdemoCfg.generate_insert_cfg('perfbenchmark/billion_benchmark/temp','test_insert_billion')
-        p = subprocess.Popen([f"{binPath}taosdemo", "-f", f"{cfgFileName}"], stdout = subprocess.DEVNULL, stderr=subprocess.PIPE) 
+        #p = subprocess.Popen([f"{binPath}taosdemo", "-f", f"{cfgFileName}"], stdout = subprocess.DEVNULL, stderr=subprocess.PIPE) 
+
+
+        insertTemplate = taosdemoCfg.get_template('insert_stbs')
+        insertTemplate['childtable_count'] = 100000000
+        insertTemplate['child_table_exists'] = 'yes'
+        insertTemplate['insert_rows'] = 64800
+        insertTemplate['childtable_limit'] = 100000000
+        insertTemplate['interlace_rows'] = 0
+        insertTemplate['insert_interval'] = 0
+        insertTemplate['columns'] = [{'type':'DOUBLE', 'count':2}, {'type':'int', 'count':2}]
+        insertTemplate['tags'] = [{'type':'bigint', 'count':1}, {"type": "BINARY", "len": 32, "count":1}]
+        insertTemplate['timestamp_step'] = 60
+        taosdemoCfg.import_stbs([insertTemplate])
+        taosdemoCfg.alter_db('drop', 'no')
+        cfgFileName = taosdemoCfg.generate_insert_cfg('perfbenchmark/billion_benchmark/temp','test_insert_billion_single')
+
+
+        insertTemplate = taosdemoCfg.get_template('insert_stbs')
+        insertTemplate['childtable_count'] = 32765
+        insertTemplate['child_table_exists'] = 'yes'
+        insertTemplate['insert_rows'] = 64800
+        insertTemplate['childtable_limit'] = 32766
+        insertTemplate['interlace_rows'] = 1
+        insertTemplate['insert_interval'] = 1000
+        insertTemplate['columns'] = [{'type':'DOUBLE', 'count':2}, {'type':'int', 'count':2}]
+        insertTemplate['tags'] = [{'type':'bigint', 'count':1}, {"type": "BINARY", "len": 32, "count":1}]
+        insertTemplate['timestamp_step'] = 60
+
+        taosdemoCfg.import_stbs([insertTemplate])
+        taosdemoCfg.alter_db('drop', 'no')
+        cfgFileName = taosdemoCfg.generate_insert_cfg('perfbenchmark/billion_benchmark/temp','test_insert_billion_continue')
+        #p = subprocess.Popen([f"{binPath}taosdemo", "-f", f"{cfgFileName}"], stdout = subprocess.DEVNULL, stderr=subprocess.PIPE) 
         # stderr = p.communicate()
         # print(stderr)
         # stderr = stderr[1].decode('utf-8')

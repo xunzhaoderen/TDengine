@@ -76,22 +76,6 @@ class TDTestCase:
             'perfbenchmark/billion_benchmark/temp', 'test_insert_billion')
         #p = subprocess.Popen([f"{binPath}taosdemo", "-f", f"{cfgFileName}"], stdout = subprocess.DEVNULL, stderr=subprocess.PIPE)
 
-        insertTemplate = taosdemoCfg.get_template('insert_stbs')
-        insertTemplate['childtable_count'] = 100000000
-        insertTemplate['child_table_exists'] = 'yes'
-        insertTemplate['insert_rows'] = 64800
-        insertTemplate['childtable_limit'] = 100000000
-        insertTemplate['interlace_rows'] = 0
-        insertTemplate['insert_interval'] = 0
-        insertTemplate['columns'] = [
-            {'type': 'DOUBLE', 'count': 2}, {'type': 'int', 'count': 2}]
-        insertTemplate['tags'] = [{'type': 'bigint', 'count': 1}, {
-            "type": "BINARY", "len": 32, "count": 1}]
-        insertTemplate['timestamp_step'] = 60
-        taosdemoCfg.import_stbs([insertTemplate])
-        taosdemoCfg.alter_db('drop', 'no')
-        cfgFileName = taosdemoCfg.generate_insert_cfg(
-            'perfbenchmark/billion_benchmark/temp', 'test_insert_billion_single')
 
         insertTemplate = taosdemoCfg.get_template('insert_stbs')
         insertTemplate['childtable_count'] = 32765
@@ -131,38 +115,38 @@ class TDTestCase:
         # template for table creation speed test
         queryTemplate = {
             "sql": "select count(*) from stb ",
-            "result": "perfbenchmark/billion_benchmark/temp/query_1.txt"
+            "result": "temp/query_1.txt"
         }
         taosdemoCfg.append_sql_stb('query_table', queryTemplate)
         queryTemplate = {
             "sql": "select avg(col0), max(col1), min(col2) from stb ",
-            "result": "perfbenchmark/billion_benchmark/temp/query_2.txt"
+            "result": "temp/query_2.txt"
         }
         taosdemoCfg.append_sql_stb('query_table', queryTemplate)
         queryTemplate = {
             "sql": "select avg(col0), max(col1), min(col2) from stb interval(10s)",
-            "result": "perfbenchmark/billion_benchmark/temp/query_3.txt"
+            "result": "temp/query_3.txt"
         }
         taosdemoCfg.append_sql_stb('query_table', queryTemplate)
         queryTemplate = {
             "sql": "select last_row(*) from stb",
-            "result": "perfbenchmark/billion_benchmark/temp/query_4.txt"
+            "result": "temp/query_4.txt"
         }
         taosdemoCfg.append_sql_stb('query_table', queryTemplate)
         queryTemplate = {
             "sql": "select * from stb",
-            "result": "perfbenchmark/billion_benchmark/temp/query_5.txt"
+            "result": "temp/query_5.txt"
         }
         taosdemoCfg.append_sql_stb('query_table', queryTemplate)
         queryTemplate = {
             "sql": "select avg(col0), max(col1), min(col2) from stb where ts >= '2020-10-10 00:00:00.000' and ts <= '2020-10-20 00:00:00.000'",
-            "result": "perfbenchmark/billion_benchmark/temp/query_6.txt"
+            "result": "temp/query_6.txt"
         }
         taosdemoCfg.append_sql_stb('query_table', queryTemplate)
 
         queryTemplate = {
             "sql": "select count(*) from stb where t1 = 'beijing'",
-            "result": "perfbenchmark/billion_benchmark/temp/query_7.txt"
+            "result": "temp/query_7.txt"
         }
         taosdemoCfg.append_sql_stb('query_table', queryTemplate)
 

@@ -107,7 +107,7 @@ class TDTaosdemoCfg:
         self.table_sub = {
             "concurrent": 1,
             "mode": "sync",
-            "interval": 0,
+            "interval": 10000,
             "restart": "yes",
             "keepProgress": "yes",
             "sqls": None

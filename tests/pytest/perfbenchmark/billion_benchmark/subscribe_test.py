@@ -26,14 +26,6 @@ def data_insert(conn):
             'sudo taosdemo -f temp/insert_test_insert_billion.json > 1 > /dev/null')
     
 
-def data_query(conn):
-    try:
-        with conn.cd('~/bschang_test/TDinternal/community/tests/pytest/perfbenchmark/billion_benchmark'):
-            print('running query')
-            conn.run('sudo taosdemo -f temp/subscribe_billion_query.json')
-    except BaseException:
-        pass
-
 
 tableNum = 32765
 rowNum = 100
@@ -54,9 +46,12 @@ print('taosd started')
 time.sleep(10)
 
 insertThread = threading.Thread(target = data_insert, args = (conn1,))
-queryThread = threading.Thread(target = data_query, args = (conn1,))
 insertThread.start()
-queryThread.start()
-insertThread.join()
+try:
+    with conn1.cd('~/bschang_test/TDinternal/community/tests/pytest/perfbenchmark/billion_benchmark'):
+        print('running query')
+        conn1.run('sudo taosdemo -f temp/subscribe_billion_query.json')
+except BaseException:
+    pass
 insertThread.join()
 conn1.close()

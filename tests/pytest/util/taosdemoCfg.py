@@ -50,7 +50,7 @@ class TDTaosdemoCfg:
             "replica": 1,
             "days": 10,
             "cache": 16,
-            "blocks": 8,
+            "blocks": 6,
             "precision": "ms",
             "keep": 3650,
             "minRows": 100,

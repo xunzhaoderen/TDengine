@@ -29,7 +29,6 @@ class TDTestCase:
 
     def create_single_file(self, tableNum, rowInsert, fileNum, stbCfg):
         stbCfg['child_table_exists'] = 'yes'
-        stbCfg['childtable_count'] = 10000
         stbCfg['insert_rows'] = rowInsert
         stbCfg['childtable_limit'] = tableNum
         stbCfg['childtable_offset'] = fileNum * tableNum

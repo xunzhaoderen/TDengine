@@ -8,7 +8,7 @@ import threading
 from fabric import Connection
 def ConnThread(connection, ThreadID):
     with connection.cd('~/bschang_test/TDinternal/community/tests/pytest/perfbenchmark/billion_benchmark'):
-        connection.run(f'sudo taosdemo -f temp/insert_test_insert_volume{ThreadID}.json > 1 > /dev/null')
+        connection.run(f'sudo python3 concurrent_insert_server{ThreadID}.py')
 
 def selfThread(ThreadID):
         os.system(f'sudo taosdemo -f temp/insert_test_insert_volume{ThreadID}.json')
@@ -39,12 +39,8 @@ conn2 = Connection("{}@{}".format('ubuntu', IP2),
 # c1.close()
 # connTaos.close()
 
-for i in range(20):
-    threadDic.append(threading.Thread(target = ConnThread, args = (conn1,i,)))
-
-for i in range(20,40):
-    threadDic.append(threading.Thread(target = ConnThread, args = (conn2,i,)))
-
+threadDic.append(threading.Thread(target = ConnThread, args = (conn1,1,)))
+threadDic.append(threading.Thread(target = ConnThread, args = (conn2,2,)))
 
 for i in range(40,50):
     threadDic.append(threading.Thread(target = selfThread, args = (i,)))

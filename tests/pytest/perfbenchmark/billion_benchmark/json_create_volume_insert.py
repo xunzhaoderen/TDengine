@@ -29,7 +29,7 @@ class TDTestCase:
 
     def create_single_file(self, tableNum, rowInsert, fileNum, stbCfg):
         stbCfg['child_table_exists'] = 'yes'
-        stbCfg['childtable_count'] = tableNum
+        stbCfg['childtable_count'] = 10000
         stbCfg['insert_rows'] = rowInsert
         stbCfg['childtable_limit'] = tableNum
         stbCfg['childtable_offset'] = fileNum * tableNum
@@ -42,14 +42,16 @@ class TDTestCase:
             'perfbenchmark/billion_benchmark/temp', f'test_insert_volume{fileNum}')
 
     def run(self):
+        total_table = 10000
         table_per_insert = 200
         row_insert = 100
         host = '192.168.1.125'
         stbCfg = taosdemoCfg.get_template('insert_stbs')
 
+        stbCfg['childtable_count'] = total_table
         taosdemoCfg.alter_insert_cfg('host', host)
         taosdemoCfg.alter_db('drop', 'no')
-        for i in range(1,51):
+        for i in range(0,50):
             taosdemoCfg.alter_insert_cfg('result_file', f"./insert_res{i}.txt")
             self.create_single_file(table_per_insert, row_insert,
                                     i, stbCfg)

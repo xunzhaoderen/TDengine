@@ -20,7 +20,7 @@ import taos
 from fabric import Connection
 tableNum = 32765
 rowNum = 100
-conn1 = Connection("{}@{}".format('ubuntu', "192.168.1.86"),
+conn1 = Connection("{}@{}".format('ubuntu', "192.168.1.125"),
                    connect_kwargs={"password": "{}".format('tbase125!')})
 conn1.run("sudo systemctl stop taosd")
 
@@ -31,7 +31,7 @@ with conn1.cd('/data/taos/data'):
     conn1.run('sudo rm -rf *')
 conn1.run("sudo systemctl start taosd")
 
-conn2 = Connection("{}@{}".format('ubuntu', "192.168.1.86"),
+conn2 = Connection("{}@{}".format('ubuntu', "192.168.1.126"),
                    connect_kwargs={"password": "{}".format('tbase125!')})
 conn2.run("sudo systemctl stop taosd")
 
@@ -43,9 +43,9 @@ with conn2.cd('/data/taos/data'):
 conn2.run("sudo systemctl start taosd")
 time.sleep(10)
 
-connTaos = taos.connect(host = '192.168.1.86', user = 'root', password = 'taosdata', cnfig = '/etc/taos')
+connTaos = taos.connect(host = '192.168.1.125', user = 'root', password = 'taosdata', cnfig = '/etc/taos')
 c1 = connTaos.cursor()
-c1.execute('create dnode \'bsc-2:6030\'')
+c1.execute('create dnode \'lyq-2:6030\'')
 time.sleep(5)
 c1.close()
 connTaos.close()

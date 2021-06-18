@@ -37,19 +37,16 @@ def data_query(conn):
 
 tableNum = 32765
 rowNum = 100
-conn1 = Connection("{}@{}".format('ubuntu', "192.168.1.86"),
-                   connect_kwargs={"password": "{}".format('tbase125!')})
-conn2 = Connection("{}@{}".format('ubuntu', "192.168.1.85"),
+conn1 = Connection("{}@{}".format('ubuntu', "192.168.1.125"),
                    connect_kwargs={"password": "{}".format('tbase125!')})
 print('connection established')
 # conn2 = Connection("{}@{}".format('ubuntu', "192.168.1.125"),
 #                    connect_kwargs={"password": "{}".format('tbase125!')})
+
 conn1.run("sudo systemctl stop taosd")
-conn2.run("sudo systemctl stop taosd")
 print('taosd stopped')
 time.sleep(10)
 conn1.run("sudo systemctl start taosd")
-conn2.run("sudo systemctl start taosd")
 print('taosd started')
 time.sleep(10)
 
@@ -58,5 +55,5 @@ queryThread = threading.Thread(target = data_query, args = (conn1,))
 insertThread.start()
 queryThread.start()
 insertThread.join()
-insertThread.join()
+queryThread.join()
 conn1.close()

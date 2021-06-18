@@ -23,7 +23,7 @@ from util.log import *
 from multiprocessing import cpu_count
 
 
-##TODO: fully test the function. Handle exceptions.
+# TODO: fully test the function. Handle exceptions.
 #       Handle json format not accepted by taosdemo
 class TDTaosdemoCfg:
     def __init__(self):
@@ -36,7 +36,7 @@ class TDTaosdemoCfg:
             "password": "taosdata",
             "thread_count": cpu_count(),
             "thread_count_create_tbl": cpu_count(),
-            "result_file": "/tmp/insert_res.txt",
+            "result_file": "./insert_res.txt",
             "confirm_parameter_prompt": "no",
             "insert_interval": 0,
             "num_of_records_per_req": 32766,
@@ -222,7 +222,7 @@ class TDTaosdemoCfg:
             self.tb_sub_sql = Sql_in
         elif mode == 'sub_stable':
             self.stb_sub_sql = Sql_in
-    #import functions end
+    # import functions end
 
     # The following functions are alter functions for different dicts
     #   Args:
@@ -230,7 +230,6 @@ class TDTaosdemoCfg:
     #       value: the value of the key that is going to be modified
     #           if key = 'databases' | "specified_table_query" | "super_table_query"|"sqls"
     #           value will not be used
-
 
     def alter_insert_cfg(self, key, value):
 
@@ -288,7 +287,7 @@ class TDTaosdemoCfg:
             self.table_sub[key] = value
     # alter function ends
 
-    #the following functions are for handling the sql lists
+    # the following functions are for handling the sql lists
     def append_sql_stb(self, target, value):
         """for appending sql dict into specific sql list
 
@@ -332,7 +331,7 @@ class TDTaosdemoCfg:
             self.tb_sub_sql.pop(index)
         elif target == 'sub_stable':
             self.stb_sub_sql.pop(index)
-    #sql list modification function end
+    # sql list modification function end
 
     # The following functions are get functions for different dicts
     def get_db(self):
@@ -404,8 +403,7 @@ class TDTaosdemoCfg:
         else:
             print(f'did not find {target}')
 
-    
-    #the folloing are the file generation functions
+    # the folloing are the file generation functions
     """defalut document:
         generator functio for generating taosdemo json file
         will assemble the dicts and dump the final json
@@ -416,6 +414,7 @@ class TDTaosdemoCfg:
         Returns:
             str: [pathName]/[filetype]_[filName].json
     """
+
     def generate_insert_cfg(self, pathName, fileName):
         cfgFileName = f'{pathName}/insert_{fileName}.json'
         self.alter_insert_cfg('databases', None)
@@ -423,7 +422,7 @@ class TDTaosdemoCfg:
             json.dump(self.insert_cfg, file)
         return cfgFileName
 
-    def generate_query_cfg(self,pathName, fileName):
+    def generate_query_cfg(self, pathName, fileName):
         cfgFileName = f'{pathName}/query_{fileName}.json'
         self.alter_query_tb('sqls', None)
         self.alter_query_stb('sqls', None)
@@ -433,7 +432,7 @@ class TDTaosdemoCfg:
             json.dump(self.query_cfg, file)
         return cfgFileName
 
-    def generate_subscribe_cfg(self,pathName, fileName):
+    def generate_subscribe_cfg(self, pathName, fileName):
         cfgFileName = f'{pathName}/subscribe_{fileName}.json'
         self.alter_sub_tb('sqls', None)
         self.alter_sub_stb('sqls', None)
@@ -442,7 +441,7 @@ class TDTaosdemoCfg:
         with open(cfgFileName, 'w') as file:
             json.dump(self.sub_cfg, file)
         return cfgFileName
-    #file generation functions ends
+    # file generation functions ends
 
     def drop_cfg_file(self, fileName):
         os.remove(f'{fileName}')

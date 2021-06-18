@@ -49,7 +49,8 @@ class TDTestCase:
 
         taosdemoCfg.alter_insert_cfg('host', host)
         taosdemoCfg.alter_db('drop', 'no')
-        for i in range(50):
+        for i in range(1,51):
+            taosdemoCfg.alter_insert_cfg('result_file', f"./insert_res{i}.txt")
             self.create_single_file(table_per_insert, row_insert,
                                     i, stbCfg)
 

@@ -39,19 +39,23 @@ time.sleep(5)
 c1.close()
 connTaos.close()
 
-for i in range(20):
-    threadDic.append(threading.Thread(target = ConnThread, args = (conn1,i,)))
+# for i in range(20):
+#     threadDic.append(threading.Thread(target = ConnThread, args = (conn1,i,)))
 
-for i in range(20,40):
-    threadDic.append(threading.Thread(target = ConnThread, args = (conn2,i,)))
+# for i in range(20,40):
+#     threadDic.append(threading.Thread(target = ConnThread, args = (conn2,i,)))
 
 
-for i in range(40,50):
-    threadDic.append(threading.Thread(target = selfThread, args = (i,)))
+# for i in range(40,50):
+#     threadDic.append(threading.Thread(target = selfThread, args = (i,)))
 
-for i in range(len(threadDic)):
-    print(threadDic[i])
+# for i in range(len(threadDic)):
+#     print(threadDic[i])
+#     threadDic[i].start()
 
-print(threadDic)
+# singleThread = threading.Thread(target = ConnThread, args = (conn1,1,))
+# singleThread.start()
+with conn1.cd('~/bschang_test/TDinternal/community/tests/pytest/perfbenchmark/billion_benchmark'):
+    conn1.run(f'taosdemo -f temp/insert_test_insert_volume{2}.json ')
 conn1.close()
 conn2.close()

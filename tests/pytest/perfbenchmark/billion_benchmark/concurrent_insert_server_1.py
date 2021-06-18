@@ -5,7 +5,6 @@ import time
 import taos
 import threading
 
-from fabric import Connection
 
 
 def selfThread(ThreadID):

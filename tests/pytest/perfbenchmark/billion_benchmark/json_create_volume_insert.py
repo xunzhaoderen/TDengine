@@ -41,9 +41,9 @@ class TDTestCase:
             'perfbenchmark/billion_benchmark/temp', f'test_insert_volume{fileNum}')
 
     def run(self):
-        total_table = 10000
-        table_per_insert = 200
-        row_insert = 100
+        total_table = 100000000
+        table_per_insert = 2000000
+        row_insert = 10000
         host = '192.168.1.125'
         stbCfg = taosdemoCfg.get_template('insert_stbs')
 

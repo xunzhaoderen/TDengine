@@ -33,7 +33,7 @@ class TDTestCase:
         stbCfg['childtable_limit'] = tableNum
         stbCfg['childtable_offset'] = fileNum * tableNum
         stbCfg['columns'] = [
-            {'type': 'DOUBLE', 'count': 2}, {'type': 'int', 'count': 2}]
+            {'type': 'DOUBLE', 'count': 2}, {'type': 'int', 'count': 3}]
         stbCfg['tags'] = [{'type': 'bigint', 'count': 1}, {
             "type": "BINARY", "len": 32, "count": 1}]
         taosdemoCfg.import_stbs([stbCfg])

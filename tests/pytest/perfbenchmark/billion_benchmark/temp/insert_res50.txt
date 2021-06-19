@@ -1,0 +1,51 @@
+[1m[40;32m================ insert_test_insert_volume50.json parse result START ================[0m
+host:                       192.168.1.125:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res50.txt
+thread num of insert data:  1
+thread num of create table: 1
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     10000
+      childTblPrefix:    stb_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         32766
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            2
+        tag[0]:bigint tag[1]:BINARY(32) 
+
+[1m[40;32m================ insert_test_insert_volume50.json parse result END================[0m

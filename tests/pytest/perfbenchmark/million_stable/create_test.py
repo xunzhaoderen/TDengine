@@ -24,6 +24,7 @@ import subprocess
 import datetime
 import threading
 import sys
+from fabric import Connection
 
 class TDTestCase:
     def init(self, conn, logSql):
@@ -45,22 +46,23 @@ class TDTestCase:
             "type": "BINARY", "len": 32, "count": 1}]
         localTaosdemoConfig.append_sql_stb("insert_stbs", selfTemplate)
 
-    def createSingleFile(self, stbNum, FileIndex):
+    def createSingleFile(self, stbNum, FileIndex, IP):
         localTaosdemoConfig = TDTaosdemoCfg()
         localTaosdemoConfig.alter_db('drop','no')
-        localTaosdemoConfig.alter_db('replica', 1)
+        localTaosdemoConfig.alter_db('replica', 2)
+        localTaosdemoConfig.alter_insert_cfg('host', IP)
         stbTemplate = dict(localTaosdemoConfig.get_template("insert_stbs"))
         for i in range(stbNum):
             self.stable_creation(int(i + 500 * FileIndex),dict(stbTemplate), localTaosdemoConfig)
         localTaosdemoConfig.generate_insert_cfg(
-            'perfbenchmark/billion_benchmark/million_stable/temp', f'{stbNum}_stb_{FileIndex}')
-        runPath = f'perfbenchmark/billion_benchmark/million_stable/temp/insert_{stbNum}_stb_{FileIndex}.json'
+            'perfbenchmark/million_stable/temp', f'{stbNum}_stb_{FileIndex}')
+        runPath = f'perfbenchmark/million_stable/temp/insert_{stbNum}_stb_{FileIndex}.json'
         return runPath
 
-    def creationThread(self, fileNum, binPath, threadIndex):
+    def creationThread(self, fileNum, binPath, threadIndex, IP):
         jsonFile = []
         for i in range(fileNum):
-            generatedFile = self.createSingleFile(500, (i + threadIndex*2) * self.stableLimit)
+            generatedFile = self.createSingleFile(500, (i + threadIndex * fileNum) * self.stableLimit, IP)
             jsonFile.append(generatedFile)
         
         for i in jsonFile:
@@ -68,20 +70,45 @@ class TDTestCase:
 
     def run(self):
         tdDnodes.stopAll()
-        os.system('systemctl start taosd')
-        tdLog.sleep(10)
-        conn = taos.connect(host="127.0.0.1", user="root", password="taosdata", config="/etc/taos")
-        c1 = conn.cursor()
+        localIP = "127.0.0.1"
+        IP1 = '192.168.1.86'
+        IP2 = '192.168.1.180'
+        # conn1 = Connection("{}@{}".format('ubuntu', IP1),
+        #            connect_kwargs={"password": "{}".format('tbase125!')})
+        # conn2 = Connection("{}@{}".format('ubuntu', IP2),
+        #            connect_kwargs={"password": "{}".format('tbase125!')})
+
+        # conn1.run(f'sudo systemctl start taosd')
+        # conn2.run(f'sudo systemctl start taosd')
+        # os.system('sudo systemctl start taosd')
+        # tdLog.sleep(10)
+
+        connTaos = taos.connect(host=IP1, user="root", password="taosdata", config="/etc/taos")
+        c1 = connTaos.cursor()
         c1.execute('drop database if exists db')
-        c1.execute('create database db')
+        c1.execute('create database db replica 2')
+        c1.close()
+        connTaos.close()
+        # conn1.close()
+        # conn2.close()
         binPath = tdFindPath.getTaosdemoPath()
 
-        thread1 = threading.Thread(target = self.creationThread, args = (2,binPath,0,))
-        thread2 = threading.Thread(target = self.creationThread, args = (2,binPath,1,))
+        thread1 = threading.Thread(target = self.creationThread, args = (50,binPath,0,IP1,))
+        thread2 = threading.Thread(target = self.creationThread, args = (50,binPath,1,IP1,))
+        thread3 = threading.Thread(target = self.creationThread, args = (50,binPath,2,IP1,))
+        thread4 = threading.Thread(target = self.creationThread, args = (50,binPath,3,IP1,))
+        thread5 = threading.Thread(target = self.creationThread, args = (50,binPath,4,IP1,))
         thread1.start()
         thread2.start()
+        thread3.start()
+        thread4.start()
+        thread5.start()
         thread1.join()
         thread2.join()
+        thread3.join()
+        thread4.join()
+        thread5.join()
+        # os.system('sudo systemctl stop taosd')
         
         # self.createSingleFile(self.stableLimit,0)
         # self.createSingleFile(self.stableLimit,1)

@@ -96,7 +96,7 @@ enum TEST_MODE {
 #define   MAX_NUM_DATATYPE 10
 
 #define   MAX_DB_COUNT           8
-#define   MAX_SUPER_TABLE_COUNT  200
+#define   MAX_SUPER_TABLE_COUNT  500
 #define   MAX_COLUMN_COUNT       1024
 #define   MAX_TAG_COUNT          128
 

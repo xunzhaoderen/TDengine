@@ -53,7 +53,7 @@ class TDTestCase:
         localTaosdemoConfig.alter_insert_cfg('host', IP)
         stbTemplate = dict(localTaosdemoConfig.get_template("insert_stbs"))
         for i in range(stbNum):
-            self.stable_creation(int(i + 500 * FileIndex),dict(stbTemplate), localTaosdemoConfig)
+            self.stable_creation(int(i + FileIndex),dict(stbTemplate), localTaosdemoConfig)
         localTaosdemoConfig.generate_insert_cfg(
             'perfbenchmark/million_stable/temp', f'{stbNum}_stb_{FileIndex}')
         runPath = f'perfbenchmark/million_stable/temp/insert_{stbNum}_stb_{FileIndex}.json'
@@ -74,15 +74,6 @@ class TDTestCase:
         localIP = "127.0.0.1"
         IP1 = '192.168.1.86'
         IP2 = '192.168.1.180'
-        # conn1 = Connection("{}@{}".format('ubuntu', IP1),
-        #            connect_kwargs={"password": "{}".format('tbase125!')})
-        # conn2 = Connection("{}@{}".format('ubuntu', IP2),
-        #            connect_kwargs={"password": "{}".format('tbase125!')})
-
-        # conn1.run(f'sudo systemctl start taosd')
-        # conn2.run(f'sudo systemctl start taosd')
-        # os.system('sudo systemctl start taosd')
-        # tdLog.sleep(10)
 
         connTaos = taos.connect(host=IP1, user="root", password="taosdata", config="/etc/taos")
         c1 = connTaos.cursor()
@@ -90,21 +81,19 @@ class TDTestCase:
         c1.execute('create database db replica 2')
         c1.close()
         connTaos.close()
-        # conn1.close()
-        # conn2.close()
         binPath = tdFindPath.getTaosdemoPath()
 
         threadlist = []
-        for i in range(25):
-            threadlist.append(threading.Thread(target = self.creationThread, args = (80,binPath,i,IP1,)))
+        for i in range(8):
+            threadlist.append(threading.Thread(target = self.creationThread, args = (250,binPath,i,IP1,)))
             threadlist[i].start()
-        for i in range(25):
+        for i in range(8):
             threadlist[i].join()
-        # thread1 = threading.Thread(target = self.creationThread, args = (1,binPath,0,IP1,))
-        # thread2 = threading.Thread(target = self.creationThread, args = (1,binPath,1,IP1,))
-        # thread3 = threading.Thread(target = self.creationThread, args = (1,binPath,2,IP1,))
-        # thread4 = threading.Thread(target = self.creationThread, args = (1,binPath,3,IP1,))
-        # thread5 = threading.Thread(target = self.creationThread, args = (1,binPath,4,IP1,))
+        # thread1 = threading.Thread(target = self.creationThread, args = (400,binPath,0,IP1,))
+        # thread2 = threading.Thread(target = self.creationThread, args = (400,binPath,1,IP1,))
+        # thread3 = threading.Thread(target = self.creationThread, args = (400,binPath,2,IP1,))
+        # thread4 = threading.Thread(target = self.creationThread, args = (400,binPath,3,IP1,))
+        # thread5 = threading.Thread(target = self.creationThread, args = (400,binPath,4,IP1,))
         # thread1.start()
         # thread2.start()
         # thread3.start()
@@ -115,13 +104,6 @@ class TDTestCase:
         # thread3.join()
         # thread4.join()
         # thread5.join()
-        # os.system('sudo systemctl stop taosd')
-        
-        # self.createSingleFile(self.stableLimit,0)
-        # self.createSingleFile(self.stableLimit,1)
-
-        # os.system(f"{binPath}taosdemo -f {jsonPath}insert_{self.stableLimit}_stb_0.json > 1 > /dev/null")
-        # os.system(f"{binPath}taosdemo -f {jsonPath}insert_{self.stableLimit}_stb_1.json > 1 > /dev/null")
 
     def stop(self):
         tdSql.close()

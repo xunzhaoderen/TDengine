@@ -30,7 +30,7 @@ class TDTestCase:
     def init(self, conn, logSql):
         tdLog.debug("start to execute %s" % __file__)
         tdSql.init(conn.cursor(), logSql)
-        self.stableLimit = 500
+        self.stableLimit = 200
 
     def stable_insert(self, startNum, insertTemplate, localTaosdemoConfig):
         selfTemplate = insertTemplate
@@ -64,14 +64,14 @@ class TDTestCase:
     def creationThread(self, fileNum, binPath, threadIndex, IP):
         jsonFile = []
         for i in range(fileNum):
-            generatedFile = self.createSingleFile(500, (i + threadIndex * fileNum) * self.stableLimit, IP)
+            generatedFile = self.createSingleFile(self.stableLimit, (i + threadIndex * fileNum) * self.stableLimit, IP)
             jsonFile.append(generatedFile)
         
-        for i in jsonFile:
-            try:
-                os.system(f"{binPath}taosdemo -f {i} > 1 > /dev/null")
-            except BaseException:
-                pass
+        # for i in jsonFile:
+        #     try:
+        #         os.system(f"{binPath}taosdemo -f {i} > 1 > /dev/null")
+        #     except BaseException:
+        #         pass
 
     def run(self):
         tdDnodes.stopAll()
@@ -83,7 +83,7 @@ class TDTestCase:
 
         threadlist = []
         for i in range(8):
-            threadlist.append(threading.Thread(target = self.creationThread, args = (250,binPath,i,IP1,)))
+            threadlist.append(threading.Thread(target = self.creationThread, args = (625,binPath,i,IP1,)))
             threadlist[i].start()
         for i in range(8):
             threadlist[i].join()

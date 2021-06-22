@@ -67,11 +67,11 @@ class TDTestCase:
             generatedFile = self.createSingleFile(self.stableLimit, (i + threadIndex * fileNum) * self.stableLimit, IP)
             jsonFile.append(generatedFile)
         
-        # for i in jsonFile:
-        #     try:
-        #         os.system(f"{binPath}taosdemo -f {i} > 1 > /dev/null")
-        #     except BaseException:
-        #         pass
+        for i in jsonFile:
+            try:
+                os.system(f"{binPath}taosdemo -f {i} > 1 > /dev/null")
+            except BaseException:
+                pass
 
     def run(self):
         tdDnodes.stopAll()

@@ -67,19 +67,17 @@ class TDTestCase:
             generatedFile = self.createSingleFile(500, (i + threadIndex * fileNum) * self.stableLimit, IP)
             jsonFile.append(generatedFile)
         
-        # for i in jsonFile:
-        #     try:
-        #         os.system(f"{binPath}taosdemo -f {i} > 1 > /dev/null")
-        #     except BaseException:
-        #         pass
+        for i in jsonFile:
+            try:
+                os.system(f"{binPath}taosdemo -f {i} > 1 > /dev/null")
+            except BaseException:
+                pass
 
     def run(self):
         tdDnodes.stopAll()
         localIP = "127.0.0.1"
         IP1 = '192.168.1.86'
         IP2 = '192.168.1.180'
-
-
 
         binPath = tdFindPath.getTaosdemoPath()
 

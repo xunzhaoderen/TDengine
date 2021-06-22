@@ -26,6 +26,7 @@ class TDTestCase:
     def init(self, conn, logSql):
         tdLog.debug("start to execute %s" % __file__)
         tdSql.init(conn.cursor(), logSql)
+        self.IP = '192.168.1.86'
 
     def run(self):
 
@@ -38,23 +39,19 @@ class TDTestCase:
 
         # template for table creation speed test
         insertTemplate = taosdemoCfg.get_template('insert_stbs')
-        insertTemplate['childtable_count'] = 32765
+        insertTemplate['childtable_count'] = 100000000
         insertTemplate['insert_rows'] = 0
         insertTemplate['columns'] = [
             {'type': 'DOUBLE', 'count': 2}, {'type': 'int', 'count': 2}]
         insertTemplate['tags'] = [{'type': 'bigint', 'count': 1}, {
             "type": "BINARY", "len": 32, "count": 1}]
-        insertTemplate['batch_create_tbl_num'] = 10
+        insertTemplate['batch_create_tbl_num'] = 25
         taosdemoCfg.alter_db('keep', 3650)
+        taosdemoCfg.alter_insert_cfg('host', self.IP)
         taosdemoCfg.append_sql_stb('insert_stbs', insertTemplate)
 
         cfgFileName = taosdemoCfg.generate_insert_cfg(
-            'perfbenchmark/billion_benchmark/temp', 'test_create_billion')
-        # p = subprocess.Popen([f"{binPath}taosdemo", "-f", f"{cfgFileName}"], stdout = subprocess.DEVNULL, stderr=subprocess.PIPE)
-        # stderr = p.communicate()
-        # print(stderr)
-        # runtime = stderr[1].decode('utf-8').split(' ')[1]
-        # file_out.write(f'10000,, {10000/float(runtime)}\n')
+            'perfbenchmark/billion_benchmark/JSON', 'test_create_billion')
 
         # template for table insertion speed test
         insertTemplate = taosdemoCfg.get_template('insert_stbs')
@@ -73,8 +70,7 @@ class TDTestCase:
         taosdemoCfg.import_stbs([insertTemplate])
         taosdemoCfg.alter_db('drop', 'no')
         cfgFileName = taosdemoCfg.generate_insert_cfg(
-            'perfbenchmark/billion_benchmark/temp', 'test_insert_billion')
-        #p = subprocess.Popen([f"{binPath}taosdemo", "-f", f"{cfgFileName}"], stdout = subprocess.DEVNULL, stderr=subprocess.PIPE)
+            'perfbenchmark/billion_benchmark/JSON', 'test_insert_billion')
 
 
         insertTemplate = taosdemoCfg.get_template('insert_stbs')
@@ -93,24 +89,8 @@ class TDTestCase:
         taosdemoCfg.import_stbs([insertTemplate])
         taosdemoCfg.alter_db('drop', 'no')
         cfgFileName = taosdemoCfg.generate_insert_cfg(
-            'perfbenchmark/billion_benchmark/temp', 'test_insert_billion_continue')
-        #p = subprocess.Popen([f"{binPath}taosdemo", "-f", f"{cfgFileName}"], stdout = subprocess.DEVNULL, stderr=subprocess.PIPE)
-        # stderr = p.communicate()
-        # print(stderr)
-        # stderr = stderr[1].decode('utf-8')
-        # timeIndex = [stderr.find('Spent') + 6, stderr.find('seconds') - 1]
-        # timeUsed = float(stderr[timeIndex[0]:timeIndex[1]])
-        # file_out.write(f'10000,{timeUsed},,{10000*10},{10000*10/timeUsed}\n')
+            'perfbenchmark/billion_benchmark/JSON', 'test_insert_billion_continue')
 
-        file_out.close()
-
-        #tdSql.execute('reset query cache')
-        tdSql.execute('use db')
-        file_out = open(
-            'perfbenchmark/billion_benchmark/temp/queryOutput.csv', "w")
-        file_out.write(
-            '# of node, runtime, table creation speed,# of rows,write speed/s\n')
-        binPath = tdFindPath.getTaosdemoPath()
 
         # template for table creation speed test
         queryTemplate = {
@@ -154,14 +134,14 @@ class TDTestCase:
         taosdemoCfg.alter_query_tb("concurrent", 1)
         print(taosdemoCfg.get_tb_query())
         cfgFileName = taosdemoCfg.generate_query_cfg(
-            'perfbenchmark/billion_benchmark/temp', 'billion_query')
+            'perfbenchmark/billion_benchmark/JSON', 'billion_query')
 
         subTemplate = {
             "sql": "select * from stb;",
             "result": "temp/subscribe_res0.txt"
         }
         taosdemoCfg.append_sql_stb('sub_table', subTemplate)
-        cfgFileName = taosdemoCfg.generate_subscribe_cfg('perfbenchmark/billion_benchmark/temp','test_billion')
+        cfgFileName = taosdemoCfg.generate_subscribe_cfg('perfbenchmark/billion_benchmark/JSON','test_billion')
 
     def stop(self):
         tdSql.close()

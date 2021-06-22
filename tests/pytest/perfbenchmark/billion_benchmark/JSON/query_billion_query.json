@@ -1,0 +1,53 @@
+{
+    "filetype": "query",
+    "cfgdir": "/etc/taos",
+    "host": "127.0.0.1",
+    "port": 6030,
+    "user": "root",
+    "password": "taosdata",
+    "confirm_parameter_prompt": "no",
+    "databases": "db",
+    "query_times": 2,
+    "query_mode": "taosc",
+    "specified_table_query": {
+        "query_interval": 1,
+        "concurrent": 1,
+        "sqls": [
+            {
+                "sql": "select count(*) from stb ",
+                "result": "temp/query_1.txt"
+            },
+            {
+                "sql": "select avg(col0), max(col1), min(col2) from stb ",
+                "result": "temp/query_2.txt"
+            },
+            {
+                "sql": "select avg(col0), max(col1), min(col2) from stb interval(10s)",
+                "result": "temp/query_3.txt"
+            },
+            {
+                "sql": "select last_row(*) from stb",
+                "result": "temp/query_4.txt"
+            },
+            {
+                "sql": "select * from stb",
+                "result": "temp/query_5.txt"
+            },
+            {
+                "sql": "select avg(col0), max(col1), min(col2) from stb where ts >= '2020-10-10 00:00:00.000' and ts <= '2020-10-20 00:00:00.000'",
+                "result": "temp/query_6.txt"
+            },
+            {
+                "sql": "select count(*) from stb where t1 = 'beijing'",
+                "result": "temp/query_7.txt"
+            }
+        ],
+        "query_times": 1
+    },
+    "super_table_query": {
+        "stblname": "stb",
+        "query_interval": 1,
+        "threads": 3,
+        "sqls": []
+    }
+}

@@ -32,14 +32,15 @@ class TDTestCase:
         tdSql.init(conn.cursor(), logSql)
         self.stableLimit = 500
 
-    def stable_creation(self, startNum, insertTemplate, localTaosdemoConfig):
+    def stable_insert(self, startNum, insertTemplate, localTaosdemoConfig):
         selfTemplate = insertTemplate
 
         selfTemplate['name'] = f'stb{startNum}'
         selfTemplate['childtable_count'] = 10
+        selfTemplate['child_table_exists'] = 'yes'
         selfTemplate['childtable_prefix'] = f'stb{startNum}_'
         selfTemplate['batch_create_tbl_num'] = 25
-        selfTemplate['insert_rows'] = 0
+        selfTemplate['insert_rows'] = 200
         selfTemplate['columns'] = [{"type": "INT", "count": 2}, {
             "type": "DOUBLE", "count": 2}, {"type": "BINARY", "len": 32, "count": 1}]
         selfTemplate['tags'] = [{"type": "INT", "count": 2}, {
@@ -53,11 +54,10 @@ class TDTestCase:
         localTaosdemoConfig.alter_insert_cfg('host', IP)
         stbTemplate = dict(localTaosdemoConfig.get_template("insert_stbs"))
         for i in range(stbNum):
-            self.stable_creation(int(i + 500 * FileIndex),dict(stbTemplate), localTaosdemoConfig)
+            self.stable_insert(int(i + 500 * FileIndex),dict(stbTemplate), localTaosdemoConfig)
         localTaosdemoConfig.generate_insert_cfg(
             'perfbenchmark/million_stable/temp', f'{stbNum}_stb_{FileIndex}')
         runPath = f'perfbenchmark/million_stable/temp/insert_{stbNum}_stb_{FileIndex}.json'
-        print(f'{runPath} created')
         return runPath
 
     def creationThread(self, fileNum, binPath, threadIndex, IP):

@@ -31,11 +31,11 @@ class TDTestCase:
     def init(self, conn, logSql):
         tdLog.debug("start to execute %s" % __file__)
         tdSql.init(conn.cursor(), logSql)
-        self.stableLimit = 200
+        self.stableLimit = 100
 
     def stable_insert(self, startNum, localTaosdemoConfig):
         queryTemplate = {
-            "sql": f"select count(*) from {startNum} ",
+            "sql": f"select count(*) from stb{startNum} ",
             "result": f"./query_{startNum}.txt"
         }
         localTaosdemoConfig.append_sql_stb('query_table', queryTemplate)
@@ -43,6 +43,7 @@ class TDTestCase:
     def createSingleFile(self, stbNum, FileIndex, IP):
         localTaosdemoConfig = TDTaosdemoCfg()
         localTaosdemoConfig.alter_query_cfg('query_times', 1)
+        localTaosdemoConfig.alter_query_cfg('host', IP)
         localTaosdemoConfig.alter_query_tb("concurrent", 1)
         for i in range(stbNum):
             randStbNum = random.randint(stbNum, stbNum + 125000 - 1)

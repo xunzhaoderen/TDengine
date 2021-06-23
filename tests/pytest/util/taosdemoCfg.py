@@ -264,7 +264,7 @@ class TDTaosdemoCfg:
         elif key == "super_table_query":
             self.query_cfg["super_table_query"] = self.stable_query
         else:
-            self.table_query[key] = value
+            self.query_cfg[key] = value
 
     def alter_sub_cfg(self, key, value):
         if key == "specified_table_query":
@@ -272,7 +272,7 @@ class TDTaosdemoCfg:
         elif key == "super_table_query":
             self.sub_cfg["super_table_query"] = self.stable_sub
         else:
-            self.table_query[key] = value
+            self.sub_cfg[key] = value
 
     def alter_sub_stb(self, key, value):
         if key == "sqls":

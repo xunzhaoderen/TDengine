@@ -8,7 +8,7 @@ import threading
 
 
 def selfThread(ThreadID):
-        path = '~/bschang_test/TDinternal/community/tests/pytest/perfbenchmark/billion_benchmark/'
+        path = '~/TDengine/tests/pytest/perfbenchmark/billion_benchmark/'
         os.system(f'sudo taosdemo -f {path}temp/insert_test_insert_volume{ThreadID}.json > 1 > /dev/null')
 
 threadDic = []

@@ -7,7 +7,7 @@ import threading
 
 from fabric import Connection
 def ConnThread(connection, ThreadID):
-    with connection.cd('~/bschang_test/TDinternal/community/tests/pytest/perfbenchmark/billion_benchmark'):
+    with connection.cd('~/TDengine/tests/pytest/perfbenchmark/billion_benchmark'):
         connection.run(f'sudo python3 concurrent_insert_server_{ThreadID}.py')
 
 def selfThread(ThreadID):

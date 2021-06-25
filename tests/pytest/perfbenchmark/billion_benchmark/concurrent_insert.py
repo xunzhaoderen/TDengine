@@ -14,30 +14,13 @@ def selfThread(ThreadID):
         os.system(f'sudo taosdemo -f temp/insert_test_insert_volume{ThreadID}.json > 1 > /dev/null')
 
 threadDic = []
-IP1 = '192.168.1.125'
-IP2 = '192.168.1.126'
+IP1 = '192.168.1.179'
+IP2 = '192.168.1.180'
 conn1 = Connection("{}@{}".format('ubuntu', IP1),
                    connect_kwargs={"password": "{}".format('tbase125!')})
 conn2 = Connection("{}@{}".format('ubuntu', IP2),
                    connect_kwargs={"password": "{}".format('tbase125!')})
 
-# conn1.run("sudo systemctl stop taosd")
-# time.sleep(10)
-# conn1.run("sudo systemctl start taosd")
-# conn2.run("sudo systemctl stop taosd")
-# time.sleep(10)
-# conn2.run("sudo systemctl start taosd")
-# time.sleep(10)
-
-# connTaos = taos.connect(host = IP1, user = 'root', password = 'taosdata', cnfig = '/etc/taos')
-# c1 = connTaos.cursor()
-# try:
-#     c1.execute('create dnode \'lyq-2:6030\'')
-# except BaseException:
-#     pass
-# time.sleep(5)
-# c1.close()
-# connTaos.close()
 
 for i in range(40,50):
     threadDic.append(threading.Thread(target = selfThread, args = (i,)))

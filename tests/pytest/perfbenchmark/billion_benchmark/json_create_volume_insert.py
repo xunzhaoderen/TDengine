@@ -42,8 +42,8 @@ class TDTestCase:
 
     def run(self):
         total_table = 100000000
-        table_per_insert = 200000
-        row_insert = 5
+        table_per_insert = 2000000
+        row_insert = 10
         host = '192.168.1.86'
         stbCfg = taosdemoCfg.get_template('insert_stbs')
 

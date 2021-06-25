@@ -25,8 +25,8 @@ conn2 = Connection("{}@{}".format('ubuntu', IP2),
 for i in range(40,50):
     threadDic.append(threading.Thread(target = selfThread, args = (i,)))
 
-threadDic.append(threading.Thread(target = ConnThread, args = (conn1,1,)))
-threadDic.append(threading.Thread(target = ConnThread, args = (conn2,2,)))
+# threadDic.append(threading.Thread(target = ConnThread, args = (conn1,1,)))
+# threadDic.append(threading.Thread(target = ConnThread, args = (conn2,2,)))
 
 for i in range(len(threadDic)):
     print(threadDic[i])

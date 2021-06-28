@@ -13,7 +13,7 @@ def selfThread(ThreadID):
 
 threadDic = []
 
-for i in range(15,20):
+for i in range(30,50):
     threadDic.append(threading.Thread(target = selfThread, args = (i,)))
 
 

@@ -9,13 +9,13 @@ from fabric import Connection
 
 
 def ConnThread(connection, ThreadID):
-    with connection.cd('~/TDengine/tests/pytest/perfbenchmark/billion_benchmark'):
+    with connection.cd('/home/ubuntu/TDinternal/community/tests/pytest/perfbenchmark/billion_benchmark'):
         connection.run(f'sudo python3 concurrent_insert_server_{ThreadID}.py')
 
 
 def selfThread(ThreadID):
     os.system(
-        f'sudo taosdemo -f /home/bryan/Documents/Github/TDinternal/community/tests/pytest/perfbenchmark/billion_benchmark/temp/insert_test_insert_volume{ThreadID}.json > 1 > /dev/null')
+        f'sudo taosdemo -f /home/ubuntu/TDinternal/community/tests/pytest/perfbenchmark/billion_benchmark/temp/insert_test_insert_volume{ThreadID}.json > 1 > /dev/null')
 
 
 threadDic = []

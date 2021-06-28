@@ -15,7 +15,7 @@ def ConnThread(connection, ThreadID):
 
 def selfThread(ThreadID):
     os.system(
-        f'sudo taosdemo -f /home/ubuntu/TDinternal/community/tests/pytest/perfbenchmark/billion_benchmark/temp/insert_test_insert_volume{ThreadID}.json > 1 > /dev/null')
+        f'sudo taosdemo -f /home/bryan/Documents/Github/TDinternal/community/tests/pytest/perfbenchmark/billion_benchmark/temp/insert_test_insert_volume{ThreadID}.json > 1 > /dev/null')
 
 
 threadDic = []
@@ -30,8 +30,8 @@ conn2 = Connection("{}@{}".format('ubuntu', IP2),
 for i in range(0, 10):
     threadDic.append(threading.Thread(target=selfThread, args=(i,)))
 
-threadDic.append(threading.Thread(target = ConnThread, args = (conn1,1,)))
-threadDic.append(threading.Thread(target = ConnThread, args = (conn2,2,)))
+# threadDic.append(threading.Thread(target = ConnThread, args = (conn1,1,)))
+# threadDic.append(threading.Thread(target = ConnThread, args = (conn2,2,)))
 
 for i in range(len(threadDic)):
     print(threadDic[i])

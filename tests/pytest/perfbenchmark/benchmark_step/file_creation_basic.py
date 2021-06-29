@@ -26,7 +26,7 @@ class TDTestCase:
     def init(self, conn, logSql):
         tdLog.debug("start to execute %s" % __file__)
         tdSql.init(conn.cursor(), logSql)
-        self.IP = '127.0.0.1'
+        self.IP = '192.168.1.86'
 
     def run(self):
 
@@ -35,7 +35,7 @@ class TDTestCase:
 
         # template for table creation speed test
         insertTemplate = taosdemoCfg.get_template('insert_stbs')
-        insertTemplate['childtable_count'] = 100
+        insertTemplate['childtable_count'] = 10000000
         insertTemplate['insert_rows'] = 0
         insertTemplate['tags_file'] = './tags.csv'
         insertTemplate['columns'] = [
@@ -52,10 +52,10 @@ class TDTestCase:
 
         # template for table insertion speed test
         insertTemplate = taosdemoCfg.get_template('insert_stbs')
-        insertTemplate['childtable_count'] = 100
+        insertTemplate['childtable_count'] = 10000000
         insertTemplate['child_table_exists'] = 'yes'
-        insertTemplate['insert_rows'] = 100
-        insertTemplate['childtable_limit'] = 32765
+        insertTemplate['insert_rows'] = 1000
+        insertTemplate['childtable_limit'] = 10000000
         insertTemplate['interlace_rows'] = 1
         insertTemplate['insert_interval'] = 1000
         insertTemplate['tags_file'] = './tags.csv'
@@ -68,7 +68,7 @@ class TDTestCase:
         taosdemoCfg.import_stbs([insertTemplate])
         taosdemoCfg.alter_db('drop', 'no')
         cfgFileName = taosdemoCfg.generate_insert_cfg(
-            'perfbenchmark/benchmark_step/temp', 'test_insert_billion')
+            'perfbenchmark/benchmark_step/temp', 'test_insert_10M_1')
 
 
     def stop(self):

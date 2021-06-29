@@ -73,8 +73,10 @@ python3 ./test.py -f tag_lite/int.py
 python3 ./test.py -f tag_lite/set.py
 python3 ./test.py -f tag_lite/smallint.py
 python3 ./test.py -f tag_lite/tinyint.py
+python3 ./test.py -f tag_lite/timestamp.py
 
 #python3 ./test.py -f dbmgmt/database-name-boundary.py
+python3 test.py -f dbmgmt/nanoSecondCheck.py
 
 python3 ./test.py -f import_merge/importBlock1HO.py
 python3 ./test.py -f import_merge/importBlock1HPO.py
@@ -148,6 +150,7 @@ python3 ./test.py -f import_merge/importCSV.py
 #======================p2-start===============
 # tools
 python3 test.py -f tools/taosdumpTest.py
+python3 test.py -f tools/taosdumpTest2.py
 
 python3 test.py -f tools/taosdemoTest.py
 python3 test.py -f tools/taosdemoTestWithoutMetric.py
@@ -233,6 +236,8 @@ python3 ./test.py -f query/queryTscomputWithNow.py
 python3 ./test.py -f query/computeErrorinWhere.py
 python3 ./test.py -f query/queryTsisNull.py
 python3 ./test.py -f query/subqueryFilter.py
+# python3 ./test.py -f query/nestedQuery/queryInterval.py
+python3 ./test.py -f query/queryStateWindow.py
 
 
 #stream
@@ -320,8 +325,10 @@ python3 ./test.py -f query/last_row_cache.py
 python3 ./test.py -f account/account_create.py
 python3 ./test.py -f alter/alter_table.py
 python3 ./test.py -f query/queryGroupbySort.py
+python3 ./test.py -f functions/queryTestCases.py
 python3 ./test.py -f functions/function_stateWindow.py
 python3 ./test.py -f functions/function_derivative.py
+python3 ./test.py  -f functions/function_irate.py
 
 python3 ./test.py -f insert/unsignedInt.py
 python3 ./test.py -f insert/unsignedBigint.py

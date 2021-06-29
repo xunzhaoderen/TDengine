@@ -43,14 +43,14 @@ class TDTestCase:
     def run(self):
         total_table = 100000000
         table_per_insert = 2000000
-        row_insert = 1000
+        row_insert = 10
         host = '192.168.1.86'
         stbCfg = taosdemoCfg.get_template('insert_stbs')
 
         stbCfg['childtable_count'] = total_table
         taosdemoCfg.alter_insert_cfg('host', host)
         taosdemoCfg.alter_db('drop', 'no')
-        for i in range(0,total_table//table_per_insert):
+        for i in range(0,50):
             taosdemoCfg.alter_insert_cfg('result_file', f"./insert_res{i}.txt")
             self.create_single_file(table_per_insert, row_insert,
                                     i, stbCfg)

@@ -35,13 +35,13 @@ class TDTestCase:
         stbCfg['columns'] = [
             {'type': 'DOUBLE', 'count': 2}, {'type': 'int', 'count': 3}]
         stbCfg['tags'] = [{'type': 'bigint', 'count': 1}, {
-            "type": "BINARY", "len": 32, "count": 1}]
+            "type": "BINARY", "len": 32, "count": 2}]
         taosdemoCfg.import_stbs([stbCfg])
         taosdemoCfg.generate_insert_cfg(
-            'perfbenchmark/billion_benchmark/temp', f'test_insert_volume{fileNum}')
+            'perfbenchmark/benchmark_step/temp', f'test_insert_volume{fileNum}')
 
     def run(self):
-        total_table = 100000000
+        total_table = 10000000
         table_per_insert = 2000000
         row_insert = 1000
         host = '192.168.1.86'

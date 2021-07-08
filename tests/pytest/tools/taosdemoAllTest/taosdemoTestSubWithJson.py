@@ -73,83 +73,66 @@ class TDTestCase:
         os.system("rm -rf ./subscribe_res*")  
         os.system("rm -rf ./all_subscribe_res*") 
         sleep(2)
-        # subscribe: sync 
-        os.system("%staosdemo -f tools/taosdemoAllTest/subInsertdata.json" % binPath)
-        os.system("nohup %staosdemo -f tools/taosdemoAllTest/subSync.json &" % binPath)
-        query_pid = int(subprocess.getstatusoutput('ps aux|grep "taosdemoAllTest/subSync.json" |grep -v "grep"|awk \'{print $2}\'')[1])
 
-        # insert extral data     
-        tdSql.execute("use db")
-        tdSql.execute("insert into stb00_0 values(1614218412000,'R','bf3',8637,98.861045)")   
-        tdSql.execute("insert into stb00_1 values(1614218412000,'R','bf3',8637,78.861045)(1614218422000,'R','bf3',8637,98.861045)")   
-        sleep(5)
+        # # subscribe: sync 
+        # os.system("%staosdemo -f tools/taosdemoAllTest/subInsertdata.json" % binPath)
+        # os.system("nohup %staosdemo -f tools/taosdemoAllTest/subSync.json &" % binPath)
+        # query_pid = int(subprocess.getstatusoutput('ps aux|grep "taosdemoAllTest/subSync.json" |grep -v "grep"|awk \'{print $2}\'')[1])
 
-        # merge result files
-        os.system("cat subscribe_res0.txt* > all_subscribe_res0.txt")
-        os.system("cat subscribe_res1.txt* > all_subscribe_res1.txt")
-        os.system("cat subscribe_res2.txt* > all_subscribe_res2.txt")
-        os.system("cat subscribe_res3.txt* > all_subscribe_res3.txt")
+        # # insert extral data     
+        # tdSql.execute("use db")
+        # tdSql.execute("insert into stb00_0 values(1614218412000,'R','bf3',8637,98.861045)")   
+        # tdSql.execute("insert into stb00_1 values(1614218412000,'R','bf3',8637,78.861045)(1614218422000,'R','bf3',8637,98.861045)")   
+        # sleep(5)
+
+        # # merge result files
+        # os.system("cat subscribe_res0.txt* > all_subscribe_res0.txt")
+        # os.system("cat subscribe_res1.txt* > all_subscribe_res1.txt")
+        # os.system("cat subscribe_res2.txt* > all_subscribe_res2.txt")
+        # os.system("cat subscribe_res3.txt* > all_subscribe_res3.txt")
 
         
-        # correct subscribeTimes testcase
-        subTimes0 = self.subTimes("all_subscribe_res0.txt")
-        self.assertCheck("all_subscribe_res0.txt",subTimes0 ,22)
+        # # correct subscribeTimes testcase
+        # subTimes0 = self.subTimes("all_subscribe_res0.txt")
+        # self.assertCheck("all_subscribe_res0.txt",subTimes0 ,22)
 
-        subTimes1 = self.subTimes("all_subscribe_res1.txt")
-        self.assertCheck("all_subscribe_res1.txt",subTimes1 ,24)
+        # subTimes1 = self.subTimes("all_subscribe_res1.txt")
+        # self.assertCheck("all_subscribe_res1.txt",subTimes1 ,24)
 
-        subTimes2 = self.subTimes("all_subscribe_res2.txt")
-        self.assertCheck("all_subscribe_res2.txt",subTimes2 ,21)
+        # subTimes2 = self.subTimes("all_subscribe_res2.txt")
+        # self.assertCheck("all_subscribe_res2.txt",subTimes2 ,21)
 
-        subTimes3 = self.subTimes("all_subscribe_res3.txt")
-        self.assertCheck("all_subscribe_res3.txt",subTimes3 ,13)
+        # subTimes3 = self.subTimes("all_subscribe_res3.txt")
+        # self.assertCheck("all_subscribe_res3.txt",subTimes3 ,13)
         
 
-        # correct data testcase
-        os.system("kill -9 %d" % query_pid)
-        sleep(3)
-        os.system("rm -rf ./subscribe_res*")   
-        os.system("rm -rf ./all_subscribe*")
+        # # correct data testcase
+        # os.system("kill -9 %d" % query_pid)
+        # sleep(3)
+        # os.system("rm -rf ./subscribe_res*")   
+        # os.system("rm -rf ./all_subscribe*")
   
-        # # sql number lager  100
-        os.system("%staosdemo -f tools/taosdemoAllTest/subInsertdataMaxsql100.json" % binPath)
-        assert os.system("%staosdemo -f tools/taosdemoAllTest/subSyncSpecMaxsql100.json" % binPath) != 0
-        assert os.system("%staosdemo -f tools/taosdemoAllTest/subSyncSuperMaxsql100.json" % binPath) != 0
-
-        # # result files is null
+        # # # sql number lager  100
         # os.system("%staosdemo -f tools/taosdemoAllTest/subInsertdataMaxsql100.json" % binPath)
-        # os.system("%staosdemo -f tools/taosdemoAllTest/subSyncResFileNull.json" % binPath)
-        # # assert os.system("%staosdemo -f tools/taosdemoAllTest/subSyncResFileNull.json" % binPath) != 0
+        # assert os.system("%staosdemo -f tools/taosdemoAllTest/subSyncSpecMaxsql100.json" % binPath) != 0
+        # assert os.system("%staosdemo -f tools/taosdemoAllTest/subSyncSuperMaxsql100.json" % binPath) != 0
+
+        # # # result files is null
+        # # os.system("%staosdemo -f tools/taosdemoAllTest/subInsertdataMaxsql100.json" % binPath)
+        # # os.system("%staosdemo -f tools/taosdemoAllTest/subSyncResFileNull.json" % binPath)
+        # # # assert os.system("%staosdemo -f tools/taosdemoAllTest/subSyncResFileNull.json" % binPath) != 0
 
 
 
+        # # default values:resubAfterConsume= -1, endAfter=-1, restart:yes, keepProgress:no
 
-        # resubAfterConsume= -1 endAfter=-1 ;
-        os.system('kill -9 `ps aux|grep "subSyncResubACMinus1.json" |grep -v "grep"|awk \'{print $2}\'` ')
-        os.system("nohup %staosdemo -f tools/taosdemoAllTest/Resubjson/subSyncResubACMinus1.json & " % binPath)
-        sleep(2)
-        query_pid1 = int(subprocess.getstatusoutput('ps aux|grep "subSyncResubACMinus1.json" |grep -v "grep"|awk \'{print $2}\'')[1])
-        print("get sub1 process'pid")
-        subres0Number1 =int(subprocess.getstatusoutput('grep "1614218412000" subscribe_res0*  |wc -l' )[1])
-        subres2Number1 =int(subprocess.getstatusoutput('grep "1614218412000" subscribe_res2*  |wc -l' )[1])
-        assert 0==subres0Number1 , "subres0Number1 error"
-        assert 0==subres2Number1 , "subres2Number1 error"
-        tdSql.execute("insert into db.stb00_0 values(1614218412000,'R','bf3',8637,78.861045)(1614218413000,'R','bf3',8637,98.861045)") 
-        sleep(4)
-        subres2Number2 =int(subprocess.getstatusoutput('grep "1614218412000" subscribe_res0*  |wc -l' )[1])
-        subres0Number2 =int(subprocess.getstatusoutput('grep "1614218412000" subscribe_res0*  |wc -l' )[1])
-        assert 0!=subres2Number2 , "subres2Number2 error"
-        assert 0!=subres0Number2 , "subres0Number2 error"
-        os.system("kill -9 %d" % query_pid1)
-        os.system("rm -rf ./subscribe_res*")   
-
-        # # resubAfterConsume= -1 endAfter=0 ;
+        # # resubAfterConsume= -1 endAfter=-1 ;
         # os.system("%staosdemo -f tools/taosdemoAllTest/subInsertdataMaxsql100.json" % binPath)
-        # os.system('kill -9 `ps aux|grep "subSyncResubACMinus1endAfter0.json" |grep -v "grep"|awk \'{print $2}\'` ')
-        # os.system("nohup %staosdemo -f tools/taosdemoAllTest/Resubjson/subSyncResubACMinus1endAfter0.json & " % binPath)
+        # os.system('kill -9 `ps aux|grep "subSyncResubACMinus1.json" |grep -v "grep"|awk \'{print $2}\'` ')
+        # os.system("nohup %staosdemo -f tools/taosdemoAllTest/Resubjson/subSyncResubACMinus1.json & " % binPath)
         # sleep(2)
-        # query_pid1 = int(subprocess.getstatusoutput('ps aux|grep "subSyncResubACMinus1endAfter0.json" |grep -v "grep"|awk \'{print $2}\'')[1])
-        # print("get sub2 process'pid")
+        # query_pid1 = int(subprocess.getstatusoutput('ps aux|grep "subSyncResubACMinus1.json" |grep -v "grep"|awk \'{print $2}\'')[1])
+        # print("get sub1 process'pid")
         # subres0Number1 =int(subprocess.getstatusoutput('grep "1614218412000" subscribe_res0*  |wc -l' )[1])
         # subres2Number1 =int(subprocess.getstatusoutput('grep "1614218412000" subscribe_res2*  |wc -l' )[1])
         # assert 0==subres0Number1 , "subres0Number1 error"
@@ -162,7 +145,50 @@ class TDTestCase:
         # assert 0!=subres0Number2 , "subres0Number2 error"
         # os.system("kill -9 %d" % query_pid1)
         # os.system("rm -rf ./subscribe_res*")   
-        
+
+        # # resubAfterConsume= -1 endAfter=0 ;
+        # os.system("%staosdemo -f tools/taosdemoAllTest/subInsertdataMaxsql100.json" % binPath)
+        # os.system('kill -9 `ps aux|grep "subSyncResubACMinus1endAfter0.json" |grep -v "grep"|awk \'{print $2}\'` ')
+        # os.system(" %staosdemo -f tools/taosdemoAllTest/Resubjson/subSyncResubACMinus1endAfter0.json  " % binPath)
+        # sleep(2)
+
+        # # resubAfterConsume= -1 endAfter=1,2 ;
+        # os.system("%staosdemo -f tools/taosdemoAllTest/subInsertdataMaxsql100.json" % binPath)
+        # os.system('kill -9 `ps aux|grep "subSyncResubACMinus1endAfter12.json" |grep -v "grep"|awk \'{print $2}\'` ')
+        # os.system(" %staosdemo -f tools/taosdemoAllTest/Resubjson/subSyncResubACMinus1endAfter12.json  " % binPath)
+        # sleep(3)
+        # tdSql.execute("insert into db.stb00_0 values(1614218412000,'R','bf3',8637,78.861045)(1614218413000,'R','bf3',8637,98.861045)") 
+        # subres0Number1 =int(subprocess.getstatusoutput('grep "1614218412000" subscribe_res0*  |wc -l' )[1])
+        # subres2Number1 =int(subprocess.getstatusoutput('grep "1614218412000" subscribe_res2*  |wc -l' )[1])
+        # assert 0==subres0Number1 , "subres0Number1 error"
+        # assert 0==subres2Number1 , "subres2Number1 error"
+        # os.system("rm -rf ./subscribe_res*")   
+
+        # resubAfterConsume= -10 endAfter= -10 ;
+        os.system("%staosdemo -f tools/taosdemoAllTest/subInsertdataMaxsql100.json" % binPath)
+        os.system('kill -9 `ps aux|grep "subSyncResubACMinus1endAfterEr.json " |grep -v "grep"|awk \'{print $2}\'` ')
+        os.system(" %staosdemo -f tools/taosdemoAllTest/Resubjson/subSyncResubACMinus1endAfterEr.json  " % binPath)
+        sleep(2)
+
+
+        # # # resubAfterConsume= 1 endAfter=-1 ;
+        # os.system('kill -9 `ps aux|grep "subSyncResubACMinus1.json" |grep -v "grep"|awk \'{print $2}\'` ')
+        # os.system("nohup %staosdemo -f tools/taosdemoAllTest/Resubjson/subSyncResubACMinus1.json & " % binPath)
+        # sleep(2)
+        # query_pid1 = int(subprocess.getstatusoutput('ps aux|grep "subSyncResubACMinus1.json" |grep -v "grep"|awk \'{print $2}\'')[1])
+        # print("get sub1 process'pid")
+        # subres0Number1 =int(subprocess.getstatusoutput('grep "1614218412000" subscribe_res0*  |wc -l' )[1])
+        # subres2Number1 =int(subprocess.getstatusoutput('grep "1614218412000" subscribe_res2*  |wc -l' )[1])
+        # assert 0==subres0Number1 , "subres0Number1 error"
+        # assert 0==subres2Number1 , "subres2Number1 error"
+        # tdSql.execute("insert into db.stb00_0 values(1614218412000,'R','bf3',8637,78.861045)(1614218413000,'R','bf3',8637,98.861045)") 
+        # sleep(4)
+        # subres2Number2 =int(subprocess.getstatusoutput('grep "1614218412000" subscribe_res0*  |wc -l' )[1])
+        # subres0Number2 =int(subprocess.getstatusoutput('grep "1614218412000" subscribe_res0*  |wc -l' )[1])
+        # assert 0!=subres2Number2 , "subres2Number2 error"
+        # assert 0!=subres0Number2 , "subres0Number2 error"
+        # os.system("kill -9 %d" % query_pid1)
+        # os.system("rm -rf ./subscribe_res*")   
 
 
 

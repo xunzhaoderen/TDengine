@@ -1,0 +1,30 @@
+select count(tbname) from stb
+select count(*) from stb
+select min(col0) , max(col1), avg(col3) from stb
+select last_row(*) from stb group by tbname limit 1000
+select last_row(*) from stb group by tbname limit 10000
+select last_row(*) from stb group by tbname limit 100000
+select last_row(*) from stb group by tbname limit 500000
+select tbname from stb where col2 = 500 and ts > now – 5 m and t1 = \'beijing\' and t2 = \'china\'; 
+select tbname from stb where col2 = 500 and ts > now – 5 m and (t1 = \'beijing\' and t2 = \'china\') or (t1 = \'shenzen\' and t2 = \'china\');   
+select tbname from stb where col2 = 500 and ts > now – 5 m and (t1 = \'beijing\' and t2 = \'china\') or (t1 = \'shenzen\' and t2 = \'china\') or (t1 = \'shanghai\' and t2 = \'china\'); 
+select min(col0),max(col1), avg(col2) from stb where t0 = '1' or t0 = '2' or t0 = '3';
+select min(col0),max(col1), avg(col2) from stb where t0 = '1' or t0 = '2' or t0 = '3' or t0 = '4' or t0 = '5' or t0 = '6' or t0 = '7';  
+select min(col0),max(col1), avg(col2) from stb where t0 = '1' or t0 = '2' or t0 = '3' or t0 = '4' or t0 = '5' or t0 = '6' or t0 = '7' or t0 = '8' or t0 = '9' or t0 = '10';
+select avg(f1), max(f2), min(f3) from meters where between now – 30m and now
+select avg(f1), max(f2), min(f3) from meters where between now – 1h and now
+select avg(f1), max(f2), min(f3) from meters where between now – 1h and now + 1h
+select min(col0),max(col1),avg(col2) from stb group by tbname;
+select sum(col1), min(col0) from stb where t1 = ‘beijing’ interval (10s)       
+select sum(col1), min(col0) from stb where t1 = ‘beijing’ or t1 = ‘shenzen’ interval (10s)  
+select sum(col1), min(col0) from stb where t1 = ‘beijing’ or t1 = ‘shenzen’ or t1 = ‘shanghai’ interval (10s) 
+select avg(col1), max(col0) from stb interval (30 s) sliding (5 s)
+select avg(col1), max(col0) from stb interval (70 s) sliding (5 s)
+select avg(col1), max(col0) from stb interval (100 s) sliding (5 s)
+select sum(col1)*a from stb where t1 = ‘beijing’
+select sum(col1)*a from stb where t1 = ‘beijing’ or t1 = ‘shenzen’
+select sum(col1)*a from stb  
+select avg(col1) from (select avg(col1) as col1 from stb where t1 = “beijing” interval (5s, 10s))
+select avg(col1) from (select avg(col1) as col1 from stb where t1 = ‘beijing’ or t1 = ‘shenzen’ interval (5s, 10s))
+select avg(col1) from (select avg(col1) as col1 from stb interval (5s, 10s)) 
+select top(col2, 10) from (select avg(col2) as col2 from stb group by tbname)

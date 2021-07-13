@@ -1,0 +1,536 @@
+[1m[40;32m================ insert_create_0.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     10
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         32766
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          ./tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ insert_create_0.json parse result END================[0m
+Spent 0.3180 seconds to create 10 tables with 10 thread(s)
+
+[1m[40;32m================ insert_create_0.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     10
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         32766
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          ./tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ insert_create_0.json parse result END================[0m
+[1m[40;32m================ insert_create_0.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     10
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         32766
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          ./tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ insert_create_0.json parse result END================[0m
+Spent 0.3150 seconds to create 10 tables with 10 thread(s)
+
+[1m[40;32m================ insert_insert_0.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     10
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         32766
+      timeStampStep:     10000
+      startTimestamp:    now
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          ./tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ insert_insert_0.json parse result END================[0m
+Spent 0.03 seconds to insert rows: 1000, affected rows: 1000 with 10 thread(s) into db.stb. 40000.00 records/second
+
+insert delay, avg:      7.20ms, max: 13ms, min: 1ms
+
+[1m[40;32m================ insert_insert_0.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     10
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         32766
+      timeStampStep:     10000
+      startTimestamp:    now
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          ./tags_1.csv
+      columnCount:       0
+        
+      tagCount:            0
+        
+
+[1m[40;32m================ insert_insert_0.json parse result END================[0m
+Spent 0.03 seconds to insert rows: 1000, affected rows: 1000 with 10 thread(s) into db.stb. 31250.00 records/second
+
+insert delay, avg:     10.50ms, max: 19ms, min: 0ms
+
+[1m[40;32m================ insert_insert_0.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     10
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         32766
+      timeStampStep:     10000
+      startTimestamp:    now
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          ./tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ insert_insert_0.json parse result END================[0m
+Spent 0.03 seconds to insert rows: 1000, affected rows: 1000 with 10 thread(s) into db.stb. 35714.29 records/second
+
+insert delay, avg:      8.60ms, max: 17ms, min: 2ms
+
+[1m[40;32m================ insert_create_0.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     10
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         32766
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          ./tags_2.csv
+      columnCount:       20
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:DOUBLE column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:DOUBLE column[7]:DOUBLE column[8]:DOUBLE column[9]:DOUBLE column[10]:int column[11]:int column[12]:int column[13]:int column[14]:int column[15]:int column[16]:int column[17]:int column[18]:int column[19]:int 
+      tagCount:            5
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) tag[3]:BINARY(32) tag[4]:BINARY(32) 
+
+[1m[40;32m================ insert_create_0.json parse result END================[0m
+Spent 0.0210 seconds to create 10 tables with 10 thread(s)
+
+[1m[40;32m================ insert_create_0.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     10
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         32766
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          ./tags_2.csv
+      columnCount:       20
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:DOUBLE column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:DOUBLE column[7]:DOUBLE column[8]:DOUBLE column[9]:DOUBLE column[10]:int column[11]:int column[12]:int column[13]:int column[14]:int column[15]:int column[16]:int column[17]:int column[18]:int column[19]:int 
+      tagCount:            5
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) tag[3]:BINARY(32) tag[4]:BINARY(32) 
+
+[1m[40;32m================ insert_create_0.json parse result END================[0m
+Spent 0.0420 seconds to create 10 tables with 10 thread(s)
+
+[1m[40;32m================ insert_create_0.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     10
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         32766
+      timeStampStep:     1
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          ./tags_2.csv
+      columnCount:       20
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:DOUBLE column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:DOUBLE column[7]:DOUBLE column[8]:DOUBLE column[9]:DOUBLE column[10]:int column[11]:int column[12]:int column[13]:int column[14]:int column[15]:int column[16]:int column[17]:int column[18]:int column[19]:int 
+      tagCount:            5
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) tag[3]:BINARY(32) tag[4]:BINARY(32) 
+
+[1m[40;32m================ insert_create_0.json parse result END================[0m
+Spent 0.3140 seconds to create 10 tables with 10 thread(s)
+
+[1m[40;32m================ insert_insert_0.json parse result START ================[0m
+host:                       127.0.0.1:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     10
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         32766
+      timeStampStep:     10000
+      startTimestamp:    now
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          ./tags_2.csv
+      columnCount:       20
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:DOUBLE column[3]:DOUBLE column[4]:DOUBLE column[5]:DOUBLE column[6]:DOUBLE column[7]:DOUBLE column[8]:DOUBLE column[9]:DOUBLE column[10]:int column[11]:int column[12]:int column[13]:int column[14]:int column[15]:int column[16]:int column[17]:int column[18]:int column[19]:int 
+      tagCount:            5
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) tag[3]:BINARY(32) tag[4]:BINARY(32) 
+
+[1m[40;32m================ insert_insert_0.json parse result END================[0m
+Spent 0.04 seconds to insert rows: 1000, affected rows: 1000 with 10 thread(s) into db.stb. 27777.78 records/second
+
+insert delay, avg:     16.90ms, max: 26ms, min: 6ms
+

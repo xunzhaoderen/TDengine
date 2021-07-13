@@ -37,7 +37,7 @@ c1.execute('use db')
 
 with open(f"query_execution_time.log", 'w') as f:
     f.write("query execution start\n")
-with open("queryList.txt", 'r') as queryFile:
+with open("queryList_3.txt", 'r') as queryFile:
     Lines = queryFile.readlines()
 
     for i in Lines:

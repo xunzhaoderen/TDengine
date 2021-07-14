@@ -27,7 +27,7 @@ class TDTestCase:
     def init(self, conn, logSql):
         tdLog.debug("start to execute %s" % __file__)
         tdSql.init(conn.cursor(), logSql)
-        self.jsonMaker = stepJsonGeneration('127.0.0.1', 5)
+        self.jsonMaker = stepJsonGeneration('20.98.75.200', 100000000)
 
 
     def run(self):
@@ -35,9 +35,9 @@ class TDTestCase:
         self.jsonMaker.csvGeneration(2, "2")
         self.jsonMaker.csvGeneration(3, "3")
         self.jsonMaker.csvGeneration(4, "4")
-        self.jsonMaker.create_JSON_gen(50,2)
+        self.jsonMaker.create_JSON_gen(100000000,1)
         self.jsonMaker.insert_JSON_gen(5)
-        self.jsonMaker.query_JSON_gen(5, "select count(*) from stb", 1)
+        self.jsonMaker.query_JSON_gen(100, "select count(*) from stb", 1)
     def stop(self):
         tdSql.close()
         tdLog.success("%s successfully executed" % __file__)

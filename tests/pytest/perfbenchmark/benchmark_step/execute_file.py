@@ -7,9 +7,10 @@ import threading
 
 
 def executeFile(ThreadID, fileName):
-    path = '/home/ubuntu/TDinternal/community/tests/pytest/perfbenchmark/billion_benchmark/benchmark_step/JSON'
-    os.system(
-        f'sudo taosdemo -f {path}/{fileName}_{ThreadID}.json > 1 > /dev/null')
+    path = '/home/ubuntu/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON'
+    print(f'sudo taosdemo -f {path}/{fileName}_{ThreadID}.json > 1 > /dev/null')
+    # os.system(
+    #     f'sudo taosdemo -f {path}/{fileName}_{ThreadID}.json > 1 > /dev/null')
 
 
 def executeCreatefile(id):
@@ -48,5 +49,3 @@ def executeInsertfile(id, taosdemoNum):
     for i in range(len(threadList)):
         print(threadList[i])
         threadList[i].join()
-
-

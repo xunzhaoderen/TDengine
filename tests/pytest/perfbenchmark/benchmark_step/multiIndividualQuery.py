@@ -8,17 +8,24 @@ import sys
 import getopt
 import time
 
-def executeQueryCommand(query):
-    with open("query_execution_time.log", 'a') as f:
+def executeQueryCommand(query, c1):
+    with open("query_execution_time_2.log", 'a') as f:
         f.write(f"execute\t{query}\n")
+        print(f"execute\t{query}\n")
         timeStart = datetime.datetime.now()
-        c1.execute('select count(tbname) from stb')
+        try:
+            c1.execute(query)
+        except Exception as e:
+            f.write(f'error {e} has occured\n')
         timeEnd = datetime.datetime.now()
+        print(f"start time:\t {timeStart}\n")
+        print(f"end time:\t {timeEnd}\n\n")
+        print(f"time passed :\t {timeEnd - timeStart}\n\n")
         f.write(f"start time:\t {timeStart}\n")
         f.write(f"end time:\t {timeEnd}\n\n")
         f.write(f"time passed :\t {timeEnd - timeStart}\n\n")     
 
-add = 'localhost'
+add = '20.98.75.200'
 try:
     opts, args = getopt.gnu_getopt(sys.argv,"ha:o:",["address="])
 except getopt.GetoptError:
@@ -35,13 +42,13 @@ conn = taos.connect(host=add, user="root", password="taosdata", config="/etc/tao
 c1 = conn.cursor()
 c1.execute('use db')
 
-with open(f"query_execution_time.log", 'w') as f:
+with open(f"query_execution_time_2.log", 'w') as f:
     f.write("query execution start\n")
 with open("queryList_3.txt", 'r') as queryFile:
     Lines = queryFile.readlines()
 
     for i in Lines:
-        executeQueryCommand(i)
+            executeQueryCommand(i, c1)
 
 c1.close()
 conn.close()

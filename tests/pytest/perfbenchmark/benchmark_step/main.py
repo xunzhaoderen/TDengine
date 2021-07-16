@@ -10,17 +10,24 @@ import getopt
 
 from fabric import Connection
 
+# function for launching taosdemo query with thread  
 def concurrentQuery(path, fileName):
     # os.system(
     #     f'sudo taosdemo -f {path}/{fileName}.json')
     print(f'sudo taosdemo -f {path}/{fileName}')
 
+
+# function for letting the other ubuntu run taosdemo insert
 def ConnThread(connection, ThreadID, taosdemo):
     with connection.cd('/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step'):
         connection.run(f'sudo python3 execute_file_parallel.py -i {ThreadID} -t {taosdemo}')
 
-def queryThread(round, path, fileName, file):
+
+# function for invoking multiple taosdemo to run query more than 100
+def queryThread(round, path, fileName, file, concurrent = False,round2 = 0):
     threadList = []
+
+    #create round number of thread for query
     for i in range(round):
         threadList.append(threading.Thread(
             target=concurrentQuery, args=(path, fileName,)))
@@ -28,12 +35,26 @@ def queryThread(round, path, fileName, file):
     time_start = datetime.datetime.now()
     for i in range(len(threadList)):
         threadList[i].start()
+    
+    #if concurrent set to true, lanuch the second ubuntu and lanuch round2 number of taosdemo for query
+    if concurrent:
+        conn1 = Connection("{}@{}".format('root', '52.151.27.227'),
+                connect_kwargs={"password": "{}".format('tbase125!')})
+        with conn1.cd('/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step'):
+            conn1.run(f'sudo execute_query_file_parallel.py -q {fileName} -t {round2}')
+    
+    
     for i in range(len(threadList)):
         threadList[i].join()
     time_end = datetime.datetime.now()
+    conn1.close()
+
+    #writting log. For memory, please use grafana
     file.write(f"start time {time_start}\n")
     file.write(f"end time {time_end}\n")
     file.write(f"durination {time_end - time_start}\n\n\n")
+
+
 
 testType = "none"
 addr = '20.98.75.200'
@@ -84,6 +105,7 @@ elif testType == "insertParallel":
     f.write(f"start time {time_start}\n")
     f.write(f"end time {time_end}\n")
     f.write(f"durination {time_end - time_start}\n")
+    conn1.close()
 
 
 elif testType == "query_normal":
@@ -103,26 +125,26 @@ elif testType == "query_concurrent":
     queryThread(1,path, 'query_create_2.json', f)
 
     f.write("2-500\n")
-    queryThread(5,path, 'query_create_2.json', f)
+    queryThread(3,path, 'query_create_2.json', f,True,2)
 
     f.write("2-1000\n")
-    queryThread(10,path, 'query_create_2.json', f)
+    queryThread(5,path, 'query_create_2.json', f,True, 5)
 
     f.write("2-5000\n")
-    queryThread(50,path, 'query_create_2.json', f)
+    queryThread(25,path, 'query_create_2.json', f, True, 25)
 
     #test4 query 3
     f.write("3-100\n")
     queryThread(1,path, 'query_create_3.json', f)
 
     f.write("3-500\n")
-    queryThread(5,path, 'query_create_3.json', f)
+    queryThread(3,path, 'query_create_3.json', f,True,2)
 
     f.write("3-1000\n")
-    queryThread(10,path, 'query_create_3.json', f)
+    queryThread(10,path, 'query_create_3.json', f,True, 5)
 
     f.write("3-5000\n")
-    queryThread(50,path, 'query_create_3.json', f)
+    queryThread(50,path, 'query_create_3.json', f, True, 25)
 
     #test4 query 4
     f.write("4-30%\n")
@@ -149,16 +171,17 @@ elif testType == "query_concurrent":
         f.write(f"7-{50*i+50}\n")
         queryThread(i+1,path, 'query_create_7_1.json', f)
 
-
 elif testType == "query_continous":
     path = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON'
     f.write("start running concurrent query benchmark test with insert\n")
     execute_file.executeInsertfile_daemon(5)
 
     for i in range(7):
-        for j in [1,2,4,10]:
+        for j in [1,2,4]:
             f.write(f"{i+1}-{50*j}\n")
             queryThread(j,path, f'query_create_5_{i+1}_1.json', f)
+        f.write(f"{i+1}-{50*10}\n")
+        queryThread(5,path, f'query_create_5_{i+1}_1.json', f,True,5)
 
 elif testType == 'contious_query':
     execute_file.executeInsertfile_daemon(5)
@@ -178,13 +201,10 @@ elif testType == 'contious_query':
     c1.execute('create table stream4 as select spread(col2) from stb where t1 = ‘beijing’ interval(7s);')
     time.sleep(300)
     f.write(f"5 start time {datetime.datetime.now()}\n")
-    c1.execute('create table stream3 as select max(col2), min(col1), average(col3) from stb where t0 = 1 interval(10s) sliding (5s);')
+    c1.execute('create table stream5 as select max(col2), min(col1), average(col3) from stb where t0 = 1 interval(10s) sliding (5s);')
     time.sleep(300)
     f.write(f"6 start time {datetime.datetime.now()}\n")
-    c1.execute('create table stream5 as select select bottom(col0) from (select avg(col0) as col0 from stb interval (1m) sliding (5s)) interval (10s);')
-    time.sleep(300)
-    f.write(f"7 start time {datetime.datetime.now()}\n")
-    c1.execute('create table stream6 as select count(*) from stb where ts > now – 10m and col1 > x interval (20s);')
+    c1.execute('create table stream6 as select count(*) from stb where ts > now - 10m and col1 > x interval (20s);')
     time.sleep(300)
 
 

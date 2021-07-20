@@ -18,9 +18,9 @@ def concurrentQuery(path, fileName):
 
 
 # function for letting the other ubuntu run taosdemo insert
-def ConnThread(connection, ThreadID, taosdemo):
+def ConnThread(connection, ThreadID, taosdemo, tableNum):
     with connection.cd('/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step'):
-        connection.run(f'sudo python3 execute_file_parallel.py -i {ThreadID} -t {taosdemo}')
+        connection.run(f'sudo python3 execute_file_parallel.py -i {ThreadID} -t {taosdemo} -n {tableNum}')
 
 
 # function for invoking multiple taosdemo to run query more than 100
@@ -35,13 +35,12 @@ def queryThread(round, path, fileName, file, concurrent = False,round2 = 0):
     time_start = datetime.datetime.now()
     for i in range(len(threadList)):
         threadList[i].start()
-    
+    conn1 = Connection("{}@{}".format('root', '52.151.27.227'),
+            connect_kwargs={"password": "{}".format('tbase125!')})
     #if concurrent set to true, lanuch the second ubuntu and lanuch round2 number of taosdemo for query
     if concurrent:
-        conn1 = Connection("{}@{}".format('root', '52.151.27.227'),
-                connect_kwargs={"password": "{}".format('tbase125!')})
         with conn1.cd('/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step'):
-            conn1.run(f'sudo execute_query_file_parallel.py -q {fileName} -t {round2}')
+            conn1.run(f'sudo python3 execute_query_file_parallel.py -q {fileName} -t {round2}')
     
     
     for i in range(len(threadList)):
@@ -58,8 +57,11 @@ def queryThread(round, path, fileName, file, concurrent = False,round2 = 0):
 
 testType = "none"
 addr = '20.98.75.200'
+clientAddr = '13.77.175.112'
+tableNum = 100000000
+fileName = "output.log"
 try:
-    opts, args = getopt.gnu_getopt(sys.argv, "ht:a:", ["type=,address="])
+    opts, args = getopt.gnu_getopt(sys.argv, "ht:a:n:b:f:", ["type=,address=,tableNum=,clientAddr=,fileName="])
 except getopt.GetoptError:
     print('test.py -t <testType>')
     sys.exit(2)
@@ -71,14 +73,20 @@ for opt, arg in opts:
         testType = arg
     elif opt in ("-a", "--address"):
         addr = arg
+    elif opt in ("-n", "--tableNum"):
+        tableNum = arg
+    elif opt in ("-b", "--clientAddr"):
+        clientAddr = arg
+    elif opt in ("-f", "--fileName"):
+        fileName = arg
 
 
-f = open("output.log", "w")
+f = open(fileName, "w")
 
 if testType == "create":
     f.write("start running creation benchmark test")
     time_start = datetime.datetime.now()
-    execute_file.executeCreatefile()
+    execute_file.executeCreatefile(tableNum)
     time_end = datetime.datetime.now()
     f.write(f"start time {time_start}\n")
     f.write(f"end time {time_end}\n")
@@ -94,12 +102,12 @@ elif testType == "insert":
     f.write(f"durination {time_end - time_start}\n")
 
 elif testType == "insertParallel":
-    conn1 = Connection("{}@{}".format('root', '52.151.27.227'),
+    conn1 = Connection("{}@{}".format('root', clientAddr),
                    connect_kwargs={"password": "{}".format('tbase125!')})
-    thread1 = threading.Thread(target=ConnThread, args=(conn1, 2,5))
+    thread1 = threading.Thread(target=ConnThread, args=(conn1, 2,5, tableNum))
     time_start = datetime.datetime.now()
     thread1.start()
-    execute_file.executeInsertfileParallel(1,5)
+    execute_file.executeInsertfileParallel(1,5,tableNum)
     thread1.join()
     time_end = datetime.datetime.now()
     f.write(f"start time {time_start}\n")
@@ -166,15 +174,11 @@ elif testType == "query_concurrent":
         f.write(f"6-{100*i+100}\n")
         queryThread(i+1,path, 'query_create_6.json', f)
     
-    #test4 query 7
-    for i in range(3):
-        f.write(f"7-{50*i+50}\n")
-        queryThread(i+1,path, 'query_create_7_1.json', f)
 
 elif testType == "query_continous":
     path = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON'
     f.write("start running concurrent query benchmark test with insert\n")
-    execute_file.executeInsertfile_daemon(5)
+    execute_file.executeInsertfile_daemon(2)
 
     for i in range(7):
         for j in [1,2,4]:
@@ -184,28 +188,30 @@ elif testType == "query_continous":
         queryThread(5,path, f'query_create_5_{i+1}_1.json', f,True,5)
 
 elif testType == 'contious_query':
-    execute_file.executeInsertfile_daemon(5)
+    #execute_file.executeInsertfile_daemon(5)
     conn = taos.connect(host=addr, user="root", password="taosdata", config="/etc/taos")
     c1 = conn.cursor()
     c1.execute('use db')
     f.write(f"1 start time {datetime.datetime.now()}\n")
-    c1.execute('create table stream1 as select last_row(*) from stb interval(1s);')
+    c1.execute('create table stream1 as select last(ts) from stb interval(1s);')
     time.sleep(300)
     f.write(f"2 start time {datetime.datetime.now()}\n")
-    c1.execute('create table stream2 as select max(col2), min(col1), average(col3) from stb interval(10s) sliding (5s);')
+    c1.execute('create table stream2 as select max(col2) from stb interval(10s) sliding (5s);')
     time.sleep(300)
     f.write(f"3 start time {datetime.datetime.now()}\n")
-    c1.execute('create table stream3 as select max(col2), min(col1), average(col3) from stb where t0 = 1 interval(10s) sliding (5s);')
+    c1.execute('create table stream3 as select min(col1) from stb where t0 = 1 interval(10s) sliding (5s);')
     time.sleep(300)
     f.write(f"4 start time {datetime.datetime.now()}\n")
-    c1.execute('create table stream4 as select spread(col2) from stb where t1 = ‘beijing’ interval(7s);')
+    c1.execute('create table stream4 as select spread(col2) from stb where t1 = \'beijing\' interval(7s);')
     time.sleep(300)
     f.write(f"5 start time {datetime.datetime.now()}\n")
-    c1.execute('create table stream5 as select max(col2), min(col1), average(col3) from stb where t0 = 1 interval(10s) sliding (5s);')
+    c1.execute('create table stream5 as select avg(col1) from stb where t0 = 1 interval(10s) sliding (5s);')
     time.sleep(300)
     f.write(f"6 start time {datetime.datetime.now()}\n")
-    c1.execute('create table stream6 as select count(*) from stb where ts > now - 10m and col1 > x interval (20s);')
+    c1.execute('create table stream6 as select count(ts) from stb where ts > now - 10m and col1 > 10000 interval (20s);')
     time.sleep(300)
+    c1.close()
+    conn.close()
 
 
 f.close()

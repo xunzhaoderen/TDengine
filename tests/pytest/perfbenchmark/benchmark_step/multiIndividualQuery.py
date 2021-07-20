@@ -9,7 +9,7 @@ import getopt
 import time
 
 def executeQueryCommand(query, c1):
-    with open("query_execution_time_2.log", 'a') as f:
+    with open("query_execution_time_3.log", 'a') as f:
         f.write(f"execute\t{query}\n")
         print(f"execute\t{query}\n")
         timeStart = datetime.datetime.now()
@@ -42,7 +42,7 @@ conn = taos.connect(host=add, user="root", password="taosdata", config="/etc/tao
 c1 = conn.cursor()
 c1.execute('use db')
 
-with open(f"query_execution_time_2.log", 'w') as f:
+with open(f"query_execution_time_3.log", 'w') as f:
     f.write("query execution start\n")
 with open("queryList_3.txt", 'r') as queryFile:
     Lines = queryFile.readlines()

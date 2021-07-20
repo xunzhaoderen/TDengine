@@ -11,7 +11,7 @@ import getopt
 def executeQueryFile(query):
     path = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON'
     # os.system(
-    #     f'sudo taosdemo -f {path}/{fileName}_{ThreadID}.json')
+    #     f'sudo taosdemo -f {path}/{query}.json')
     print(f'sudo taosdemo -f {path}/{query}.json')
 
 
@@ -32,9 +32,9 @@ for opt, arg in opts:
     elif opt in ("-t", "--taosdemo"):
         taosdemo = arg
 
-
+#time.sleep(30)
 threadList = []
-for i in range(0, taosdemo):
+for i in range(0, int(taosdemo)):
     threadList.append(threading.Thread(
         target=executeQueryFile, args=(query,)))
 

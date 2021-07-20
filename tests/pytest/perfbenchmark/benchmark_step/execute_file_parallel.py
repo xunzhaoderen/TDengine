@@ -14,8 +14,10 @@ import execute_file
 id = 1
 taosdemo = 5
 addr = '20.98.75.200'
+daemon = 'False'
+tableNum = 100000000
 try:
-    opts, args = getopt.gnu_getopt(sys.argv, "hi:t:", ["id=,taosdemo="])
+    opts, args = getopt.gnu_getopt(sys.argv, "hi:t:d:n:", ["id=,taosdemo=,daemon=,tableNum="])
 except getopt.GetoptError:
     print('test.py -t <testType>')
     sys.exit(2)
@@ -27,7 +29,13 @@ for opt, arg in opts:
         id = arg
     elif opt in ("-t", "--taosdemo"):
         taosdemo = arg
+    elif opt in ("-d", "--daemon"):
+        taosdemo = arg
+    elif opt in ("-n", "--tableNum"):
+        tableNum = arg
 
-
-execute_file.executeInsertfileParallel(id,taosdemo)
+if daemon == 'False':
+    execute_file.executeInsertfileParallel(id,taosdemo,int(tableNum))
+else:
+    execute_file.executeInsertfile_daemon(taosdemo,3)
 

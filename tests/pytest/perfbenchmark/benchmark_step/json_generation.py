@@ -35,7 +35,6 @@ class stepJsonGeneration:
         taosdemoCfg.alter_insert_cfg('thread_count_create_tbl', 10)
         taosdemoCfg.alter_insert_cfg('result_file', "./insert_res.txt")
         stbCfg['child_table_exists'] = 'no'
-        stbCfg['insert_rows'] = 100
         stbCfg['max_sql_len'] = 1024000
         stbCfg['insert_rows'] = 0
         stbCfg['tags_file'] = './tags.csv'
@@ -59,14 +58,14 @@ class stepJsonGeneration:
             stbCfg['tags_file'] = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_4.csv'
         for i in range(5):
             stbCfg["childtable_prefix"] = f"stb_{i}_"
-            taosdemoCfg.import_stbs([stbCfg])
             stbCfg['childtable_count'] = tables//5
+            taosdemoCfg.import_stbs([stbCfg])
             taosdemoCfg.generate_insert_cfg(
-                'perfbenchmark/benchmark_step/JSON', f"create_{i}")
+                'perfbenchmark/benchmark_step/JSON', f"create_{tables}_{i}")
 
     def insert_JSON_gen(self, taosdemo):
         taosdemoPerGroup = taosdemo // 5
-        tablePerJson = self.table//5//taosdemoPerGroup
+        tablePerJson = self.table //5
         stbCfg = taosdemoCfg.get_template('insert_stbs')
         taosdemoCfg.alter_insert_cfg('host', self.host)
         taosdemoCfg.alter_db('drop', 'no')
@@ -77,31 +76,32 @@ class stepJsonGeneration:
         stbCfg["batch_create_tbl_num"] = 25
         stbCfg['timestamp_step'] = 1000
         stbCfg["max_sql_len"] = 1024000
-        stbCfg['start_timestamp'] = "2021-07-10 00:00:00.000"
+        stbCfg["childtable_count"] = self.table
+        #stbCfg['start_timestamp'] = "now"
         stbCfg['child_table_exists'] = 'yes'
         for i in range(5):
             stbCfg["childtable_prefix"] = f"stb_{i}_"
-            for j in range(taosdemoPerGroup):
-                stbCfg["childtable_offset"] = j * tablePerJson
-                stbCfg["childtable_limit"] = tablePerJson
-                if self.schemaScale == 1:
-                    stbCfg["columns"] = self.schema1[0]
-                    stbCfg["tags"] = self.schema1[1]
-                    stbCfg['tags_file'] = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv'
-                elif self.schemaScale == 2:
-                    stbCfg["columns"] = self.schema2[0]
-                    stbCfg["tags"] = self.schema2[1]
-                    stbCfg['tags_file'] = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_2.csv'
-                elif self.schemaScale == 3:
-                    stbCfg["columns"] = self.schema3[0]
-                    stbCfg["tags"] = self.schema3[1]
-                    stbCfg['tags_file'] = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_3.csv'
-                elif self.schemaScale == 4:
-                    stbCfg["columns"] = self.schema4[0]
-                    stbCfg["tags"] = self.schema4[1]
-                    stbCfg['tags_file'] = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_4.csv'
-                taosdemoCfg.generate_insert_cfg(
-                    'perfbenchmark/benchmark_step/JSON', f"insert_{j*5+i}")
+            stbCfg["childtable_offset"] = i * tablePerJson
+            stbCfg["childtable_limit"] = tablePerJson
+            if self.schemaScale == 1:
+                stbCfg["columns"] = self.schema1[0]
+                stbCfg["tags"] = self.schema1[1]
+                stbCfg['tags_file'] = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv'
+            elif self.schemaScale == 2:
+                stbCfg["columns"] = self.schema2[0]
+                stbCfg["tags"] = self.schema2[1]
+                stbCfg['tags_file'] = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_2.csv'
+            elif self.schemaScale == 3:
+                stbCfg["columns"] = self.schema3[0]
+                stbCfg["tags"] = self.schema3[1]
+                stbCfg['tags_file'] = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_3.csv'
+            elif self.schemaScale == 4:
+                stbCfg["columns"] = self.schema4[0]
+                stbCfg["tags"] = self.schema4[1]
+                stbCfg['tags_file'] = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_4.csv'
+            taosdemoCfg.import_stbs([stbCfg])
+            taosdemoCfg.generate_insert_cfg(
+                'perfbenchmark/benchmark_step/JSON', f"insert_{self.table}_{i}")
 
     def query_JSON_gen(self, concurrent, sql, fileName):
         taosdemoCfg.alter_query_cfg("host", self.host)
@@ -117,6 +117,7 @@ class stepJsonGeneration:
             'perfbenchmark/benchmark_step/JSON', f"create_{fileName}")
     
     def query_JSON_gen_rand_table(self, concurrent,sql1, sql2, filename):
+
         taosdemoCfg.alter_query_cfg("host", self.host)
         taosdemoCfg.alter_query_cfg("query_times", 10)
         taosdemoCfg.alter_query_tb("query_interval", 0)

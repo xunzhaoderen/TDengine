@@ -671,3 +671,1028 @@ database[0]:
         tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
 
 [1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_2.json parse result END================[0m
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_1.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000000
+      childTblPrefix:    stb_1_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_1.json parse result END================[0m
+Spent 499.8850 seconds to create 2000000 tables with 10 thread(s)
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_2.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000000
+      childTblPrefix:    stb_2_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_2.json parse result END================[0m
+Spent 500.2390 seconds to create 2000000 tables with 10 thread(s)
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_0.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000000
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_0.json parse result END================[0m
+Spent 500.5990 seconds to create 2000000 tables with 10 thread(s)
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_3.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000000
+      childTblPrefix:    stb_3_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_3.json parse result END================[0m
+Spent 500.6990 seconds to create 2000000 tables with 10 thread(s)
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_4.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000000
+      childTblPrefix:    stb_4_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_4.json parse result END================[0m
+Spent 501.8280 seconds to create 2000000 tables with 10 thread(s)
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_2.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     10000000
+      childTblPrefix:    stb_2_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_2.json parse result END================[0m
+Spent 989.12 seconds to insert rows: 200000000, affected rows: 200000000 with 10 thread(s) into db.stb. 202200.34 records/second
+
+insert delay, avg:      3.85ms, max: 1555ms, min: 1ms
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_0.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     10000000
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_0.json parse result END================[0m
+Spent 994.20 seconds to insert rows: 200000000, affected rows: 200000000 with 10 thread(s) into db.stb. 201167.17 records/second
+
+insert delay, avg:      3.89ms, max: 1564ms, min: 1ms
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_4.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     10000000
+      childTblPrefix:    stb_4_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_4.json parse result END================[0m
+Spent 1002.05 seconds to insert rows: 200000000, affected rows: 200000000 with 10 thread(s) into db.stb. 199590.84 records/second
+
+insert delay, avg:      3.88ms, max: 2615ms, min: 0ms
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_2.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000000
+      childTblPrefix:    stb_2_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_2.json parse result END================[0m
+Spent 525.2670 seconds to create 2000000 tables with 10 thread(s)
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_1.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000000
+      childTblPrefix:    stb_1_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_1.json parse result END================[0m
+Spent 525.5060 seconds to create 2000000 tables with 10 thread(s)
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_0.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000000
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_0.json parse result END================[0m
+Spent 527.4850 seconds to create 2000000 tables with 10 thread(s)
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_4.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000000
+      childTblPrefix:    stb_4_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_4.json parse result END================[0m
+Spent 527.8620 seconds to create 2000000 tables with 10 thread(s)
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_3.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    no
+      childTblCount:     2000000
+      childTblPrefix:    stb_3_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        0
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_create_10000000_3.json parse result END================[0m
+Spent 528.9760 seconds to create 2000000 tables with 10 thread(s)
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_4.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     10000000
+      childTblPrefix:    stb_4_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_4.json parse result END================[0m
+Spent 993.29 seconds to insert rows: 200000000, affected rows: 200000000 with 10 thread(s) into db.stb. 201351.88 records/second
+
+insert delay, avg:      3.90ms, max: 1909ms, min: 1ms
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_0.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     10000000
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_0.json parse result END================[0m
+Spent 995.48 seconds to insert rows: 200000000, affected rows: 200000000 with 10 thread(s) into db.stb. 200908.10 records/second
+
+insert delay, avg:      3.89ms, max: 1930ms, min: 1ms
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_2.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     10000000
+      childTblPrefix:    stb_2_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_2.json parse result END================[0m
+Spent 999.35 seconds to insert rows: 200000000, affected rows: 200000000 with 10 thread(s) into db.stb. 200130.89 records/second
+
+insert delay, avg:      3.92ms, max: 1388ms, min: 0ms
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_0.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     10000000
+      childTblPrefix:    stb_0_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_0.json parse result END================[0m
+Spent 996.00 seconds to insert rows: 200000000, affected rows: 200000000 with 10 thread(s) into db.stb. 200804.22 records/second
+
+insert delay, avg:      3.85ms, max: 12325ms, min: 1ms
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_2.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     10000000
+      childTblPrefix:    stb_2_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_2.json parse result END================[0m
+Spent 1041.55 seconds to insert rows: 200000000, affected rows: 200000000 with 10 thread(s) into db.stb. 192021.88 records/second
+
+insert delay, avg:      3.89ms, max: 12427ms, min: 1ms
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_4.json parse result START ================[0m
+host:                       20.98.75.200:6030
+user:                       root
+configDir:                  /etc/taos
+resultFile:                 ./insert_res.txt
+thread num of insert data:  10
+thread num of create table: 10
+number of records per req:  32766
+max sql length:             32766
+database count:          1
+database[0]:
+  database[0] name:       db
+  drop:                  no
+  blocks:                6
+  cache:                 16
+  days:                  10
+  keep:                  3650
+  replica:               1
+  minRows:               100
+  maxRows:               4096
+  comp:                  2
+  walLevel:              1
+  fsync:                 3000
+  quorum:                1
+  precision:             ms
+  super table count:     1
+  super table[0]:
+      stbName:           stb
+      autoCreateTable:   no
+      childTblExists:    yes
+      childTblCount:     10000000
+      childTblPrefix:    stb_4_
+      dataSource:        rand
+      iface:             taosc
+      insertRows:        100
+      interlace rows:    0
+      interlaceRows:     0
+      disorderRange:     1000
+      disorderRatio:     0
+      maxSqlLen:         1024000
+      timeStampStep:     1000
+      startTimestamp:    2020-10-01 00:00:00.000
+      sampleFormat:      csv
+      sampleFile:        ./sample.csv
+      tagsFile:          /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/tags_1.csv
+      columnCount:       4
+        column[0]:DOUBLE column[1]:DOUBLE column[2]:int column[3]:int 
+      tagCount:            3
+        tag[0]:BINARY(32) tag[1]:BINARY(32) tag[2]:BINARY(32) 
+
+[1m[40;32m================ /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON/insert_insert_10000000_4.json parse result END================[0m
+Spent 1055.65 seconds to insert rows: 200000000, affected rows: 200000000 with 10 thread(s) into db.stb. 189456.19 records/second
+
+insert delay, avg:      3.88ms, max: 7261ms, min: 1ms
+

@@ -1,6 +1,7 @@
 #!/bin/bash
 
-tableNum=100000000
+tableNum=10000000
+standardTimeout=600
 addr="20.98.75.200"
 addr2="20.98.76.209"
 clientAddr="ecs4"
@@ -10,6 +11,8 @@ while getopts "n:a:b:c:q:" opt; do
     case $opt in
     n)
         tableNum=$OPTARG
+        standardTimeout=$((600*$tableNum/10000000))
+        echo "$standardTimeout"
         ;;
     a)
         addr=$OPTARG
@@ -40,9 +43,27 @@ while getopts "n:a:b:c:q:" opt; do
     esac
 done
 
+cd ../..
+echo `python3 test.py -f perfbenchmark/benchmark_step/test.py 1>/dev/null`
+cd perfbenchmark/benchmark_step
+
 ssh root@$addr2 <<eeooff
-    systemctl start taosd
+    systemctl restart taosd
+    exit
+eeooff
+ssh root@$addr <<eeooff
+    systemctl restart taosd
     exit
 eeooff
 systemctl start taosd
-sleep (3600)
+sleep $standardTimeout
+
+echo "start to run concurrent query for select sum(col1), avg(col2) from stb for 50 times"
+echo `date`
+echo `sed -i "s/for number in.*/for number in {0..1} /g" JSON/go.sh`
+echo `JSON/go.sh 1>/dev/null`
+echo "last_row() concurrent finished"
+echo `date`
+echo ''
+
+rm JSON/*.json

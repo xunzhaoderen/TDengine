@@ -10,8 +10,8 @@ import getopt
 
 def executeQueryFile(query):
     path = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON'
-    # os.system(
-    #     f'sudo taosdemo -f {path}/{query}.json')
+    os.system(
+        f'sudo taosdemo -f {path}/{query}.json 1>/dev/null')
     print(f'sudo taosdemo -f {path}/{query}.json')
 
 

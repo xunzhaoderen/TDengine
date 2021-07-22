@@ -49,6 +49,7 @@ with open("queryList_3.txt", 'r') as queryFile:
 
     for i in Lines:
             executeQueryCommand(i, c1)
+            time.sleep(5)
 
 c1.close()
 conn.close()

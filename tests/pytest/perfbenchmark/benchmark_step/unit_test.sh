@@ -1,6 +1,7 @@
-!/bin/bash
+#!/bin/bash
 
-tableNum=100000000
+tableNum=10000000
+standardTimeout=600
 addr="20.98.75.200"
 addr2="20.98.76.209"
 clientAddr="ecs4"
@@ -9,6 +10,8 @@ while getopts "n:a:b:c:" opt; do
     case $opt in
     n)
         tableNum=$OPTARG
+        standardTimeout=$((600*$tableNum/10000000))
+        echo "$standardTimeout"
         ;;
     a)
         addr=$OPTARG
@@ -35,7 +38,8 @@ while getopts "n:a:b:c:" opt; do
 done
 
 ##stopping taosd and clean the files
-ssh root@addr <<eeooff
+##also set up the cluster
+ssh root@$addr <<eeooff
     systemctl stop taosd
     rm -rf /data/taos/data/*
     systemctl start taosd
@@ -45,56 +49,45 @@ ssh root@$addr2 <<eeooff
     systemctl stop taosd
     rm -rf /data/taos/data/*
     systemctl start taosd
+    sleep 20
+    taos -s "create dnode \'ecs2:6030\'"
+    taos -s "create database db"
     exit
 eeooff
-sleep(60)
-##
-
-## setup the cluster
-echo `taos -h $add -s "create dnode 'ecs3:6030'"`
-echo `taos -h $add -s "create database db"`
 
 ## setup the json files
 cd ../..
 echo `python3 test.py -f perfbenchmark/benchmark_step/test.py 1>/dev/null`
 cd perfbenchmark/benchmark_step
-echo `scp -r /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/ $addr:/root/TDinternal/community/tests/pytest/perfbenchmark/ 1>/dev/null`
+echo "scp -r /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/ $clientAddr:/root/TDinternal/community/tests/pytest/perfbenchmark/"
+scp -r /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/ $clientAddr:/root/TDinternal/community/tests/pytest/perfbenchmark/
 
 echo "strat to create tables"
 echo `date`
-echo `python3 main.py -t create -a $addr -b $clientAddr -n $tableNum create_$tableNum.log 1>/dev/null`
+python3 main.py -t create -a $addr -b $clientAddr -n $tableNum -f create_$tableNum.log 1>/dev/null
 echo "table creation finished"
 echo `date`
+sleep 60
 
 
 ##free the buffer during table creation
 echo ''
 ssh root@$addr2 <<eeooff
-    systemctl stop taosd
+    systemctl restart taosd
     exit
 eeooff
 ssh root@$addr <<eeooff
-    systemctl stop taosd
+    systemctl restart taosd
     exit
 eeooff
-sleep (1800)
-
-ssh root@$addr2 <<eeooff
-    systemctl start taosd
-    exit
-eeooff
-ssh root@$addr <<eeooff
-    systemctl start taosd
-    exit
-eeooff
-sleep (3600)
+sleep $standardTimeout
 echo "taosd restarted"
 echo "date"
 echo ''
 
 echo "start to insert data"
 echo `date`
-echo `python3 main.py -t insertParallel -a $addr -b $clientAddr -n $tableNum -f insert_$tableNum.log 1>/dev/null`
+python3 main.py -t insertParallel -a $addr -b $clientAddr -n $tableNum -f insert_$tableNum.log 
 echo "table insert finished"
 echo `date`
 
@@ -108,15 +101,15 @@ ssh root@$addr <<eeooff
     systemctl stop taosd
     exit
 eeooff
-sleep (1800)
+sleep $standardTimeout
 
 echo "the following are the vnode size for the two servers"
-echo `ssh root@$add du -sh /data/taos/data/vnode | cut -d '	' -f 1 `
-echo `ssh root@$add2 du -sh /data/taos/data/vnode | cut -d '	' -f 1 `
+echo `ssh root@$addr du -sh /data/taos/data/vnode | cut -d '	' -f 1 `
+echo `ssh root@$addr2 du -sh /data/taos/data/vnode | cut -d '	' -f 1 `
 
 echo "the following are the mnode file size for the two servers"
-echo `ssh root@$add du -sh /data/taos/data/mnode | cut -d '	' -f 1 `
-echo `ssh root@$add2 du -sh /data/taos/data/mnode | cut -d '	' -f 1 `
+echo `ssh root@$addr du -sh /data/taos/data/mnode | cut -d '	' -f 1 `
+echo `ssh root@$addr2 du -sh /data/taos/data/mnode | cut -d '	' -f 1 `
 
 ssh root@$addr2 <<eeooff
     systemctl start taosd
@@ -126,9 +119,9 @@ ssh root@$addr <<eeooff
     systemctl start taosd
     exit
 eeooff
-sleep (3600)
+sleep $standardTimeout
 echo "taosd restarted"
-echo "date"
+echo `date`
 echo ''
 
 
@@ -137,19 +130,57 @@ echo `date`
 python3 multiIndividualQuery.py 1>/dev/null
 echo "single queries finished"
 echo `date`
+echo ''
 
-echo "start to run concurrent query for last_row()"
+echo "start to run concurrent query for last_row() 100"
 echo `date`
-taosdemo -f JSON/query_create_2_1.json 1>dev/null
+echo `taosdemo -f JSON/query_create_2_1.json 1>/dev/null`
 echo "last_row() concurrent finished"
 echo `date`
-
 echo ''
+
+echo "start to run concurrent query for last_row() 500 times"
+echo `date`
+echo `sed -i "s/for number in.*/for number in {0..5} /g" JSON/go.sh`
+echo `JSON/go.sh 1>/dev/null`
+echo "last_row() concurrent finished"
+echo `date`
+echo ''
+
+echo "start to run concurrent query for last_row() 1000 times"
+echo `date`
+echo `sed -i "s/for number in.*/for number in {0..10} /g" JSON/go.sh`
+echo `JSON/go.sh 1>/dev/null`
+echo "last_row() concurrent finished"
+echo `date`
+echo ''
+
+echo "start to run concurrent query for last_row() 1000 times"
+echo `date`
+echo `sed -i "s/for number in.*/for number in {0..50} /g" JSON/go.sh`
+echo `JSON/go.sh 1>/dev/null`
+echo "last_row() concurrent finished"
+echo `date`
+echo ''
+
+
+echo "start to run continous query"
+python3 main.py -t insertParallel -a $addr -b $clientAddr -n $tableNum -f insert_$tableNum.log >>/dev/null
+echo `date`
+echo `python3 main.py -t contious_query`
+echo `date`
+echo ''
+echo `pkill taosdemo`
+echo `ssh root@$clientAddr pkill taosdemo`
 
 ssh root@$addr2 <<eeooff
     systemctl stop taosd
     exit
 eeooff
-systemctl stop taosd
+
+ssh root@$addr <<eeooff
+    systemctl stop taosd
+    exit
+eeooff
 
 rm JSON/*.json

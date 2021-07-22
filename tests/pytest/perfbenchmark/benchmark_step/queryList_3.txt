@@ -6,8 +6,9 @@ select last_row(*) from stb_0_10000;
 select last_row(*) from stb group by t0;
 select last_row(*) from stb group by t1;
 select last_row(*) from stb group by t2;
-select count(*) from stb where col2 = 500 and ts > '2020-10-01 00:00:50.000' and t1 = \'beijing\' and t2 = \'china\';   
-select count(*) from stb where col2 = 500 and ts > '2020-10-01 00:00:50.000' and t2 = \'china\'; 
+select count(*) from stb where col2 = 500 and ts > '2020-10-01 00:00:50.000' and t1 = 'beijing' and t2 = 'china';   
+select count(*) from stb where col2 = 500 and ts > '2020-10-01 00:00:50.000' and (t1 = 'beijing' and t2 = 'china') or (t1 = 'shenzen' and t2 = 'china');
+select count(*) from stb where col2 = 500 and ts > '2020-10-01 00:00:50.000' and (t1 = 'beijing' and t2 = 'china') or (t1 = 'shenzen' and t2 = 'china') or (t1 = 'shanghai' and t2 = 'china');
 select min(col0),max(col1), avg(col2) from stb where t0 = '1' or t0 = '2' or t0 = '3';
 select min(col0),max(col1), avg(col2) from stb where t0 = '1' or t0 = '2' or t0 = '3' or t0 = '4' or t0 = '5' or t0 = '6' or t0 = '7';  
 select min(col0),max(col1), avg(col2) from stb where t0 = '1' or t0 = '2' or t0 = '3' or t0 = '4' or t0 = '5' or t0 = '6' or t0 = '7' or t0 = '8' or t0 = '9' or t0 = '10';
@@ -22,4 +23,20 @@ select avg(col1), max(col0) from stb interval (70s) sliding (5s);
 select avg(col1), max(col0) from stb interval (100s) sliding (5s);
 select sum(col1)*1.5 from stb where t1 = 'beijing';
 select sum(col1)*1.5 from stb where t1 = 'beijing' or t1 = 'shenzen';
-select sum(col1)*1.5 from stb  ;
+select sum(col1)*1.5 from stb;
+#the following are the concurrent test
+select sum(col1), avg(col2) from stb;
+select last_row(*) from stb_0_10000;
+select last(col1) - first(col1) from stb where ts between '2020-10-01 00:00:00.000' and '2020-10-01 00:00:30.000';
+select max(col0) from stb where t0 = '1' or t0 = '2' or t0 = '3' or t0 = '4' or t0 = '5' or t0 = '6' or t0 = '7' group by t1;
+select max(col0) from stb where t0 = 2 or t0 = 7 or t0 = 9 or t0 = 10 group by t1;
+select max(col0) from stb group by t1;
+select avg(col1), spread(col1) from stb interval (1m, 30s);
+select ts, col1 from stb_10000 limit 30;
+
+#the following are for continue test
+select last(ts) from stb interval(1s);
+select max(col2), min(col1), average(col3) from stb interval(10s) sliding (5s);
+select max(col2), min(col1), average(col3) from stb where t0 = 1 interval(10s) sliding (5s);
+select spread(col2) from stb where t1 = ‘beijing’ interval(7s);
+select count(ts) from stb where ts > '2020-10-01 00:00:30.000' and col1 > 10000 interval (20s);

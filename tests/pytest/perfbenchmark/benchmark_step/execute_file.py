@@ -8,8 +8,8 @@ import threading
 
 def executeFile(ThreadID, fileName, tableNum):
     path = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON'
-    # os.system(
-    #     f'sudo taosdemo -f {path}/{fileName}_{ThreadID}.json')
+    os.system(
+        f'sudo taosdemo -f {path}/{fileName}_{tableNum}_{ThreadID}.json ')
     print(f'sudo taosdemo -f {path}/{fileName}_{tableNum}_{ThreadID}.json')
 
 

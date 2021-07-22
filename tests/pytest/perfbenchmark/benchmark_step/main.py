@@ -12,8 +12,8 @@ from fabric import Connection
 
 # function for launching taosdemo query with thread  
 def concurrentQuery(path, fileName):
-    # os.system(
-    #     f'sudo taosdemo -f {path}/{fileName}.json')
+    os.system(
+        f'sudo taosdemo -f {path}/{fileName}.json 1>/dev/null')
     print(f'sudo taosdemo -f {path}/{fileName}')
 
 
@@ -192,6 +192,12 @@ elif testType == 'contious_query':
     conn = taos.connect(host=addr, user="root", password="taosdata", config="/etc/taos")
     c1 = conn.cursor()
     c1.execute('use db')
+    c1.execute('drop table if exists stream1;')
+    c1.execute('drop table if exists stream2;')
+    c1.execute('drop table if exists stream3;')
+    c1.execute('drop table if exists stream4;')
+    c1.execute('drop table if exists stream5;')
+    c1.execute('drop table if exists stream6;')
     f.write(f"1 start time {datetime.datetime.now()}\n")
     c1.execute('create table stream1 as select last(ts) from stb interval(1s);')
     time.sleep(300)

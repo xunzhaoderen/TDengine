@@ -563,6 +563,9 @@ static void shellPrintNChar(const char *str, int length, int width) {
     if (bytes == 0) {
       break;
     }
+    tscError("mbtowc src");
+    taosDumpData(str + pos, bytes);
+
     pos += bytes;
     if (pos > length) {
       break;
@@ -581,6 +584,9 @@ static void shellPrintNChar(const char *str, int length, int width) {
       printf("%lc", wc);
       continue;
     }
+
+    tscError("mbtowc dst");
+    taosDumpData(&wc, 4);
 
     totalCols += w;
     if (totalCols > width) {

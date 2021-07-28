@@ -640,15 +640,20 @@ static void setResRawPtrImpl(SSqlRes* pRes, SInternalField* pInfo, int32_t i, bo
     // string terminated char for binary data
     memset(pRes->buffer[i], 0, pInfo->field.bytes * pRes->numOfRows);
 
-    char* p = pRes->urow[i];
+    char* p = pRes->urow[i];    
     for (int32_t k = 0; k < pRes->numOfRows; ++k) {
       char* dst = pRes->buffer[i] + k * pInfo->field.bytes;
 
       if (isNull(p, TSDB_DATA_TYPE_NCHAR)) {
         memcpy(dst, p, varDataTLen(p));
       } else if (varDataLen(p) > 0) {
+        
+        tscError("before ucs4tombs");
+        taosDumpData(varDataVal(p), varDataLen(p));
         int32_t length = taosUcs4ToMbs(varDataVal(p), varDataLen(p), varDataVal(dst));
         varDataSetLen(dst, length);
+        tscError("after ucs4tombs");
+        taosDumpData(varDataVal(dst), varDataLen(dst));
 
         if (length == 0) {
           tscError("charset:%s to %s. val:%s convert failed.", DEFAULT_UNICODE_ENCODEC, tsCharset, (char*)p);

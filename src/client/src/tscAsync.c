@@ -58,7 +58,7 @@ void doAsyncQuery(STscObj* pObj, SSqlObj* pSql, __async_cb_func_t fp, void* para
   strntolower(pSql->sqlstr, sqlstr, (int32_t)sqlLen);
 
   tscDebugL("0x%"PRIx64" SQL: %s", pSql->self, pSql->sqlstr);
-  taosDumpData(pSql->sqlstr, strlen(pSql->sqlstr));
+  taosDumpData(pSql->sqlstr, (int32_t)strlen(pSql->sqlstr));
   
   pCmd->resColumnId = TSDB_RES_COL_ID;
 

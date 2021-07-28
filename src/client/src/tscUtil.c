@@ -649,11 +649,11 @@ static void setResRawPtrImpl(SSqlRes* pRes, SInternalField* pInfo, int32_t i, bo
       } else if (varDataLen(p) > 0) {
         
         tscError("before ucs4tombs");
-        taosDumpData(varDataVal(p), varDataLen(p));
+        taosDumpData(varDataVal(p), (int32_t)varDataLen(p));
         int32_t length = taosUcs4ToMbs(varDataVal(p), varDataLen(p), varDataVal(dst));
         varDataSetLen(dst, length);
         tscError("after ucs4tombs");
-        taosDumpData(varDataVal(dst), varDataLen(dst));
+        taosDumpData(varDataVal(dst), (int32_t)varDataLen(dst));
 
         if (length == 0) {
           tscError("charset:%s to %s. val:%s convert failed.", DEFAULT_UNICODE_ENCODEC, tsCharset, (char*)p);

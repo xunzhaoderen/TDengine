@@ -31,14 +31,14 @@ class TDTestCase:
         tdLog.debug("start to execute %s" % __file__)
         tdSql.init(conn.cursor(), logSql)
         self.stableLimit = 500
-        self.stbOffset = 1000000/2
+        self.stbOffset = 1000000//2
 
     def stable_creation(self, startNum, insertTemplate, localTaosdemoConfig):
         selfTemplate = insertTemplate
 
         selfTemplate['name'] = f'stb{startNum + self.stbOffset}'
         selfTemplate['childtable_count'] = 10
-        selfTemplate['childtable_prefix'] = f'stb{startNum}_'
+        selfTemplate['childtable_prefix'] = f'stb{startNum + self.stbOffset}_'
         selfTemplate['batch_create_tbl_num'] = 25
         selfTemplate['insert_rows'] = 0
         selfTemplate['columns'] = [{"type": "INT", "count": 2}, {

@@ -8319,6 +8319,7 @@ static int32_t doLoadAllTableMeta(SSqlObj* pSql, SQueryInfo* pQueryInfo, SSqlNod
         return TSDB_CODE_TSC_OUT_OF_MEMORY;
       }
 
+      tscError("newvgrouplist,doLoadAllTableMeta,%p,%p", pTableMetaInfo, pTableMetaInfo->vgroupList);    
       pTableMetaInfo->vgroupList->numOfVgroups = (int32_t) s;
       for(int32_t j = 0; j < s; ++j) {
         int32_t* id = taosArrayGet(p->vgroupIdList, j);

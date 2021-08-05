@@ -3448,7 +3448,8 @@ void tscClearTableMetaInfo(STableMetaInfo* pTableMetaInfo) {
   }
 
   tfree(pTableMetaInfo->pTableMeta);
-
+  
+  tscError("rmvgrouplist,tscClearTableMetaInfo,%p,%p", pTableMetaInfo, pTableMetaInfo->vgroupList);    
   pTableMetaInfo->vgroupList = tscVgroupInfoClear(pTableMetaInfo->vgroupList);
   tscColumnListDestroy(pTableMetaInfo->tagColList);
   pTableMetaInfo->tagColList = NULL;
@@ -3709,6 +3710,7 @@ SSqlObj* createSubqueryObj(SSqlObj* pSql, int16_t tableIndex, __async_cb_func_t 
     SVgroupsInfo* pVgroupsInfo = pPrevInfo->vgroupList;
     pFinalInfo = tscAddTableMetaInfo(pNewQueryInfo, &pTableMetaInfo->name, pPrevTableMeta, pVgroupsInfo, pTableMetaInfo->tagColList,
         pTableMetaInfo->pVgroupTables);
+    tscError("newvgrouplist,createSubqueryObj,%p,%p", pFinalInfo, pFinalInfo->vgroupList);    
   }
 
   // this case cannot be happened
@@ -3849,8 +3851,9 @@ static void tscSubqueryCompleteCallback(void* param, TAOS_RES* tres, int code) {
     STableMetaInfo* pTableMetaInfo = tscGetTableMetaInfoFromCmd(pParentCmd, 0);
     tscRemoveTableMetaBuf(pTableMetaInfo, pParentSql->self);
 
-    pParentCmd->pTableMetaMap = tscCleanupTableMetaMap(pParentCmd->pTableMetaMap);
-    pParentCmd->pTableMetaMap = taosHashInit(4, taosGetDefaultHashFunction(TSDB_DATA_TYPE_BINARY), false, HASH_NO_LOCK);
+    //pParentCmd->pTableMetaMap = tscCleanupTableMetaMap(pParentCmd->pTableMetaMap);
+    //pParentCmd->pTableMetaMap = taosHashInit(4, taosGetDefaultHashFunction(TSDB_DATA_TYPE_BINARY), false, HASH_NO_LOCK);
+    tscResetSqlCmd(pParentCmd, true);
 
     pParentSql->res.code = TSDB_CODE_SUCCESS;
     pParentSql->retry++;

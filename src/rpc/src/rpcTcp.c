@@ -475,7 +475,7 @@ static int taosReadTcpData(SFdObj *pFdObj, SRecvInfo *pInfo) {
   char       *buffer, *msg;
 
   SThreadObj *pThreadObj = pFdObj->pThreadObj;
-
+  int64_t start = taosGetTimestampUs();
   headLen = taosReadMsg(pFdObj->fd, &rpcHead, sizeof(SRpcHead));
   if (headLen != sizeof(SRpcHead)) {
     tDebug("%s %p read error, FD:%p headLen:%d", pThreadObj->label, pFdObj->thandle, pFdObj, headLen);
@@ -513,7 +513,8 @@ static int taosReadTcpData(SFdObj *pFdObj, SRecvInfo *pInfo) {
   pInfo->thandle = pFdObj->thandle;
   pInfo->chandle = pFdObj;
   pInfo->connType = RPC_CONN_TCP;
-
+  int64_t end = taosGetTimestampUs();
+  tError("read complete tcp packet %ldus", (end - start));
   if (pFdObj->closedByApp) {
     free(buffer);
     return -1;

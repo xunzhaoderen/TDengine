@@ -1333,6 +1333,7 @@ static void rpcSendMsgToPeer(SRpcConn *pConn, void *msg, int msgLen) {
   int        writtenLen = 0;
   SRpcHead  *pHead = (SRpcHead *)msg;
 
+  int64_t start = taosGetTimestampUs();
   msgLen = rpcAddAuthPart(pConn, msg, msgLen);
 
   if ( rpcIsReq(pHead->msgType)) {
@@ -1349,8 +1350,12 @@ static void rpcSendMsgToPeer(SRpcConn *pConn, void *msg, int msgLen) {
   //tTrace("connection type is: %d", pConn->connType);
   writtenLen = (*taosSendData[pConn->connType])(pConn->peerIp, pConn->peerPort, pHead, msgLen, pConn->chandle);
 
+  int64_t end = taosGetTimestampUs();
   if (writtenLen != msgLen) {
     tError("%s, failed to send, msgLen:%d written:%d, reason:%s", pConn->info, msgLen, writtenLen, strerror(errno));
+  }
+  if (end - start >= 500) {
+    tError("send complete tcp packet %ld us", (end - start));
   }
  
   tDump(msg, msgLen);

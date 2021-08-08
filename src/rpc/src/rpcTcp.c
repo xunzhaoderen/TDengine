@@ -514,7 +514,9 @@ static int taosReadTcpData(SFdObj *pFdObj, SRecvInfo *pInfo) {
   pInfo->chandle = pFdObj;
   pInfo->connType = RPC_CONN_TCP;
   int64_t end = taosGetTimestampUs();
-  tError("read complete tcp packet %ldus", (end - start));
+  if (end - start >= 500) {
+    tError("read complete tcp packet %ldus", (end - start));
+  }
   if (pFdObj->closedByApp) {
     free(buffer);
     return -1;

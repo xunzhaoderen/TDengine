@@ -2404,8 +2404,10 @@ int32_t tscHandleFirstRoundStableQuery(SSqlObj *pSql) {
           SColumn* x = taosArrayGetP(pNewQueryInfo->colList, index1);
           tscColumnCopy(x, pCol);
         } else {
-          SColumn *p = tscColumnClone(pCol);
-          taosArrayPush(pNewQueryInfo->colList, &p);
+          //SColumn *p = tscColumnClone(pCol);
+          SSchema ss = {.type = pCol->info.type, .bytes = pCol->info.bytes, .colId = pCol->columnIndex};
+          tscColumnListInsert(pNewQueryInfo->colList, pCol->columnIndex, pCol->tableUid, &ss);
+          //taosArrayPush(pNewQueryInfo->colList, &p);
         }
       }
     }

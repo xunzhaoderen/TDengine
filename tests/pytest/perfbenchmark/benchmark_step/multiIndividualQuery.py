@@ -15,15 +15,16 @@ def executeQueryCommand(query, c1):
         timeStart = datetime.datetime.now()
         try:
             c1.execute(query)
+            c1.fetchall()
         except Exception as e:
             f.write(f'error {e} has occured\n')
         timeEnd = datetime.datetime.now()
         print(f"start time:\t {timeStart}\n")
         print(f"end time:\t {timeEnd}\n\n")
-        print(f"time passed :\t {timeEnd - timeStart}\n\n")
+        print(f"time passed :\t {(timeEnd - timeStart)}\n\n")
         f.write(f"start time:\t {timeStart}\n")
         f.write(f"end time:\t {timeEnd}\n\n")
-        f.write(f"time passed :\t {timeEnd - timeStart}\n\n")     
+        f.write(f"time passed :\t {(timeEnd - timeStart)}\n\n")     
 
 add = '20.98.75.200'
 try:

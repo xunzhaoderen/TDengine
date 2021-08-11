@@ -5,14 +5,15 @@ import time
 import taos
 import threading
 
-
+## taosdemo file execution
 def executeFile(ThreadID, fileName, tableNum):
     path = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON'
     os.system(
-        f'sudo taosdemo -f {path}/{fileName}_{tableNum}_{ThreadID}.json ')
+        f'sudo taosdemo -f {path}/{fileName}_{tableNum}_{ThreadID}.json 2>&1')
     print(f'sudo taosdemo -f {path}/{fileName}_{tableNum}_{ThreadID}.json')
 
-
+## since for create, taosdemo does not consume too much memory space, all five taosdemos 
+## are executed in the same machine through different thread
 def executeCreatefile(tableNum):
     threadDic = []
     threadDic.append(threading.Thread(
@@ -34,7 +35,7 @@ def executeCreatefile(tableNum):
         print(threadDic[i])
         threadDic[i].join()
 
-
+## the taosdemo for insertion require huge 
 def executeInsertfile(taosdemoNum, tableNum):
     threadList = []
     for i in range(0, taosdemoNum):

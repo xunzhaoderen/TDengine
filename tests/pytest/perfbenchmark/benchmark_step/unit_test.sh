@@ -32,9 +32,11 @@ while getopts "n:a:b:c:f:" opt; do
         echo "------------------------------------------------------"
         echo "a | address of the server with first FQDN"
         echo "------------------------------------------------------"
-        echo "b | the other client responsible for insert"
+        echo "b | the second client responsible for insert"
         echo "------------------------------------------------------"
-        echo "c | the other server that also runs TDengine"
+        echo "c | the second server that also runs TDengine"
+        echo "======================================================"
+        echo "f | path name of TDengine's data directory"
         echo "======================================================"
         exit 1
         ;;
@@ -42,30 +44,30 @@ while getopts "n:a:b:c:f:" opt; do
 done
 
 #stopping taosd and clean the files
-#also set up the cluster
+# also set up the cluster. Need to edit "create dnode 'ecs:6030'" to the correct firstEP
 ssh root@$addr <<eeooff
     systemctl stop taosd
-    rm -rf /data/taos/data/*
     systemctl start taosd
     exit
 eeooff
 ssh root@$addr2 <<eeooff
     systemctl stop taosd
-    rm -rf /data/taos/data/*
     systemctl start taosd
     sleep 20
-    taos -s "create dnode \'ecs2:6030\'"
+    taos -s "create dnode \'ecs2:6030\'" 
     taos -s "create database db"
     exit
 eeooff
 
-## setup the json files
+## setup the json files and copy the file to the other client
 cd ../..
 echo `python3 test.py -f perfbenchmark/benchmark_step/file_generation.py 1>/dev/null`
 cd perfbenchmark/benchmark_step
 scp -r /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/ $clientAddr:/root/TDinternal/community/tests/pytest/perfbenchmark/
 echo "scp -r /root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/ $clientAddr:/root/TDinternal/community/tests/pytest/perfbenchmark/"
-echo "strat to create tables"
+
+
+echo "start to create tables"
 echo `date`
 python3 main.py -t create -a $addr -b $clientAddr -n $tableNum -f create_$tableNum.log
 echo "table creation finished"
@@ -135,7 +137,7 @@ echo "single queries finished"
 echo `date`
 echo ''
 
-echo "start to run concurrent query for last_row() 100"
+echo "start to run concurrent query for last_row() 100 times"
 echo `date`
 echo `taosdemo -f JSON/query_create_2_1.json 1>/dev/null`
 echo "last_row() concurrent finished"

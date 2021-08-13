@@ -32,9 +32,9 @@ class stepJsonGeneration:
         taosdemoCfg.alter_insert_cfg('host', self.host)
         taosdemoCfg.alter_db('drop', 'no')
         taosdemoCfg.alter_insert_cfg('thread_count', 10)
-        taosdemoCfg.alter_insert_cfg('thread_count_create_tbl', 5)
+        taosdemoCfg.alter_insert_cfg('thread_count_create_tbl', 10)
         taosdemoCfg.alter_insert_cfg('result_file', "./insert_res.txt")
-        stbCfg["batch_create_tbl_num"]=10
+        stbCfg["batch_create_tbl_num"]=100
         stbCfg['child_table_exists'] = 'no'
         stbCfg['max_sql_len'] = 1024000
         stbCfg['insert_rows'] = 0
@@ -73,12 +73,12 @@ class stepJsonGeneration:
         taosdemoCfg.alter_insert_cfg('thread_count', 10)
         taosdemoCfg.alter_insert_cfg('thread_count_create_tbl', 10)
         taosdemoCfg.alter_insert_cfg('result_file', "./insert_res.txt")
-        stbCfg['insert_rows'] = 100
+        stbCfg['insert_rows'] = 30
         stbCfg["batch_create_tbl_num"] = 25
         stbCfg['timestamp_step'] = 1000
         stbCfg["max_sql_len"] = 1024000
         stbCfg["childtable_count"] = self.table
-        #stbCfg['start_timestamp'] = "now"
+        stbCfg['start_timestamp'] = "now"
         stbCfg['child_table_exists'] = 'yes'
         for i in range(5):
             stbCfg["childtable_prefix"] = f"stb_{i}_"

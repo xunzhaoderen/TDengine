@@ -63,7 +63,7 @@ fileName = "output.log"
 try:
     opts, args = getopt.gnu_getopt(sys.argv, "ht:a:n:b:f:", ["type=,address=,tableNum=,clientAddr=,fileName="])
 except getopt.GetoptError:
-    print('test.py -t <testType>')
+    print('test.py -t <testType> -a <address> -n table number -b client number -f filename')
     sys.exit(2)
 for opt, arg in opts:
     if opt == '-h':
@@ -84,6 +84,7 @@ for opt, arg in opts:
 f = open(fileName, "w")
 
 if testType == "create":
+    #start to create tables
     f.write("start running creation benchmark test")
     time_start = datetime.datetime.now()
     execute_file.executeCreatefile(tableNum)
@@ -93,6 +94,7 @@ if testType == "create":
     f.write(f"durination {time_end - time_start}\n")
 
 elif testType == "insert":
+    #start to insert data in to the tables through one client
     time_start = datetime.datetime.now()
     execute_file.executeInsertfile(5)
     time_end = datetime.datetime.now()
@@ -102,6 +104,7 @@ elif testType == "insert":
     f.write(f"durination {time_end - time_start}\n")
 
 elif testType == "insertParallel":
+    #start to insert data into tables through two clients
     conn1 = Connection("{}@{}".format('root', clientAddr),
                    connect_kwargs={"password": "{}".format('tbase125!')})
     thread1 = threading.Thread(target=ConnThread, args=(conn1, 2,5, tableNum))
@@ -117,9 +120,11 @@ elif testType == "insertParallel":
 
 
 elif testType == "query_normal":
+    # start test 3 individual querys
     os.system(f'python3 multiIndividualQuery.py -a {addr}')
 
 elif testType == "query_concurrent":
+    # start test 4 concurrent queries through one client
     path = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON'
     f.write("start running concurrent query benchmark test\n")
 
@@ -175,20 +180,10 @@ elif testType == "query_concurrent":
         queryThread(i+1,path, 'query_create_6.json', f)
     
 
-elif testType == "query_continous":
-    path = '/root/TDinternal/community/tests/pytest/perfbenchmark/benchmark_step/JSON'
-    f.write("start running concurrent query benchmark test with insert\n")
-    execute_file.executeInsertfile_daemon(2)
-
-    for i in range(7):
-        for j in [1,2,4]:
-            f.write(f"{i+1}-{50*j}\n")
-            queryThread(j,path, f'query_create_5_{i+1}_1.json', f)
-        f.write(f"{i+1}-{50*10}\n")
-        queryThread(5,path, f'query_create_5_{i+1}_1.json', f,True,5)
-
 elif testType == 'contious_query':
-    #execute_file.executeInsertfile_daemon(5)
+    #lanuch the continous query. the continous query will be lanuched with a interval of 5 minutes
+    #at the same time, taosdemo will be lanuched to insert data
+    execute_file.executeInsertfile_daemon(5)
     conn = taos.connect(host=addr, user="root", password="taosdata", config="/etc/taos")
     c1 = conn.cursor()
     c1.execute('use db')

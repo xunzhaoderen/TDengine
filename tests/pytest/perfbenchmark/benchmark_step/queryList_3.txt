@@ -1,3 +1,9 @@
+select last(col1) from stb where ts between '2020-10-01 00:00:39.000' and '2020-10-01 00:01:39.000';
+select last(col1) - last(col2) + last(col3) as testResult from stb;
+select spread(ts)/1000 as runTime_second from stb where t0 = "1";
+select percentile(col1,99) from stb_0_0;
+select apercentile(col1,99) from stb;
+select avg(col0), avg(col1), avg(col2), avg(col3), avg(col4), avg(col5), avg(col6), avg(col7), avg(col8), avg(col9), avg(col10) from stb;
 select count(tbname) from stb;
 select count(*) from stb;
 select min(col0) , max(col1), avg(col3) from stb;
@@ -24,9 +30,4 @@ select avg(col1), max(col0) from stb interval (100s) sliding (5s);
 select sum(col1)*1.5 from stb where t1 = 'beijing';
 select sum(col1)*1.5 from stb where t1 = 'beijing' or t1 = 'shenzen';
 select sum(col1)*1.5 from stb;
-select last(col1) from stb where ts between '2020-10-01 00:00:39.000' and '2020-10-01 00:01:39.000';
-select last(col1) - last(col2) + last(col3) as testResult from stb;
-select spread(ts)/1000 as runTime_second from stb where t0 = "1";
-select percentile(col1,99) from stb_0_0;
-select apercentile(col1,99) from stb;
-select avg(col0), avg(col1), avg(col2), avg(col3), avg(col4), avg(col5), avg(col6), avg(col7), avg(col8), avg(col9), avg(col10) from stb;
+

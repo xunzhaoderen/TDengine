@@ -10,7 +10,7 @@ import execute_file
 
 
 
-
+## this is the py file that will lanuch in the clients other than the main client
 id = 1
 taosdemo = 5
 addr = '20.98.75.200'

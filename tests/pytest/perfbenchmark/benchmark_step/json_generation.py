@@ -73,7 +73,7 @@ class stepJsonGeneration:
         taosdemoCfg.alter_insert_cfg('thread_count', 10)
         taosdemoCfg.alter_insert_cfg('thread_count_create_tbl', 10)
         taosdemoCfg.alter_insert_cfg('result_file', "./insert_res.txt")
-        stbCfg['insert_rows'] = 30
+        stbCfg['insert_rows'] = 200
         stbCfg["batch_create_tbl_num"] = 25
         stbCfg['timestamp_step'] = 1000
         stbCfg["max_sql_len"] = 1024000

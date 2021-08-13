@@ -37,7 +37,6 @@ class TDTestCase:
         self.jsonMaker.csvGeneration(4, "4")
         #the first parameter is the value of tables, the second parameter is the scale of schema
         self.jsonMaker.create_JSON_gen(100000000,2)
-
         self.jsonMaker.insert_JSON_gen(5)
         self.jsonMaker.create_JSON_gen(10000000,2)
         self.jsonMaker.insert_JSON_gen(5)

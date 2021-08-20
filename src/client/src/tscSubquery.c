@@ -365,12 +365,16 @@ static int64_t doTSBlockIntersect(SSqlObj* pSql, STimeWindow * win) {
     }
   }
 
+  tscDebug("start tscomp dump");
+  
   for (int32_t i = 0; i < joinNum; ++i) {
     tsBufFlush(ctxlist[i].res);
     
     tsBufDestroy(ctxlist[i].p->pTSBuf);
     ctxlist[i].p->pTSBuf = NULL;
   }
+
+  tscDebug("end tscomp dump");
     
   TSKEY et = taosGetTimestampUs();
 

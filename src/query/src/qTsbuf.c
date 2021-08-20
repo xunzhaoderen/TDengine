@@ -249,6 +249,20 @@ static void writeDataToDisk(STSBuf* pTSBuf) {
   pBlock->compLen =
       tsCompressTimestamp(pTsData->rawBuf, pTsData->len, pTsData->len/TSDB_KEYSIZE, pBlock->payload, pTsData->allocSize,
           TWO_STAGE_COMP, pTSBuf->assistBuf, pTSBuf->bufSize);
+
+  char *tmpbuf = calloc(1048576, 1);
+  char *tmpbuf2 = calloc(1048576, 1);
+
+  qDebug("tsbufinfo,complen:%d,elem:%d", pBlock->compLen, pBlock->numOfElem);
+
+  qDump(pBlock->payload, pBlock->compLen);
+  
+  int tmpLen = tsDecompressTimestamp(pBlock->payload, pBlock->compLen, pBlock->numOfElem, tmpbuf, 1048576, TWO_STAGE_COMP, tmpbuf2, 1048576);
+  
+  assert((tmpLen / TSDB_KEYSIZE == pBlock->numOfElem) && (1048576 >= tmpLen));
+
+  tfree(tmpbuf);
+  tfree(tmpbuf2);
   
   int64_t r = fseek(pTSBuf->f, pTSBuf->fileSize, SEEK_SET);
   assert(r == 0);
@@ -396,6 +410,18 @@ STSBlock* readDataFromDisk(STSBuf* pTSBuf, int32_t order, bool decomp) {
     int32_t r = fseek(pTSBuf->f, -offset, SEEK_CUR);
     UNUSED(r);
   }
+
+
+  char *tmpbuf = calloc(1048576, 1);
+  char *tmpbuf2 = calloc(1048576, 1);
+  qDebug("tsbufinfo,complen:%d,elem:%d", pBlock->compLen, pBlock->numOfElem);
+  qDump(pBlock->payload, pBlock->compLen);  
+  int tmpLen = tsDecompressTimestamp(pBlock->payload, pBlock->compLen, pBlock->numOfElem, tmpbuf, 1048576, TWO_STAGE_COMP, tmpbuf2, 1048576);  
+  assert((tmpLen / TSDB_KEYSIZE == pBlock->numOfElem) && (1048576 >= tmpLen));
+  tfree(tmpbuf);
+  tfree(tmpbuf2);
+
+
   
   return pBlock;
 }
@@ -665,7 +691,10 @@ bool tsBufNextPos(STSBuf* pTSBuf) {
   // get the first/last position according to traverse order
   if (pCur->vgroupIndex == -1) {
     if (pCur->order == TSDB_ORDER_ASC) {
+      
+      qDebug("start tscomp read");
       tsBufGetBlock(pTSBuf, 0, 0);
+      qDebug("end tscomp read");
       
       if (pTSBuf->block.numOfElem == 0) {  // the whole list is empty, return
         tsBufResetPos(pTSBuf);

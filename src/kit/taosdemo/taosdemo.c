@@ -94,7 +94,7 @@ extern char configDir[];
 #define DOUBLE_BUFF_LEN         42
 #define TIMESTAMP_BUFF_LEN      21
 
-#define MAX_SAMPLES_ONCE_FROM_FILE   10000
+#define MAX_SAMPLES_ONCE_FROM_FILE   17280
 #define MAX_NUM_COLUMNS        (TSDB_MAX_COLUMNS - 1)      // exclude first column timestamp
 
 #define MAX_DB_COUNT            8

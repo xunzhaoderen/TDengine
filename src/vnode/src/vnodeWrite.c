@@ -24,8 +24,8 @@
 #include "dnode.h"
 #include "vnodeStatus.h"
 
-#define MAX_QUEUED_MSG_NUM 100000
-#define MAX_QUEUED_MSG_SIZE 1024*1024*1024  //1GB
+#define MAX_QUEUED_MSG_NUM 1000
+#define MAX_QUEUED_MSG_SIZE 128*1024*1024  //128MB
 
 extern void *  tsDnodeTmr;
 static int32_t (*vnodeProcessWriteMsgFp[TSDB_MSG_TYPE_MAX])(SVnodeObj *, void *pCont, SRspRet *);

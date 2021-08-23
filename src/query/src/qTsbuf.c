@@ -653,7 +653,7 @@ static void tsBufGetBlock(STSBuf* pTSBuf, int32_t groupIndex, int32_t blockIndex
   
   if (s > pTSBuf->bufSize) {
     pTSBuf->assistBuf = realloc(pTSBuf->assistBuf, s);
-    pTSBuf->bufSize = s;
+    pTSBuf->bufSize = (int32_t)s;
   }    
 
   qDebug("tscominfo, numOfElem:%d,compLen:%d,allocSize:%d,bufsize:%d", pBlock->numOfElem, pBlock->compLen, pTSBuf->tsData.allocSize, pTSBuf->bufSize);

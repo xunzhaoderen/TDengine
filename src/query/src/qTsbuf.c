@@ -386,6 +386,16 @@ STSBlock* readDataFromDisk(STSBuf* pTSBuf, int32_t order, bool decomp) {
   sz = fread(pBlock->payload, (size_t)pBlock->compLen, 1, pTSBuf->f);
 
   if (decomp) {
+    if (pBlock->numOfElem * TSDB_KEYSIZE > pTSBuf->tsData.allocSize) {
+      pTSBuf->tsData.rawBuf = realloc(pTSBuf->tsData.rawBuf, pBlock->numOfElem * TSDB_KEYSIZE);
+      pTSBuf->tsData.allocSize = pBlock->numOfElem * TSDB_KEYSIZE;
+    }
+
+    if (pBlock->numOfElem * TSDB_KEYSIZE > pTSBuf->bufSize) {
+      pTSBuf->assistBuf = realloc(pTSBuf->assistBuf, pBlock->numOfElem * TSDB_KEYSIZE);
+      pTSBuf->bufSize = pBlock->numOfElem * TSDB_KEYSIZE;
+    }    
+    
     pTSBuf->tsData.len =
         tsDecompressTimestamp(pBlock->payload, pBlock->compLen, pBlock->numOfElem, pTSBuf->tsData.rawBuf,
                               pTSBuf->tsData.allocSize, TWO_STAGE_COMP, pTSBuf->assistBuf, pTSBuf->bufSize);
@@ -412,12 +422,27 @@ STSBlock* readDataFromDisk(STSBuf* pTSBuf, int32_t order, bool decomp) {
   }
 
 
+
+  int32_t buflen = 1048576;
   char *tmpbuf = calloc(1048576, 1);
   char *tmpbuf2 = calloc(1048576, 1);
-  qDebug("tsbufinfo,complen:%d,elem:%d", pBlock->compLen, pBlock->numOfElem);
+
+  if (pBlock->numOfElem * TSDB_KEYSIZE > buflen) {
+    tmpbuf = realloc(tmpbuf, pBlock->numOfElem * TSDB_KEYSIZE);
+    buflen = pBlock->numOfElem * TSDB_KEYSIZE;
+  }
+  
+  if (pBlock->numOfElem * TSDB_KEYSIZE > buflen) {
+    tmpbuf2 = realloc(tmpbuf2, pBlock->numOfElem * TSDB_KEYSIZE);
+    buflen = pBlock->numOfElem * TSDB_KEYSIZE;
+  }    
+
+
+  qDebug("tsbufinfo,start complen:%d,elem:%d,buflen:%d", pBlock->compLen, pBlock->numOfElem, buflen);
   qDump(pBlock->payload, pBlock->compLen);  
-  int tmpLen = tsDecompressTimestamp(pBlock->payload, pBlock->compLen, pBlock->numOfElem, tmpbuf, 1048576, TWO_STAGE_COMP, tmpbuf2, 1048576);  
-  assert((tmpLen / TSDB_KEYSIZE == pBlock->numOfElem) && (1048576 >= tmpLen));
+  int tmpLen = tsDecompressTimestamp(pBlock->payload, pBlock->compLen, pBlock->numOfElem, tmpbuf, buflen, TWO_STAGE_COMP, tmpbuf2, buflen);  
+  qDebug("tsbufinfo,end,tmpLen:%d", tmpLen);
+  assert((tmpLen / TSDB_KEYSIZE == pBlock->numOfElem) && (buflen >= tmpLen));
   tfree(tmpbuf);
   tfree(tmpbuf2);
 
@@ -625,6 +650,13 @@ static void tsBufGetBlock(STSBuf* pTSBuf, int32_t groupIndex, int32_t blockIndex
   if (s > pTSBuf->tsData.allocSize) {
     expandBuffer(&pTSBuf->tsData, (int32_t)s);
   }
+  
+  if (s > pTSBuf->bufSize) {
+    pTSBuf->assistBuf = realloc(pTSBuf->assistBuf, s);
+    pTSBuf->bufSize = s;
+  }    
+
+  qDebug("tscominfo, numOfElem:%d,compLen:%d,allocSize:%d,bufsize:%d", pBlock->numOfElem, pBlock->compLen, pTSBuf->tsData.allocSize, pTSBuf->bufSize);
   
   pTSBuf->tsData.len =
       tsDecompressTimestamp(pBlock->payload, pBlock->compLen, pBlock->numOfElem, pTSBuf->tsData.rawBuf,

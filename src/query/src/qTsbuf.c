@@ -519,7 +519,7 @@ void tsBufAppend(STSBuf* pTSBuf, int32_t id, tVariant* tag, const char* pData, i
   
   // the size of raw data exceeds the size of the default prepared buffer, so
   // during getBufBlock, the output buffer needs to be large enough.
-  if (ptsData->len >= ptsData->threshold) {
+  if (ptsData->len >= ptsData->threshold - TSDB_KEYSIZE) {
     writeDataToDisk(pTSBuf);
     shrinkBuffer(ptsData);
   }

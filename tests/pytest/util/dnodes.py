@@ -40,6 +40,7 @@ class TDSimClient:
             "udebugFlag": "135",
             "jnidebugFlag": "135",
             "qdebugFlag": "135",
+            "debugFlag": "143",
             "telemetryReporting": "0",
             }
     def init(self, path):

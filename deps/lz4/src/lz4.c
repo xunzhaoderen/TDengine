@@ -32,6 +32,7 @@
     - LZ4 source repository : https://github.com/lz4/lz4
 */
 
+#include "assert.h"
 
 /*-************************************
 *  Tuning parameters
@@ -1159,8 +1160,14 @@ LZ4_FORCE_INLINE int LZ4_decompress_generic(
                 s = *ip++;
                 length += s;
             } while ( likely(endOnInput ? ip<iend-RUN_MASK : 1) & (s==255) );
-            if ((safeDecode) && unlikely((uptrval)(op)+length<(uptrval)(op))) goto _output_error;   /* overflow detection */
-            if ((safeDecode) && unlikely((uptrval)(ip)+length<(uptrval)(ip))) goto _output_error;   /* overflow detection */
+            if ((safeDecode) && unlikely((uptrval)(op)+length<(uptrval)(op))) {
+              assert(0);
+              goto _output_error;   /* overflow detection */
+            }
+            if ((safeDecode) && unlikely((uptrval)(ip)+length<(uptrval)(ip))) {
+              assert(0);
+              goto _output_error;   /* overflow detection */
+            }
         }
 
         /* copy literals */
@@ -1169,11 +1176,23 @@ LZ4_FORCE_INLINE int LZ4_decompress_generic(
             || ((!endOnInput) && (cpy>oend-WILDCOPYLENGTH)) )
         {
             if (partialDecoding) {
-                if (cpy > oend) goto _output_error;                           /* Error : write attempt beyond end of output buffer */
-                if ((endOnInput) && (ip+length > iend)) goto _output_error;   /* Error : read attempt beyond end of input buffer */
+                if (cpy > oend) {
+              assert(0);
+                  goto _output_error;                           /* Error : write attempt beyond end of output buffer */
+                }
+                if ((endOnInput) && (ip+length > iend)) {
+              assert(0);
+                  goto _output_error;   /* Error : read attempt beyond end of input buffer */
+                }
             } else {
-                if ((!endOnInput) && (cpy != oend)) goto _output_error;       /* Error : block decoding must stop exactly there */
-                if ((endOnInput) && ((ip+length != iend) || (cpy > oend))) goto _output_error;   /* Error : input must be consumed */
+                if ((!endOnInput) && (cpy != oend)) {
+              assert(0);
+                  goto _output_error;       /* Error : block decoding must stop exactly there */
+                }
+                if ((endOnInput) && ((ip+length != iend) || (cpy > oend))) {
+              assert(0);
+                  goto _output_error;   /* Error : input must be consumed */
+                }
             }
             memcpy(op, ip, length);
             ip += length;
@@ -1186,7 +1205,10 @@ LZ4_FORCE_INLINE int LZ4_decompress_generic(
         /* get offset */
         offset = LZ4_readLE16(ip); ip+=2;
         match = op - offset;
-        if ((checkOffset) && (unlikely(match + dictSize < lowPrefix))) goto _output_error;   /* Error : offset outside buffers */
+        if ((checkOffset) && (unlikely(match + dictSize < lowPrefix))) {
+              assert(0);
+          goto _output_error;   /* Error : offset outside buffers */
+        }
         LZ4_write32(op, (U32)offset);   /* costs ~1%; silence an msan warning when offset==0 */
 
         /* get matchlength */
@@ -1195,16 +1217,25 @@ LZ4_FORCE_INLINE int LZ4_decompress_generic(
             unsigned s;
             do {
                 s = *ip++;
-                if ((endOnInput) && (ip > iend-LASTLITERALS)) goto _output_error;
+                if ((endOnInput) && (ip > iend-LASTLITERALS)) {
+              assert(0);
+                  goto _output_error;
+                }
                 length += s;
             } while (s==255);
-            if ((safeDecode) && unlikely((uptrval)(op)+length<(uptrval)op)) goto _output_error;   /* overflow detection */
+            if ((safeDecode) && unlikely((uptrval)(op)+length<(uptrval)op)) {
+              assert(0);
+              goto _output_error;   /* overflow detection */
+            }
         }
         length += MINMATCH;
 
         /* check external dictionary */
         if ((dict==usingExtDict) && (match < lowPrefix)) {
-            if (unlikely(op+length > oend-LASTLITERALS)) goto _output_error;   /* doesn't respect parsing restriction */
+            if (unlikely(op+length > oend-LASTLITERALS)) {
+              assert(0);
+              goto _output_error;   /* doesn't respect parsing restriction */
+            }
 
             if (length <= (size_t)(lowPrefix-match)) {
                 /* match can be copied as a single segment from external dictionary */
@@ -1243,7 +1274,10 @@ LZ4_FORCE_INLINE int LZ4_decompress_generic(
 
         if (unlikely(cpy>oend-12)) {
             BYTE* const oCopyLimit = oend-(WILDCOPYLENGTH-1);
-            if (cpy > oend-LASTLITERALS) goto _output_error;    /* Error : last LASTLITERALS bytes must be literals (uncompressed) */
+            if (cpy > oend-LASTLITERALS) {
+              assert(0);
+              goto _output_error;    /* Error : last LASTLITERALS bytes must be literals (uncompressed) */
+            }
             if (op < oCopyLimit) {
                 LZ4_wildCopy(op, match, oCopyLimit);
                 match += oCopyLimit - op;

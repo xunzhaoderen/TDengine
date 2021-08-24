@@ -253,7 +253,7 @@ static void writeDataToDisk(STSBuf* pTSBuf) {
   char *tmpbuf = calloc(1048576, 1);
   char *tmpbuf2 = calloc(1048576, 1);
 
-  qDebug("tsbufinfo,complen:%d,elem:%d", pBlock->compLen, pBlock->numOfElem);
+  qDebug("tsbufinfo read,complen:%d,elem:%d", pBlock->compLen, pBlock->numOfElem);
 
   qDump(pBlock->payload, pBlock->compLen);
   

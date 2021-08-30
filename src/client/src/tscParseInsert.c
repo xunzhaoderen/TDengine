@@ -1821,6 +1821,7 @@ static void parseFileSendDataBlock(void *param, TAOS_RES *tres, int32_t numOfRow
   STableComInfo   tinfo = tscGetTableInfo(pTableMeta);
 
   SInsertStatementParam *pInsertParam = &pCmd->insertParam;
+  pInsertParam->payloadType = PAYLOAD_TYPE_RAW;
   destroyTableNameList(pInsertParam);
   pInsertParam->pDataBlocks = tscDestroyBlockArrayList(pInsertParam->pDataBlocks);
 

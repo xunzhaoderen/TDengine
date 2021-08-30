@@ -25,7 +25,7 @@ extern "C" {
 #include "taos.h"
 
 #define TSDB__packed
-
+#define __CARY_DEBUG__
 #ifdef TSKEY32
 #define TSKEY int32_t;
 #else

@@ -446,6 +446,122 @@ int32_t tsCheckTimestamp(STableDataBlocks *pDataBlocks, const char *start) {
   return TSDB_CODE_SUCCESS;
 }
 
+#ifdef __CARY_DEBUG__
+int tsParseOneRow(char **str, STableDataBlocks *pDataBlocks, int16_t timePrec, int32_t *len, char *tmpTokenBuf,
+                  SInsertStatementParam *pInsertParam) {
+  int32_t   index = 0;
+  SStrToken sToken = {0};
+  char *    payload = pDataBlocks->pData + pDataBlocks->size;
+
+  SParsedDataColInfo *spd = &pDataBlocks->boundColumnInfo;
+  SSchema *           schema = tscGetTableSchema(pDataBlocks->pTableMeta);
+
+  // 1. set the parsed value from sql string
+  int32_t rowSize = 0;
+  for (int i = 0; i < spd->numOfBound; ++i) {
+    // the start position in data block buffer of current value in sql
+    int32_t colIndex = spd->boundedColumns[i];
+
+    char *   start = payload + spd->cols[colIndex].offset;
+    SSchema *pSchema = &schema[colIndex];
+    rowSize += pSchema->bytes;
+
+    index = 0;
+    sToken = tStrGetToken(*str, &index, true);
+    *str += index;
+
+    if (sToken.type == TK_QUESTION) {
+      if (pInsertParam->insertType != TSDB_QUERY_TYPE_STMT_INSERT) {
+        return tscSQLSyntaxErrMsg(pInsertParam->msg, "? only allowed in binding insertion", *str);
+      }
+
+      uint32_t offset = (uint32_t)(start - pDataBlocks->pData);
+      if (tscAddParamToDataBlock(pDataBlocks, pSchema->type, (uint8_t)timePrec, pSchema->bytes, offset) != NULL) {
+        continue;
+      }
+
+      strcpy(pInsertParam->msg, "client out of memory");
+      return TSDB_CODE_TSC_OUT_OF_MEMORY;
+    }
+
+    int16_t type = sToken.type;
+    if ((type != TK_NOW && type != TK_INTEGER && type != TK_STRING && type != TK_FLOAT && type != TK_BOOL &&
+         type != TK_NULL && type != TK_HEX && type != TK_OCT && type != TK_BIN) ||
+        (sToken.n == 0) || (type == TK_RP)) {
+      return tscSQLSyntaxErrMsg(pInsertParam->msg, "invalid data or symbol", sToken.z);
+    }
+
+    // Remove quotation marks
+    if (TK_STRING == sToken.type) {
+      // delete escape character: \\, \', \"
+      char delim = sToken.z[0];
+
+      int32_t cnt = 0;
+      int32_t j = 0;
+      if (sToken.n >= TSDB_MAX_BYTES_PER_ROW) {
+        return tscSQLSyntaxErrMsg(pInsertParam->msg, "too long string", sToken.z);
+      }
+
+      for (uint32_t k = 1; k < sToken.n - 1; ++k) {
+        if (sToken.z[k] == '\\' || (sToken.z[k] == delim && sToken.z[k + 1] == delim)) {
+          tmpTokenBuf[j] = sToken.z[k + 1];
+
+          cnt++;
+          j++;
+          k++;
+          continue;
+        }
+
+        tmpTokenBuf[j] = sToken.z[k];
+        j++;
+      }
+
+      tmpTokenBuf[j] = 0;
+      sToken.z = tmpTokenBuf;
+      sToken.n -= 2 + cnt;
+    }
+
+    bool    isPrimaryKey = (colIndex == PRIMARYKEY_TIMESTAMP_COL_INDEX);
+    int32_t ret = tsParseOneColumn(pSchema, &sToken, start, pInsertParam->msg, str, isPrimaryKey, timePrec);
+    if (ret != TSDB_CODE_SUCCESS) {
+      return ret;
+    }
+
+    if (isPrimaryKey && tsCheckTimestamp(pDataBlocks, start) != TSDB_CODE_SUCCESS) {
+      tscInvalidOperationMsg(pInsertParam->msg, "client time/server time can not be mixed up", sToken.z);
+      return TSDB_CODE_TSC_INVALID_TIME_STAMP;
+    }
+  }
+
+  // 2. set the null value for the columns that do not assign values
+  if (spd->numOfBound < spd->numOfCols) {
+    char *ptr = payload;
+
+    for (int32_t i = 0; i < spd->numOfCols; ++i) {
+      if (spd->cols[i].valStat == VAL_STAT_NONE) {  // current column do not have any value to insert, set it to null
+        if (schema[i].type == TSDB_DATA_TYPE_BINARY) {
+          varDataSetLen(ptr, sizeof(int8_t));
+          *(uint8_t *)varDataVal(ptr) = TSDB_DATA_BINARY_NULL;
+        } else if (schema[i].type == TSDB_DATA_TYPE_NCHAR) {
+          varDataSetLen(ptr, sizeof(int32_t));
+          *(uint32_t *)varDataVal(ptr) = TSDB_DATA_NCHAR_NULL;
+        } else {
+          setNull(ptr, schema[i].type, schema[i].bytes);
+        }
+      }
+
+      ptr += schema[i].bytes;
+    }
+
+    rowSize = (int32_t)(ptr - payload);
+  }
+
+  *len = rowSize;
+  return TSDB_CODE_SUCCESS;
+}
+#endif
+
+#ifndef __CARY_DEBUG__
 int tsParseOneRow(char **str, STableDataBlocks *pDataBlocks, int16_t timePrec, int32_t *len, char *tmpTokenBuf,
                   SInsertStatementParam *pInsertParam) {
   int32_t   index = 0;
@@ -572,6 +688,8 @@ int tsParseOneRow(char **str, STableDataBlocks *pDataBlocks, int16_t timePrec, i
   return TSDB_CODE_SUCCESS;
 }
 
+#endif
+
 static int32_t rowDataCompar(const void *lhs, const void *rhs) {
   TSKEY left = *(TSKEY *)lhs;
   TSKEY right = *(TSKEY *)rhs;
@@ -618,6 +736,7 @@ int32_t tsParseValues(char **str, STableDataBlocks *pDataBlock, int maxRows, SIn
   
   int32_t  precision = tinfo.precision;
 
+#ifndef __CARY_DEBUG__
   int32_t extendedRowSize = getExtendedRowSize(pDataBlock);
 
   if (TSDB_CODE_SUCCESS !=
@@ -625,6 +744,13 @@ int32_t tsParseValues(char **str, STableDataBlocks *pDataBlock, int maxRows, SIn
                                 pDataBlock->boundColumnInfo.allNullLen))) {
     return code;
   }
+#endif
+
+#ifdef __CARY_DEBUG__
+  pInsertParam->payloadType = PAYLOAD_TYPE_RAW;
+  int32_t extendedRowSize = pDataBlock->rowSize;
+#endif
+
   while (1) {
     index = 0;
     sToken = tStrGetToken(*str, &index, false);
@@ -1696,7 +1822,6 @@ static void parseFileSendDataBlock(void *param, TAOS_RES *tres, int32_t numOfRow
 
   SInsertStatementParam *pInsertParam = &pCmd->insertParam;
   destroyTableNameList(pInsertParam);
-
   pInsertParam->pDataBlocks = tscDestroyBlockArrayList(pInsertParam->pDataBlocks);
 
   if (pInsertParam->pTableBlockHashList == NULL) {

@@ -608,7 +608,7 @@ static FORCE_INLINE void convertSMemRow(SMemRow dest, SMemRow src, STableDataBlo
   }
 }
 
-static bool isNullStr(SStrToken *pToken) {
+static bool UNUSED_FUNC isNullStr(SStrToken *pToken) {
   return (pToken->type == TK_NULL) || ((pToken->type == TK_STRING) && (pToken->n != 0) &&
                                        (strncasecmp(TSDB_DATA_NULL_STR_L, pToken->z, pToken->n) == 0));
 }
@@ -625,9 +625,10 @@ static FORCE_INLINE int32_t tscToDouble(SStrToken *pToken, double *value, char *
   return pToken->type;
 }
 
-static uint8_t TRUE_VALUE = (uint8_t)TSDB_TRUE;
-static uint8_t FALSE_VALUE = (uint8_t)TSDB_FALSE;
+static UNUSED_FUNC uint8_t TRUE_VALUE = (uint8_t)TSDB_TRUE;
+static UNUSED_FUNC uint8_t FALSE_VALUE = (uint8_t)TSDB_FALSE;
 
+#ifndef __CARY_DEBUG__
 static FORCE_INLINE int32_t tsParseOneColumnKV(SSchema *pSchema, SStrToken *pToken, SMemRow row, char *msg, char **str,
                                                bool primaryKey, int16_t timePrec, int32_t toffset, int16_t colId,
                                                int32_t *dataLen, int32_t *kvLen, uint8_t compareStat) {
@@ -907,6 +908,7 @@ static FORCE_INLINE int32_t tsParseOneColumnKV(SSchema *pSchema, SStrToken *pTok
 
   return TSDB_CODE_SUCCESS;
 }
+#endif
 
 #ifdef __cplusplus
 }

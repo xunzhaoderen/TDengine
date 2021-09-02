@@ -89,13 +89,10 @@ if __name__ == "__main__":
     # init the dnodes with each specific file path
     tdDnodes.init()
 
-    tdLog.debug("Procedures for testing self-deployment")
     if fileName == "all":
         tdCases.runAllTest()
     else:
         tdCases.runOneTest(fileName)
-
-    tdCases.logSql(logSql)
 
     if restart:
         if fileName == "all":
@@ -106,8 +103,9 @@ if __name__ == "__main__":
                 tdDnodes.stopAll()
                 tdDnodes.start()
                 time.sleep(1)
-                conn = taos.connect(host, config=tdDnodes.getSimCfgPath())
-                tdLog.info("Procedures for tdengine deployed in %s" % (host))
+                conn = taos.connect('127.0.0.1',
+                                    config=tdDnodes.getSimCfgPath())
+                tdLog.info("Procedures for tdengine deployed in 127.0.0.1")
                 tdLog.info("query test after taosd restart")
                 tdCases.runOneLinux(conn, sp[0] + "_" + "restart.py")
             else:

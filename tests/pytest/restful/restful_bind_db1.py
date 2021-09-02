@@ -28,40 +28,39 @@ import string
 import random
 
 
-def check_unbind_db(url, data, header):
-    resp = requests.post(url, data, headers=header)
-    resp.encoding = 'utf-8'
-    resp = eval(resp.text)
-    status = resp['status']
-    desc = resp['desc']
-    sqls = data
-    if status == "error" and desc == "invalid url format":
-        print(" %s : check pass" % sqls)
-    else:
-        printf(" error occured , ")
-        sys.exit()
-
-
-def check_bind_db(url, data, header):
-    resp = requests.post(url, data, headers=header)
-    resp.encoding = 'utf-8'
-    resp_dict = eval(resp.text)
-    status = resp_dict['status']
-    if status == "succ":
-        print("%s  run success!" % data)
-        # print(resp.text)
-    else:
-        print("%s run failed !" % data)
-        print(resp.text)
-        sys.exit()
-
-
 class TDTestCase():
+    numOfDnode = 1
     updatecfgDict = {'httpDbNameMandatory': 1}
 
     def init(self, conn, logSql):
         tdLog.debug("start to execute %s" % __file__)
         tdSql.init(conn.cursor(), logSql)
+
+    def check_unbind_db(self, url, data, header):
+        resp = requests.post(url, data, headers=header)
+        resp.encoding = 'utf-8'
+        resp = eval(resp.text)
+        status = resp['status']
+        desc = resp['desc']
+        sqls = data
+        if status == "error" and desc == "invalid url format":
+            print(" %s : check pass" % sqls)
+        else:
+            printf(" error occured , ")
+            sys.exit()
+
+    def check_bind_db(self, url, data, header):
+        resp = requests.post(url, data, headers=header)
+        resp.encoding = 'utf-8'
+        resp_dict = eval(resp.text)
+        status = resp_dict['status']
+        if status == "succ":
+            print("%s  run success!" % data)
+            # print(resp.text)
+        else:
+            print("%s run failed !" % data)
+            print(resp.text)
+            sys.exit()
 
     def run(self):
         tdSql.prepare()
@@ -93,7 +92,7 @@ class TDTestCase():
 
         for sql in sqls:
             print("===================")
-            check_unbind_db(url, sql, header)
+            self.check_unbind_db(url, sql, header)
 
         print("===================" * 5)
         print(
@@ -103,7 +102,7 @@ class TDTestCase():
         url = "http://127.0.0.1:6041/rest/sql/des"
         for sql in sqls:
             print("===================")
-            check_bind_db(url, sql, header)
+            self.check_bind_db(url, sql, header)
         # check data
         tdSql.query("select * from test.tb")
         tdSql.checkRows(1)

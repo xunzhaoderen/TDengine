@@ -41,19 +41,21 @@ static void* insertLines(void* args) {
   printThreadId(pthread_self(), tidBuf);
   for (int i = 0; i < insertArgs->numBatches; ++i) {
     SThreadLinesBatch* batch = insertArgs->batches + i;
-    printf("%s, thread: 0x%s\n", "begin taos_insert_lines", tidBuf);
+    //printf("%s, thread: 0x%s\n", "begin taos_insert_lines", tidBuf);
     int64_t begin = getTimeInUs();
     int32_t code = taos_insert_lines(insertArgs->taos, batch->lines, batch->numLines);
     int64_t end = getTimeInUs();
     insertArgs->costTime += end - begin;
-    printf("code: %d, %s. time used:%"PRId64", thread: 0x%s\n", code, tstrerror(code), end - begin, tidBuf);
+    if (code != TSDB_CODE_SUCCESS) {
+      printf("code: %d, %s. time used:%"PRId64", thread: 0x%s\n", code, tstrerror(code), end - begin, tidBuf);
+    }
   }
   return NULL;
 }
 
 int32_t getLineTemplate(char* lineTemplate, int templateLen, int numFields) {
   if (numFields <= 4) {
-    char* sample = "sta%d,t3=%di32 c3=2147483647i32,c4=9223372036854775807i64,c9=11.12345f32,c10=22.123456789f64 %lldms";
+    char* sample = "sta%d,t0=%di32,t1=\"binaryTagValue\" c0=2147483647i32,c1=2147483647i32,c2=2147483647i32,c3=2147483647i32 %lldms";
     snprintf(lineTemplate, templateLen, "%s", sample);
     return 0;
   }
@@ -73,11 +75,11 @@ int32_t getLineTemplate(char* lineTemplate, int templateLen, int numFields) {
     snprintf(lineTemplate+strlen(lineTemplate), templateLen-strlen(lineTemplate), "c%d=%di32,", i, i);
   }
 
-  for (int i=offset[0]+1; i < offset[1]; ++i) {
+  for (int i=offset[0]; i < offset[1]; ++i) {
     snprintf(lineTemplate+strlen(lineTemplate), templateLen-strlen(lineTemplate), "c%d=%d.43f64,", i, i);
   }
 
-  for (int i = offset[1]+1; i < offset[2]; ++i) {
+  for (int i = offset[1]; i < offset[2]; ++i) {
     snprintf(lineTemplate+strlen(lineTemplate), templateLen-strlen(lineTemplate), "c%d=\"%d\",", i, i);
   }
   char* lineFormatTs = " %lldms";

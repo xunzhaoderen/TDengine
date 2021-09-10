@@ -164,7 +164,7 @@ int main(int argc, char* argv[]) {
   char* lineTemplate = calloc(65536, sizeof(char));
   getLineTemplate(lineTemplate, 65535, numFields);
 
-  printf("setup supertables...");
+  printf("setup supertables...\n");
   {
     char** linesStb = calloc(numSuperTables, sizeof(char*));
     for (int i = 0; i < numSuperTables; i++) {
@@ -185,7 +185,58 @@ int main(int argc, char* argv[]) {
     free(linesStb);
   }
 
+  printf("create child tables...\n");
+  {
+    int totalLines = numSuperTables * numChildTables;
+    int totalBatches = totalLines / maxLinesPerBatch;
+    if (totalLines % maxLinesPerBatch != 0) {
+      totalBatches += 1;
+    }
+
+    char*** batches = calloc(totalBatches, sizeof(char**));
+    int* batchLineNums = calloc(totalBatches, sizeof(int));
+    for (int i = 0; i < totalBatches; ++i) {
+      batches[i] = calloc(maxLinesPerBatch, sizeof(char*));
+    }
+
+
+    int l = 0;
+    for (int i = 0; i < numSuperTables; ++i) {
+      for (int j = 0; j < numChildTables; ++j) {
+        int stIdx = i;
+        int ctIdx = numSuperTables * numChildTables + j;
+        char* line = calloc(strlen(lineTemplate)+128, 1);
+        snprintf(line, strlen(lineTemplate)+128, lineTemplate, stIdx, ctIdx, ts - 1);
+        int batchNo = l / maxLinesPerBatch;
+        int lineNo = l % maxLinesPerBatch;
+        batches[batchNo][lineNo] =  line;
+        batchLineNums[batchNo] = lineNo + 1;
+        ++l;
+      }
+    }
+
+    for (int i = 0; i < totalBatches; ++i) {
+      int64_t begin = getTimeInUs();
+      int32_t code = taos_insert_lines(taos, batches[i], batchLineNums[i]);
+      int64_t end = getTimeInUs();
+      printf("creat child tables. batch: %d:%d, code: %d, %s. time used:%"PRId64"\n", i, batchLineNums[i], code, tstrerror(code), end - begin);
+    }
+
+    for (int i = 0; i < totalBatches; ++i) {
+      for (int j = 0; j < batchLineNums[i]; ++j) {
+        free(batches[i][j]);
+      }
+      free(batches[i]);
+    }
+
+    free(batches);
+    free(batchLineNums);
+
+  }
+
+
   printf("generate lines...\n");
+  
   pthread_t* tids = calloc(numThreads, sizeof(pthread_t));
   SThreadInsertArgs* argsThread = calloc(numThreads, sizeof(SThreadInsertArgs));
   for (int i = 0; i < numThreads; ++i) {
@@ -200,6 +251,7 @@ int main(int argc, char* argv[]) {
   }
 
   char*** allBatches = calloc(totalBatches, sizeof(char**));
+  int* allBatchLineNums = calloc(totalBatches, sizeof(int));
   for (int i = 0; i < totalBatches; ++i) {
     allBatches[i] = calloc(maxLinesPerBatch, sizeof(char*));
     int threadNo = i % numThreads;
@@ -219,12 +271,13 @@ int main(int argc, char* argv[]) {
         int batchNo = l / maxLinesPerBatch;
         int lineNo = l % maxLinesPerBatch;
         allBatches[batchNo][lineNo] =  line;
+        allBatchLineNums[batchNo] = lineNo + 1;
         argsThread[batchNo % numThreads].batches[batchNo/numThreads].numLines = lineNo + 1;
         ++l;
       }
     }
   }
-
+  
   printf("begin multi-thread insertion...\n");
   int64_t begin = taosGetTimestampUs();
 
@@ -244,9 +297,14 @@ int main(int argc, char* argv[]) {
   printf("THROUGHPUT:%d/s\n", (int)throughput);
 
   for (int i = 0; i < totalBatches; ++i) {
+    for (int j = 0; j < allBatchLineNums[i]; ++j) {
+      free(allBatches[i][j]);
+    }
     free(allBatches[i]);
   }
+  free(allBatchLineNums);
   free(allBatches);
+
 
   free(argsThread);
   free(tids);
